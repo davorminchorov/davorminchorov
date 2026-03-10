@@ -6,16 +6,36 @@ import ProjectCard from '../components/ProjectCard.astro';
 import Expertise from '../components/Expertise.astro';
 import Writing from '../components/Writing.astro';
 import TestimonialCard from '../components/TestimonialCard.astro';
+
+const personJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Davor Minchorov",
+    "url": "https://davorminchorov.com",
+    "jobTitle": "Software Engineer",
+    "description": "Software engineer partnering with startups and enterprises to design and build custom software solutions.",
+    "knowsAbout": ["Software Engineering", "System Design", "Full-Stack Development", "Software Architecture"],
+    "sameAs": [
+      "https://x.com/davorminchorov",
+      "https://bsky.app/profile/davorminchorov.com",
+      "https://linkedin.com/in/davorminchorov",
+      "https://github.com/davorminchorov"
+    ]
+  }
+});
 ---
 
 <BaseLayout>
+  <script type="application/ld+json" set:html={personJsonLd} />
   <Hero />
 
   <!-- Projects -->
   <section id="projects" class="py-[88px]">
     <div class="max-w-[1080px] mx-auto px-7">
-      <div class="section-label animate">Projects & Client Work</div>
-      <div class="section-title animate delay-1">What I've Built</div>
+      <span class="section-label animate">Projects & Client Work</span>
+      <h2 class="section-title animate delay-1">What I've Built</h2>
 
       <FeaturedProject />
 
@@ -69,8 +89,8 @@ import TestimonialCard from '../components/TestimonialCard.astro';
   <!-- Testimonials -->
   <section id="testimonials" class="py-[88px]">
     <div class="max-w-[1080px] mx-auto px-7">
-      <div class="section-label animate">Testimonials</div>
-      <div class="section-title animate delay-1">What My Clients Say</div>
+      <span class="section-label animate">Testimonials</span>
+      <h2 class="section-title animate delay-1">What My Clients Say</h2>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
         <TestimonialCard

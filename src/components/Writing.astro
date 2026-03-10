@@ -1,79 +1,75 @@
 ---
+interface ContentItem {
+  title: string;
+  date: string;
+  href: string;
+  type: string;
+}
+
+let items: ContentItem[] = [];
+
+try {
+  const res = await fetch('https://core.codyssey.dev/api/author-profiles/davor-minchorov');
+  const data = await res.json();
+  const profile = data.data;
+
+  const mapItems = (arr: any[], type: string, pathPrefix: string): ContentItem[] =>
+    (arr || [])
+      .filter((item: any) => item.published)
+      .map((item: any) => ({
+        title: item.title,
+        date: item.publish_date,
+        href: `https://codyssey.dev/${pathPrefix}/${item.slug}`,
+        type,
+      }));
+
+  const courses = mapItems(profile?.author_courses, 'Course', 'courses');
+  const insights = mapItems(profile?.author_insights, 'Insight', 'insights');
+  const learningPaths = mapItems(profile?.author_learning_paths, 'Learning Path', 'learning-paths');
+  const codeReviews = mapItems(profile?.author_code_reviews, 'Code Review', 'code-reviews');
+  const quickTips = mapItems(profile?.author_quick_tips, 'Quick Tip', 'quick-tips');
+
+  items = [...courses, ...insights, ...learningPaths, ...codeReviews, ...quickTips]
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 10);
+} catch {
+  // API failed at build time — items stays empty, fallback message shown below
+}
 ---
 
 <section id="writing" class="py-[88px] border-t border-border">
   <div class="max-w-[1080px] mx-auto px-7">
-    <div class="section-label animate">Writing & Knowledge</div>
-    <div class="section-title animate delay-1">Thinking Out Loud</div>
-    <p class="section-desc animate delay-2" id="writing-desc">
+    <span class="section-label animate">Writing & Knowledge</span>
+    <h2 class="section-title animate delay-1">Thinking Out Loud</h2>
+    <p class="section-desc animate delay-2">
       Articles on software development, architecture, and the craft of building things that last.
+      {items.length === 0 && ' New content coming soon to Codyssey.dev.'}
     </p>
 
-    <div id="writing-posts" class="flex flex-col mt-9"></div>
+    <div class="flex flex-col mt-9">
+      {items.map((item, i) => {
+        const date = new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        return (
+          <a
+            href={item.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class={`flex items-baseline justify-between gap-6 py-5 border-b border-border no-underline transition-all duration-200 hover:pl-2.5 group ${i === 0 ? 'border-t' : ''} animate delay-${i + 3}`}
+          >
+            <h3 class="text-base font-medium text-text tracking-tight group-hover:text-accent transition-colors">
+              {item.title}
+            </h3>
+            <span class="font-mono text-[11px] text-text-dim whitespace-nowrap">
+              {item.type} &middot; {date}
+            </span>
+          </a>
+        );
+      })}
+    </div>
 
-    <a href="https://codyssey.dev/author-profile/davor-minchorov" class="arrow-link mt-7 animate delay-6" target="_blank">
+    <a href="https://codyssey.dev/author-profile/davor-minchorov" class="arrow-link mt-7 animate delay-6" target="_blank" rel="noopener noreferrer">
       More on Codyssey.dev
       <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 9L9 5M9 5H5.5M9 5v3.5"/></svg>
     </a>
   </div>
 </section>
-
-<script>
-  async function loadContent() {
-    const container = document.getElementById('writing-posts');
-    const desc = document.getElementById('writing-desc');
-    if (!container || !desc) return;
-
-    try {
-      const res = await fetch('https://core.codyssey.dev/api/author-profiles/davor-minchorov');
-      const data = await res.json();
-      const profile = data.data;
-
-      const mapItems = (arr: any[], type: string, pathPrefix: string) =>
-        (arr || [])
-          .filter((item: any) => item.published)
-          .map((item: any) => ({
-            title: item.title,
-            date: item.publish_date,
-            href: `https://codyssey.dev/${pathPrefix}/${item.slug}`,
-            type,
-          }));
-
-      const courses = mapItems(profile?.author_courses, 'Course', 'courses');
-      const insights = mapItems(profile?.author_insights, 'Insight', 'insights');
-      const learningPaths = mapItems(profile?.author_learning_paths, 'Learning Path', 'learning-paths');
-      const codeReviews = mapItems(profile?.author_code_reviews, 'Code Review', 'code-reviews');
-      const quickTips = mapItems(profile?.author_quick_tips, 'Quick Tip', 'quick-tips');
-
-      const items = [...courses, ...insights, ...learningPaths, ...codeReviews, ...quickTips]
-        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-        .slice(0, 10);
-
-      if (items.length === 0) {
-        desc.textContent += ' New content coming soon to Codyssey.dev.';
-        return;
-      }
-
-      items.forEach((item, i: number) => {
-        const date = new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-        const link = document.createElement('a');
-        link.href = item.href;
-        link.target = '_blank';
-        link.className = `flex items-baseline justify-between gap-6 py-5 border-b border-border no-underline transition-all duration-200 hover:pl-2.5 group ${i === 0 ? 'border-t' : ''} animate delay-${i + 3}`;
-        link.innerHTML = `
-          <h4 class="text-base font-medium text-text tracking-tight group-hover:text-accent transition-colors">
-            ${item.title}
-          </h4>
-          <span class="font-mono text-[11px] text-text-dim whitespace-nowrap">
-            ${item.type} · ${date}
-          </span>
-        `;
-        container.appendChild(link);
-      });
-    } catch {
-      desc.textContent += ' New content coming soon to Codyssey.dev.';
-    }
-  }
-
-  loadContent();
-</script>

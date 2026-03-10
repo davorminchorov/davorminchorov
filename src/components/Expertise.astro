@@ -20,8 +20,8 @@ const items = [
 
 <section id="expertise" class="py-[88px] border-t border-border">
   <div class="max-w-[1080px] mx-auto px-7">
-    <div class="section-label animate">Expertise</div>
-    <div class="section-title animate delay-1">What I Bring to the Table</div>
+    <span class="section-label animate">Expertise</span>
+    <h2 class="section-title animate delay-1">What I Bring to the Table</h2>
     <p class="section-desc animate delay-2">
       A decade of building software across industries, from early-stage startups to BigTech Fortune 500 companies.
     </p>
@@ -30,7 +30,7 @@ const items = [
       {items.map((item, i) => (
         <div class={`p-8 border border-border rounded-[10px] bg-bg-card shadow-sm animate delay-${i + 3}`}>
           <div class="font-display text-[26px] font-bold text-accent mb-3.5 leading-none">{item.num}</div>
-          <h4 class="text-[15px] font-semibold mb-2 tracking-tight">{item.title}</h4>
+          <h3 class="text-[15px] font-semibold mb-2 tracking-tight">{item.title}</h3>
           <p class="text-sm text-text-secondary leading-relaxed">{item.desc}</p>
         </div>
       ))}
