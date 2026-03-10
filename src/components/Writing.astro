@@ -1,0 +1,53 @@
+---
+// Fetch the latest 3 insights from the Codyssey API
+let insights: any[] = [];
+try {
+  const res = await fetch('https://core.codyssey.dev/api/author-profiles/davor-minchorov');
+  const data = await res.json();
+  insights = (data.data?.author_insights || [])
+    .filter((i: any) => i.published)
+    .sort((a: any, b: any) => new Date(b.publish_date).getTime() - new Date(a.publish_date).getTime())
+    .slice(0, 3);
+} catch {
+  // API unavailable — fall back to placeholders
+}
+
+const displayPosts = insights.map(i => ({
+  title: i.title,
+  meta: new Date(i.publish_date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
+  href: `https://codyssey.dev/insights/${i.slug}`,
+}));
+---
+
+<section id="writing" class="py-[88px] border-t border-border">
+  <div class="max-w-[1080px] mx-auto px-7">
+    <div class="section-label animate">Writing & Knowledge</div>
+    <div class="section-title animate delay-1">Thinking Out Loud</div>
+    <p class="section-desc animate delay-2">
+      Articles on software development, architecture, and the craft of building things that last.
+      {displayPosts.length === 0 && 'New content coming soon to Codyssey.dev.'}
+    </p>
+
+    <div class="flex flex-col mt-9">
+      {displayPosts.map((post, i) => (
+        <a
+          href={post.href}
+          target="_blank"
+          class={`flex items-baseline justify-between gap-6 py-5 border-b border-border no-underline transition-all duration-200 hover:pl-2.5 group ${i === 0 ? 'border-t' : ''} animate delay-${i + 3}`}
+        >
+          <h4 class="text-base font-medium text-text tracking-tight group-hover:text-accent transition-colors">
+            {post.title}
+          </h4>
+          <span class="font-mono text-[11px] text-text-dim whitespace-nowrap">
+            {post.meta}
+          </span>
+        </a>
+      ))}
+    </div>
+
+    <a href="https://codyssey.dev" class="arrow-link mt-7 animate delay-6" target="_blank">
+      More on Codyssey.dev
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 9L9 5M9 5H5.5M9 5v3.5"/></svg>
+    </a>
+  </div>
+</section>

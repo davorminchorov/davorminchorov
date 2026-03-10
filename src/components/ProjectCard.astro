@@ -1,0 +1,25 @@
+---
+interface Props {
+  icon: string;
+  title: string;
+  description: string;
+  colorScheme?: 'warm' | 'blue' | 'purple';
+  animationDelay?: string;
+}
+
+const { icon, title, description, colorScheme = 'warm', animationDelay = 'delay-3' } = Astro.props;
+
+const iconBgMap = {
+  warm: 'bg-tag-warm',
+  blue: 'bg-tag-blue',
+  purple: 'bg-tag-purple',
+};
+---
+
+<div class={`border border-border rounded-[10px] p-8 bg-bg-card shadow-sm transition-all duration-200 hover:border-border-hover hover:shadow-md hover:-translate-y-px animate ${animationDelay}`}>
+  <div class={`w-10 h-10 rounded-lg flex items-center justify-center mb-5 text-lg ${iconBgMap[colorScheme]}`}>
+    {icon}
+  </div>
+  <h4 class="text-base font-semibold mb-2 text-text tracking-tight">{title}</h4>
+  <p class="text-sm text-text-secondary leading-relaxed">{description}</p>
+</div>

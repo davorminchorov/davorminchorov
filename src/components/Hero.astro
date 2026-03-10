@@ -1,0 +1,50 @@
+---
+interface StatItem {
+  value: string;
+  label: string;
+}
+
+const stats: StatItem[] = [
+  { value: '10+', label: 'Years Experience' },
+  { value: '10+', label: 'Clients Worldwide' },
+  { value: 'Startups → Fortune 500', label: 'Client Range' },
+];
+---
+
+<header class="hero pt-[148px] pb-[88px] border-b border-border">
+  <div class="max-w-[1080px] mx-auto px-7">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-12">
+      <div class="flex-1 min-w-0">
+        <div class="font-mono text-xs text-accent uppercase tracking-wider font-medium mb-5 animate">
+          Software Engineer · Contractor · Educator
+        </div>
+        <h1 class="font-display text-[clamp(36px,5vw,58px)] leading-[1.12] tracking-tight text-text mb-6 max-w-[680px] font-bold animate delay-1">
+          Building software that <em class="italic font-normal">scales</em> businesses forward
+        </h1>
+        <p class="text-[17px] text-text-secondary max-w-[540px] leading-relaxed animate delay-2">
+          I partner with startups and enterprises to design and build custom software solutions
+          — from system architecture to shipped product. Currently crafting tools for non-profits
+          and building <a href="https://codyssey.dev" class="text-accent font-medium no-underline hover:underline" target="_blank">Codyssey.dev</a>.
+        </p>
+      </div>
+      <div class="shrink-0 animate delay-2">
+        <img
+          src="https://fls-a0de9c4a-4235-4870-b680-af84c3543932.laravel.cloud/images/_dsc2674.jpg"
+          alt="Davor Minchorov"
+          width="280"
+          height="280"
+          class="w-[220px] h-[220px] md:w-[280px] md:h-[280px] rounded-2xl object-cover object-[center_20%] shadow-lg"
+          loading="eager"
+        />
+      </div>
+    </div>
+    <div class="flex gap-14 mt-12 pt-8 border-t border-border animate delay-3 flex-wrap">
+      {stats.map((stat) => (
+        <div>
+          <div class="font-display text-[28px] font-bold text-text leading-none">{stat.value}</div>
+          <div class="text-[13px] text-text-muted mt-1.5 tracking-wide">{stat.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</header>

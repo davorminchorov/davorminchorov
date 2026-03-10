@@ -1,0 +1,29 @@
+---
+const tags = ['EdTech', 'Software Architecture', 'System Design', 'Long-term Thinking'];
+---
+
+<div class="border border-border rounded-xl p-12 bg-bg-card shadow-sm relative overflow-hidden transition-all duration-300 hover:border-border-hover hover:shadow-md mt-12 animate delay-2">
+  <!-- Top accent bar -->
+  <div class="absolute top-0 left-0 right-0 h-[3px] bg-accent"></div>
+
+  <div class="font-mono text-[11px] text-accent uppercase tracking-widest bg-accent-light px-3.5 py-1 rounded-full inline-block mb-5 font-medium">
+    In Active Development
+  </div>
+  <h3 class="font-display text-[clamp(26px,3vw,34px)] leading-tight font-bold tracking-tight mb-3.5">
+    Codyssey.dev
+  </h3>
+  <p class="text-base text-text-secondary leading-relaxed max-w-[580px]">
+    An educational platform helping software engineers learn to build and maintain long-term
+    software products — not just ship quick demos and prototypes. Real-world architecture,
+    design patterns, and production-grade practices.
+  </p>
+  <div class="flex flex-wrap gap-2 mt-6">
+    {tags.map((tag) => (
+      <span class="tag">{tag}</span>
+    ))}
+  </div>
+  <a href="https://codyssey.dev" class="arrow-link mt-8" target="_blank">
+    Visit Codyssey.dev
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 9L9 5M9 5H5.5M9 5v3.5"/></svg>
+  </a>
+</div>

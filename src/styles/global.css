@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-body bg-bg text-text antialiased overflow-x-hidden;
+    line-height: 1.7;
+  }
+
+  ::selection {
+    @apply bg-accent text-white;
+  }
+}
+
+@layer components {
+  .section-label {
+    @apply font-mono text-[11px] text-accent uppercase tracking-widest font-medium mb-3;
+  }
+
+  .section-title {
+    @apply font-display text-[clamp(26px,3.5vw,36px)] leading-tight tracking-tight font-bold mb-3.5;
+  }
+
+  .section-desc {
+    @apply text-base text-text-secondary max-w-[520px] leading-relaxed;
+  }
+
+  .arrow-link {
+    @apply inline-flex items-center gap-1.5 text-accent font-semibold text-sm no-underline transition-all duration-200;
+  }
+  .arrow-link:hover {
+    @apply gap-3;
+  }
+
+  .tag {
+    @apply font-mono text-[11px] px-3 py-1 rounded bg-bg-warm text-text-muted tracking-wide;
+  }
+}
+
+/* Fade-up animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate {
+  opacity: 0;
+  animation: fadeUp 0.55s ease forwards;
+}
+
+.delay-1 { animation-delay: 0.08s; }
+.delay-2 { animation-delay: 0.16s; }
+.delay-3 { animation-delay: 0.24s; }
+.delay-4 { animation-delay: 0.32s; }
+.delay-5 { animation-delay: 0.4s; }
+.delay-6 { animation-delay: 0.48s; }
