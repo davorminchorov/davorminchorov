@@ -1,13 +1,14 @@
 ---
 interface Props {
   quote: string;
+  name: string;
   role: string;
   industry: string;
   colorScheme?: 'warm' | 'blue' | 'purple';
   animationDelay?: string;
 }
 
-const { quote, role, industry, colorScheme = 'warm', animationDelay = 'delay-3' } = Astro.props;
+const { quote, name, role, industry, colorScheme = 'warm', animationDelay = 'delay-3' } = Astro.props;
 
 const borderAccentMap = {
   warm: 'border-l-tag-warm',
@@ -19,7 +20,7 @@ const borderAccentMap = {
 <div class={`border border-border rounded-[10px] p-8 bg-bg-card shadow-sm transition-all duration-200 hover:border-border-hover hover:shadow-md hover:-translate-y-px animate ${animationDelay} border-l-[3px] ${borderAccentMap[colorScheme]} flex flex-col`}>
   <p class="text-sm text-text-secondary leading-relaxed italic mb-5 flex-1">"{quote}"</p>
   <div>
-    <p class="text-sm font-semibold text-text">{role}</p>
-    <p class="text-xs text-text-secondary">{industry}</p>
+    <p class="text-sm font-semibold text-text">{name}</p>
+    <p class="text-xs text-text-secondary">{role} · {industry}</p>
   </div>
 </div>
