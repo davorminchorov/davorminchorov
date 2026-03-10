@@ -76,5 +76,14 @@
     }
   }
 
-  loadContent();
+  const section = document.getElementById('writing');
+  if (section) {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        observer.disconnect();
+        loadContent();
+      }
+    }, { rootMargin: '200px' });
+    observer.observe(section);
+  }
 </script>
