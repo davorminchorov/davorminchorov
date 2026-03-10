@@ -15,6 +15,11 @@ const items = [
     title: 'Process & Team Enablement',
     desc: 'Improving business processes through custom software, better tooling, and engineering practices that help teams move faster.',
   },
+  {
+    num: '04',
+    title: 'Mentoring',
+    desc: 'Guiding developers through code reviews, pair programming, and knowledge sharing to help them grow their skills and confidence.',
+  },
 ];
 ---
 
@@ -26,7 +31,7 @@ const items = [
       A decade of building software across industries, from early-stage startups to BigTech Fortune 500 companies.
     </p>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-9">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-9">
       {items.map((item, i) => (
         <div class={`p-8 border border-border rounded-[10px] bg-bg-card shadow-sm animate delay-${i + 3}`}>
           <div class="font-display text-[26px] font-bold text-accent mb-3.5 leading-none">{item.num}</div>
