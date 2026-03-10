@@ -1,0 +1,58 @@
+---
+import FeaturedProject from './FeaturedProject.astro';
+import ProjectCard from './ProjectCard.astro';
+---
+
+<section id="projects" class="py-[88px]">
+  <div class="max-w-[1080px] mx-auto px-7">
+    <span class="section-label animate">Projects & Client Work</span>
+    <h2 class="section-title animate delay-1">What I've Built</h2>
+
+    <FeaturedProject />
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-5">
+      <ProjectCard
+        icon="🏛️"
+        title="Non-Profit Fundraising Platform"
+        description="Designed and built a full-suite fundraising, CRM, and marketing platform for a US-based non-profit, enabling organizations to manage donors, run campaigns, and track engagement at scale."
+        colorScheme="warm"
+        animationDelay="delay-3"
+      />
+      <ProjectCard
+        icon="🎰"
+        title="iGaming Platform with Blockchain"
+        description="Designed and developed internal packages and integrated blockchain and Web3 services for an iGaming platform, enabling seamless cryptocurrency transactions and expanding the platform's payment capabilities."
+        colorScheme="blue"
+        animationDelay="delay-6"
+      />
+      <ProjectCard
+        icon="🏥"
+        title="Healthcare Web Application"
+        description="Developed and optimized a medical web application's backend, improving response times and data reliability for healthcare providers managing patient records and clinical workflows."
+        colorScheme="warm"
+        animationDelay="delay-7"
+      />
+      <ProjectCard
+        icon="💬"
+        title="Community Social Network"
+        description="Built core features for a community social network, including real-time feeds, third-party integrations, and interactive UI components, helping users connect, share content, and grow their communities."
+        colorScheme="purple"
+        animationDelay="delay-8"
+      />
+      <ProjectCard
+        icon="🎬"
+        title="Enterprise Entertainment Platform"
+        description="Optimized a high-traffic enterprise entertainment platform serving millions of users daily, improving search performance, reducing load times through caching strategies, and ensuring system reliability at scale."
+        colorScheme="blue"
+        animationDelay="delay-9"
+      />
+      <ProjectCard
+        icon="💰"
+        title="Enterprise Financial Application"
+        description="Led a team of developers and QA engineers on a US-based financial application, shaping the system architecture and delivering features that supported complex financial operations and regulatory requirements."
+        colorScheme="warm"
+        animationDelay="delay-10"
+      />
+    </div>
+  </div>
+</section>
