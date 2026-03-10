@@ -28,14 +28,19 @@ const stats: StatItem[] = [
         </p>
       </div>
       <div class="shrink-0 animate delay-2">
-        <img
-          src="/images/davor-minchorov.jpg"
-          alt="Davor Minchorov"
-          width="280"
-          height="280"
-          class="w-[220px] h-[220px] md:w-[280px] md:h-[280px] rounded-2xl object-cover object-[center_20%] shadow-lg"
-          loading="eager"
-        />
+        <picture>
+          <source srcset="/images/davor-minchorov.webp" type="image/webp" />
+          <img
+            src="/images/davor-minchorov.jpg"
+            alt="Davor Minchorov"
+            width="280"
+            height="280"
+            class="w-[220px] h-[220px] md:w-[280px] md:h-[280px] rounded-2xl object-cover object-[center_20%] shadow-lg"
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+          />
+        </picture>
       </div>
     </div>
     <div class="flex gap-14 mt-12 pt-8 border-t border-border animate delay-3 flex-wrap">
