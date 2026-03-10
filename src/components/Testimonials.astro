@@ -1,0 +1,29 @@
+---
+import TestimonialCard from './TestimonialCard.astro';
+---
+
+<section id="testimonials" class="py-[88px]">
+  <div class="max-w-[1080px] mx-auto px-7">
+    <span class="section-label animate">Testimonials</span>
+    <h2 class="section-title animate delay-1">What My Clients Say</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
+      <TestimonialCard
+        quote="Davor consistently proved to be one of the most engaged and forward-thinking engineers on the team. He didn't just deliver features — he actively shaped the direction of the product. His understanding of modern development practices, design patterns, and emerging tools was always up to date, and he used that knowledge to elevate the entire codebase."
+        name="Bartosz P."
+        role="Staff Backend Engineer"
+        industry="iGaming"
+        colorScheme="blue"
+        animationDelay="delay-2"
+      />
+      <TestimonialCard
+        quote="Davor consistently delivers game-changing features that drive real customer and business impact. He's built foundational capabilities that transformed how our customers manage donor relationships and organizational data. His systematic approach to complex technical challenges ensures customers can successfully scale their operations. Davor's reliable execution on high-impact projects makes him essential to our team's success."
+        name="Kevin R."
+        role="Product Manager"
+        industry="Non-Profit / Fundraising"
+        colorScheme="warm"
+        animationDelay="delay-3"
+      />
+    </div>
+  </div>
+</section>
