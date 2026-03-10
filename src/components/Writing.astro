@@ -55,7 +55,7 @@
       }
 
       items.forEach((item, i: number) => {
-        const date = new Date(item.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+        const date = new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
         const link = document.createElement('a');
         link.href = item.href;
         link.target = '_blank';
