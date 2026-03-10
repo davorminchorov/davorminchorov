@@ -33,8 +33,8 @@ export default {
         },
       },
       fontFamily: {
-        display: ['"Source Serif 4"', 'Georgia', 'serif'],
-        body: ['"Instrument Sans"', '-apple-system', 'sans-serif'],
+        display: ['"Source Serif 4 Variable"', 'Georgia', 'serif'],
+        body: ['"Instrument Sans Variable"', '-apple-system', 'sans-serif'],
         mono: ['"IBM Plex Mono"', 'monospace'],
       },
       boxShadow: {
