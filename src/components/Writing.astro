@@ -15,6 +15,11 @@ try {
   console.log('[Writing] Fetching author profile from core.codyssey.dev...');
   const res = await fetch('https://core.codyssey.dev/api/author-profiles/davor-minchorov', {
     signal: controller.signal,
+    headers: {
+      'User-Agent': 'davorminchorov.com/1.0 (Astro; Build)',
+      'Referer': 'https://davorminchorov.com',
+      'Accept': 'application/json',
+    },
   });
   clearTimeout(timeout);
 
