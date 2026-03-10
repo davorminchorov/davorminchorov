@@ -3,13 +3,15 @@
 
 <section id="writing" class="py-[88px] border-t border-border">
   <div class="max-w-[1080px] mx-auto px-7">
-    <span class="section-label animate">Writing & Knowledge</span>
-    <h2 class="section-title animate delay-1">Thinking Out Loud</h2>
+    <span class="section-label animate">Writing</span>
+    <h2 class="section-title animate delay-1">Writing</h2>
     <p class="section-desc animate delay-2" id="writing-desc">
       Articles on software development, architecture, and the craft of building things that last.
     </p>
 
-    <div id="writing-posts" class="flex flex-col mt-9"></div>
+    <div id="writing-posts" class="flex flex-col mt-9">
+      <p id="writing-empty" class="text-sm text-text-muted italic py-8">New content coming soon. Stay tuned.</p>
+    </div>
 
     <a href="https://codyssey.dev/author-profile/davor-minchorov" class="arrow-link mt-7 animate delay-6" target="_blank" rel="noopener noreferrer">
       More on Codyssey.dev
@@ -49,10 +51,13 @@
         .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
         .slice(0, 10);
 
+      const emptyEl = document.getElementById('writing-empty');
+
       if (items.length === 0) {
-        desc.textContent += ' New content coming soon to Codyssey.dev.';
         return;
       }
+
+      if (emptyEl) emptyEl.remove();
 
       items.forEach((item, i: number) => {
         const date = new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
@@ -72,7 +77,7 @@
         container.appendChild(link);
       });
     } catch {
-      desc.textContent += ' New content coming soon to Codyssey.dev.';
+      // Empty state is already shown via #writing-empty fallback
     }
   }
 
