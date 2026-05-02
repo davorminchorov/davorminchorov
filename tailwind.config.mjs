@@ -16,8 +16,8 @@ export default {
         text: {
           DEFAULT: '#1A1A1A',
           secondary: '#4A4A4A',
-          muted: '#7A7A7A',
-          dim: '#A3A3A3',
+          muted: '#6B6B6B',
+          dim: '#737373',
         },
         accent: {
           DEFAULT: '#1A5C3A',
