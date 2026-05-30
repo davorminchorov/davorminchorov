@@ -9,7 +9,7 @@ const formatDate = (value: string | null) => {
   return month ? `${MONTHS[Number(month) - 1]} ${year}` : year;
 };
 
-const VISIBLE_COUNT = 5;
+const VISIBLE_COUNT = 2;
 
 const roles = (await getCollection('experience')).sort((a, b) =>
   b.data.startDate.localeCompare(a.data.startDate),
@@ -32,12 +32,13 @@ const hiddenCount = Math.max(0, roles.length - VISIBLE_COUNT);
           <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
             <h3 class="text-[17px] font-semibold tracking-tight">
               {role.data.title}
-              <span class="text-text-secondary font-normal"> · {role.data.company}</span>
             </h3>
             <span class="text-[13px] text-text-dim whitespace-nowrap">
               {formatDate(role.data.startDate)} – {formatDate(role.data.endDate)}
             </span>
           </div>
+
+          <p class="text-[15px] font-medium text-accent mt-0.5">{role.data.company}</p>
 
           <p class="text-[13px] text-text-muted mt-1">
             {role.data.industry}
