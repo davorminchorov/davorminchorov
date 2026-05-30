@@ -1,0 +1,87 @@
+---
+import { getCollection } from 'astro:content';
+
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+const formatDate = (value: string | null) => {
+  if (!value) return 'Present';
+  const [year, month] = value.split('-');
+  return month ? `${MONTHS[Number(month) - 1]} ${year}` : year;
+};
+
+const VISIBLE_COUNT = 5;
+
+const roles = (await getCollection('experience')).sort((a, b) =>
+  b.data.startDate.localeCompare(a.data.startDate),
+);
+
+const hiddenCount = Math.max(0, roles.length - VISIBLE_COUNT);
+---
+
+<section id="experience" class="py-[88px] border-t border-border">
+  <div class="max-w-[1080px] mx-auto px-7">
+    <span class="section-label animate">Experience</span>
+    <h2 class="section-title animate delay-1">Where I've Worked</h2>
+    <p class="section-desc animate delay-2">
+      A decade of building for startups and enterprises across many industries.
+    </p>
+
+    <div class="mt-9 space-y-px">
+      {roles.map((role, i) => (
+        <article class={`experience-item border-t border-border py-7 ${i >= VISIBLE_COUNT ? 'experience-extra hidden' : ''}`}>
+          <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+            <h3 class="text-[17px] font-semibold tracking-tight">
+              {role.data.title}
+              <span class="text-text-secondary font-normal"> · {role.data.company}</span>
+            </h3>
+            <span class="text-[13px] text-text-dim whitespace-nowrap">
+              {formatDate(role.data.startDate)} – {formatDate(role.data.endDate)}
+            </span>
+          </div>
+
+          <p class="text-[13px] text-text-muted mt-1">
+            {role.data.industry}
+            {role.data.clientLocation && <span> · Client: {role.data.clientLocation}</span>}
+            {role.data.location && <span> · {role.data.location}</span>}
+          </p>
+
+          <ul class="mt-4 space-y-2">
+            {role.data.outcomes.map((outcome) => (
+              <li class="text-[15px] text-text-secondary leading-relaxed flex gap-2.5">
+                <span class="text-accent mt-2 flex-shrink-0 w-1 h-1 rounded-full bg-accent" aria-hidden="true"></span>
+                <span>{outcome}</span>
+              </li>
+            ))}
+          </ul>
+
+          {role.data.skills.length > 0 && (
+            <div class="flex flex-wrap gap-2 mt-4">
+              {role.data.skills.map((skill) => (
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full border border-border bg-bg-card text-[12px] text-text-secondary">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
+
+    {hiddenCount > 0 && (
+      <button
+        id="experience-toggle"
+        class="mt-8 inline-flex items-center gap-1.5 text-sm font-medium text-accent bg-transparent border-none cursor-pointer hover:underline"
+      >
+        Show all experience ({hiddenCount} more)
+      </button>
+    )}
+  </div>
+</section>
+
+<script>
+  const toggle = document.getElementById('experience-toggle');
+  toggle?.addEventListener('click', () => {
+    document.querySelectorAll('.experience-extra').forEach((el) => el.classList.remove('hidden'));
+    toggle.remove();
+  });
+</script>

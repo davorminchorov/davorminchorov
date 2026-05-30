@@ -54,12 +54,16 @@ single file each and the data is easy to eyeball in git diffs.
 - **`experience`** — array of objects:
   - `company` (string, required)
   - `title` (string, required)
-  - `location` (string, optional)
+  - `location` (string, optional) — where I worked (e.g. "Remote", "Skopje, Macedonia")
   - `companyUrl` (string URL, optional)
   - `startDate` (string, `YYYY-MM` or `YYYY-MM-DD`, required)
   - `endDate` (string or null; `null` = current role)
-  - `description` (string, optional)
+  - `industry` (string, required) — the domain/industry of the product (e.g. "iGaming", "Nonprofit SaaS platform")
+  - `clientLocation` (string, optional) — where the client was based; omitted when the source did not state it or it was my own product
+  - `outcomes` (array of strings, required) — achievement/outcome bullets
+  - `skills` (array of strings, optional, may be empty) — technologies used, named in the source
   - Validated with zod. Source file: `src/content/experience.json`.
+  - Note: the role description is now structured (`industry` + `clientLocation` + `outcomes` + `skills`) rather than a single prose `description` string.
 
 - **`skills`** — array of groups:
   - `category` (string, required) e.g. "Languages", "Frameworks", "Infrastructure"
@@ -77,8 +81,14 @@ Plain ESM Node script, same style as the existing `scripts/generate-og-image.mjs
 - Takes the path to the unzipped LinkedIn export folder as a CLI argument.
 - Parses `Positions.csv` → writes `src/content/experience.json`, sorted by
   `startDate` descending. LinkedIn columns map: `Company Name` → `company`,
-  `Title` → `title`, `Location` → `location`, `Description` → `description`,
-  `Started On` → `startDate`, `Finished On` → `endDate` (empty → `null`).
+  `Title` → `title`, `Location` → `location`, `Started On` → `startDate`,
+  `Finished On` → `endDate` (empty → `null`).
+- The structured fields `industry`, `clientLocation`, `outcomes`, and `skills`
+  are **derived from the free-text `Description` column manually** (the same way
+  the initial data was authored from the PDF). The script cannot reliably split
+  a prose description into industry/client/outcomes/skills, so it writes the raw
+  `Description` into a temporary `_rawDescription` field for a human to rework.
+  This manual rework is expected, not a defect.
 - Parses `Skills.csv` → writes `src/content/skills.json`. **LinkedIn's skills
   export is a flat list with no categories.** The script drops every skill into a
   single `{ category: "Uncategorized", items: [...] }` group. Categorizing them

@@ -1,0 +1,226 @@
+[
+  {
+    "company": "Codyssey",
+    "title": "Founder",
+    "location": "Remote",
+    "startDate": "2024-11",
+    "endDate": null,
+    "industry": "EdTech (developer education)",
+    "outcomes": [
+      "Founded Codyssey, an educational platform that teaches software engineers to build and maintain long-term software products rather than throwaway demos and prototypes.",
+      "Set the product vision and roadmap, then architected, shipped, and operated the platform end to end.",
+      "Led and mentored the team.",
+      "Produced educational content and grew the platform's audience."
+    ],
+    "skills": []
+  },
+  {
+    "company": "Adeva",
+    "title": "Senior Back End Engineer",
+    "location": "Remote",
+    "startDate": "2023-08",
+    "endDate": null,
+    "industry": "Nonprofit SaaS platform",
+    "clientLocation": "United States",
+    "outcomes": [
+      "Built and refactored complex features (workflows, CRM, RESTful APIs) for an all-in-one platform serving U.S. nonprofits.",
+      "Sped up GitHub Actions builds to cut CI feedback time, and kept the suite green with automated tests.",
+      "Resolved recurring support issues with lasting fixes.",
+      "Presented software architecture and design proposals to the team."
+    ],
+    "skills": ["RESTful APIs", "GitHub Actions", "Automated testing"]
+  },
+  {
+    "company": "Adeva",
+    "title": "Senior PHP Developer",
+    "location": "Remote",
+    "startDate": "2022-06",
+    "endDate": "2023-03",
+    "industry": "iGaming",
+    "clientLocation": "Montenegro",
+    "outcomes": [
+      "Delivered new features for an iGaming product, including blockchain/web3 third-party integrations.",
+      "Built reusable internal packages from scratch to speed up delivery.",
+      "Backed the work with automated tests."
+    ],
+    "skills": ["PHP", "Blockchain / Web3", "Automated testing"]
+  },
+  {
+    "company": "Adeva",
+    "title": "Senior Laravel Developer",
+    "location": "Skopje, Macedonia | Remote",
+    "startDate": "2022-01",
+    "endDate": "2022-04",
+    "industry": "Healthcare (medical web app)",
+    "clientLocation": "Italy",
+    "outcomes": [
+      "Designed and implemented REST API endpoints for new features on a medical web application.",
+      "Optimised and refactored the existing codebase, fixed production bugs, and covered new functionality with feature tests."
+    ],
+    "skills": ["PHP 7.3", "Laravel 7", "REST APIs", "MySQL 5.7", "Docker"]
+  },
+  {
+    "company": "Quantox Technology Macedonia",
+    "title": "Senior PHP Developer",
+    "location": "Skopje, Macedonia",
+    "startDate": "2019-12",
+    "endDate": "2021-12",
+    "industry": "Entertainment (enterprise web app)",
+    "outcomes": [
+      "Implemented and enhanced server-rendered and REST API features for an enterprise entertainment platform.",
+      "Refactored code for performance and readability and fixed release and production bugs.",
+      "Reviewed code, designed the PHP screening task, interviewed candidates, and mentored interns."
+    ],
+    "skills": ["PHP 7.3", "VueJS 2", "REST API", "Elasticsearch", "Redis", "Memcached", "MySQL 5.7"]
+  },
+  {
+    "company": "Adeva",
+    "title": "PHP Software Engineer",
+    "location": "Skopje, Macedonia | Remote",
+    "startDate": "2020-02",
+    "endDate": "2021-05",
+    "industry": "Community social network",
+    "clientLocation": "Switzerland",
+    "outcomes": [
+      "Built REST and GraphQL API features and user-facing UI components for a community social network.",
+      "Practised TDD with unit and feature tests.",
+      "Integrated third-party APIs and reviewed code across the team."
+    ],
+    "skills": ["PHP 7.4", "Laravel 7", "VueJS (class-based TypeScript)", "Vuex", "GraphQL", "REST APIs", "Elasticsearch", "MySQL 8", "Storybook", "NGINX", "Docker", "TDD"]
+  },
+  {
+    "company": "Adeva",
+    "title": "PHP Backend Engineer",
+    "location": "Skopje, Macedonia | Remote",
+    "startDate": "2019-10",
+    "endDate": "2020-03",
+    "industry": "Employee engagement",
+    "clientLocation": "Local (Macedonia)",
+    "outcomes": [
+      "Built admin panel and REST API features for an employee engagement application and kept it stable through bug fixes."
+    ],
+    "skills": ["PHP 7.3", "Laravel 6", "REST API", "Bootstrap 4", "MySQL 5.7", "Docker"]
+  },
+  {
+    "company": "Adeva",
+    "title": "PHP Engineer",
+    "location": "Skopje, Macedonia | Remote",
+    "startDate": "2019-07",
+    "endDate": "2019-10",
+    "industry": "Human resources",
+    "clientLocation": "United Arab Emirates",
+    "outcomes": [
+      "Delivered new features for an HR application, improved its architecture, workflow processes, and scalability, and fixed critical bugs."
+    ],
+    "skills": ["PHP 7", "CakePHP 3.8", "MySQL", "Docker"]
+  },
+  {
+    "company": "Adeva",
+    "title": "Community Member",
+    "location": "Skopje, Macedonia | Remote",
+    "startDate": "2018-01",
+    "endDate": "2019-09",
+    "industry": "Developer network / community",
+    "outcomes": [
+      "Mentored women at Adeva's Female Bootcamp 2018.",
+      "Designed and reviewed the PHP screening task and interviewed candidates.",
+      "Contributed to internal projects and curated the developer community newsletter."
+    ],
+    "skills": []
+  },
+  {
+    "company": "Adeva",
+    "title": "PHP Backend Engineer",
+    "location": "Skopje, Macedonia | Remote",
+    "startDate": "2018-01",
+    "endDate": "2019-06",
+    "industry": "Financial (fintech)",
+    "clientLocation": "United States",
+    "outcomes": [
+      "Led a team of developers and QA engineers on an enterprise financial application, owning technical implementation decisions.",
+      "Developed REST APIs, implemented and enhanced features, and supported production releases.",
+      "Authored architectural and technical proposals that improved project and code quality.",
+      "Presented delivered features to business analysts and product owners."
+    ],
+    "skills": ["PHP (legacy 5.6 to 7.x)", "Laravel", "Lumen", "REST APIs", "Jenkins", "MySQL", "Docker"]
+  },
+  {
+    "company": "3P Development",
+    "title": "Part-Time Freelance Consultant",
+    "location": "Remote",
+    "startDate": "2017-10",
+    "endDate": "2018-01",
+    "industry": "Real estate",
+    "outcomes": [
+      "Designed and implemented features and fixed bugs for a real estate web application as a part-time consultant."
+    ],
+    "skills": ["PHP 7", "Laravel", "MySQL", "Docker"]
+  },
+  {
+    "company": "Routyx",
+    "title": "Lead Full Stack PHP Developer",
+    "location": "Skopje, Macedonia",
+    "startDate": "2017-03",
+    "endDate": "2017-12",
+    "industry": "Enterprise resource planning (ERP)",
+    "outcomes": [
+      "Led development of an ERP web application and its RESTful API, architecting the project structure and database from scratch.",
+      "Implemented ERP, API, and front-end features and integrated third-party APIs.",
+      "Established automated testing across both projects and mentored interns."
+    ],
+    "skills": ["PHP 7", "Laravel", "Lumen", "REST API", "Redis", "MySQL", "Docker"]
+  },
+  {
+    "company": "New Media Corp.",
+    "title": "Full Stack PHP Developer",
+    "location": "Skopje, Macedonia",
+    "startDate": "2016-04",
+    "endDate": "2017-02",
+    "industry": "Media & broadcasting",
+    "outcomes": [
+      "Built four products from the ground up: a live election camera-monitoring app, a TV broadcaster operations tool, an online video platform, and a TV-as-a-Service platform spanning cable, satellite, terrestrial, IPTV, and OTT.",
+      "Implemented admin panels, REST APIs, and front-ends, and integrated external systems and APIs.",
+      "Mentored two colleagues through code review and pairing."
+    ],
+    "skills": ["PHP 7", "Laravel", "VueJS", "NodeJS", "REST API", "MySQL", "Docker"]
+  },
+  {
+    "company": "Tabellarius",
+    "title": "Full Stack PHP Developer",
+    "location": "Skopje, Macedonia",
+    "startDate": "2015-12",
+    "endDate": "2016-03",
+    "industry": "Email marketing",
+    "outcomes": [
+      "Built an email marketing platform from the ground up with Laravel and NodeJS, adding real-time capabilities with Socket.io and Redis.",
+      "Researched, designed, and implemented a customer support feature end to end.",
+      "Delivered talks on real-time notifications, testing, Git workflow, and BEM, and introduced new tooling into the team's workflow."
+    ],
+    "skills": ["PHP 5", "Laravel", "NodeJS", "Socket.io", "Redis", "MySQL"]
+  },
+  {
+    "company": "Tabellarius",
+    "title": "Full Stack PHP Developer Intern",
+    "location": "Macedonia",
+    "startDate": "2015-06",
+    "endDate": "2015-11",
+    "industry": "Email marketing",
+    "outcomes": [
+      "Implemented new features for an email marketing platform built from the ground up with Laravel, and designed parts of the application and database structure.",
+      "Wrote functional, integration, and acceptance tests and refactored legacy code."
+    ],
+    "skills": ["PHP 5", "Laravel", "MySQL", "Apache 2", "PHPUnit", "Codeception"]
+  },
+  {
+    "company": "NLB Tutunska Banka",
+    "title": "Programming Intern",
+    "location": "Skopje, Macedonia",
+    "startDate": "2011-07",
+    "endDate": "2011-08",
+    "industry": "Banking",
+    "outcomes": [
+      "Built an inventory-tracking Windows Forms application in C#."
+    ],
+    "skills": ["C#", "Windows Forms"]
+  }
+]

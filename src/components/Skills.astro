@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content';
+
+// Stable display order; groups not listed fall to the end.
+const CATEGORY_ORDER = [
+  'Top Skills',
+  'Languages & Markup',
+  'Frameworks & Libraries',
+  'Databases & Caching',
+  'APIs',
+  'DevOps & Infrastructure',
+  'Testing',
+  'Practices & Leadership',
+  'Spoken Languages',
+];
+
+const orderOf = (category: string) => {
+  const index = CATEGORY_ORDER.indexOf(category);
+  return index === -1 ? CATEGORY_ORDER.length : index;
+};
+
+const groups = (await getCollection('skills'))
+  .filter((group) => group.data.items.length > 0)
+  .sort((a, b) => orderOf(a.data.category) - orderOf(b.data.category));
+---
+
+<section id="skills" class="py-[88px] border-t border-border">
+  <div class="max-w-[1080px] mx-auto px-7">
+    <span class="section-label animate">Skills</span>
+    <h2 class="section-title animate delay-1">Tools & Technologies</h2>
+    <p class="section-desc animate delay-2">
+      The languages, frameworks, and practices I reach for.
+    </p>
+
+    <div class="mt-9 space-y-7">
+      {groups.map((group, i) => (
+        <div class={`animate delay-${Math.min(i + 3, 6)}`}>
+          <h3 class="text-[13px] font-semibold uppercase tracking-wide text-text-muted">
+            {group.data.category}
+          </h3>
+          <div class="flex flex-wrap gap-2 mt-3">
+            {group.data.items.map((item) => (
+              <span class="inline-flex items-center px-3 py-1 rounded-full border border-border bg-bg-card text-[13px] text-text-secondary">
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

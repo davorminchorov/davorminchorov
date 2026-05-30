@@ -1,11 +1,33 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import About from '../components/About.astro';
 import Expertise from '../components/Expertise.astro';
+import Experience from '../components/Experience.astro';
+import Skills from '../components/Skills.astro';
 import Projects from '../components/Projects.astro';
 import Testimonials from '../components/Testimonials.astro';
 import Writing from '../components/Writing.astro';
+
+const experience = await getCollection('experience');
+const skills = await getCollection('skills');
+
+// May be multiple concurrent current roles; pick the most recently started.
+const currentRole = experience
+  .filter((role) => role.data.endDate === null)
+  .sort((a, b) => b.data.startDate.localeCompare(a.data.startDate))[0];
+
+// Merge the existing high-level topics with concrete skills, deduped.
+const knowsAbout = [
+  ...new Set([
+    'Software Engineering',
+    'System Design',
+    'Full-Stack Development',
+    'Software Architecture',
+    ...skills.flatMap((group) => group.data.items),
+  ]),
+];
 
 const personJsonLd = JSON.stringify({
   "@context": "https://schema.org",
@@ -16,7 +38,13 @@ const personJsonLd = JSON.stringify({
     "url": "https://davorminchorov.com",
     "jobTitle": "Software Engineer",
     "description": "Software engineer partnering with startups and enterprises to design and build custom software solutions.",
-    "knowsAbout": ["Software Engineering", "System Design", "Full-Stack Development", "Software Architecture"],
+    ...(currentRole && {
+      "worksFor": {
+        "@type": "Organization",
+        "name": currentRole.data.company,
+      },
+    }),
+    "knowsAbout": knowsAbout,
     "sameAs": [
       "https://x.com/davorminchorov",
       "https://bsky.app/profile/davorminchorov.com",
@@ -33,6 +61,9 @@ const personJsonLd = JSON.stringify({
 
   <About />
   <Expertise />
+
+  <Experience />
+  <Skills />
 
   <Projects />
 

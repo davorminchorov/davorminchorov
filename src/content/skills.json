@@ -1,0 +1,90 @@
+[
+  {
+    "category": "Top Skills",
+    "items": [
+      "Software Infrastructure",
+      "Product Development",
+      "Start-up Leadership"
+    ]
+  },
+  {
+    "category": "Languages & Markup",
+    "items": [
+      "PHP",
+      "JavaScript",
+      "TypeScript",
+      "C#",
+      "HTML",
+      "CSS"
+    ]
+  },
+  {
+    "category": "Frameworks & Libraries",
+    "items": [
+      "Laravel",
+      "Lumen",
+      "CakePHP",
+      "Vue.js",
+      "Vuex",
+      "Vue Router",
+      "Vue I18n",
+      "Vue A11y",
+      "jQuery",
+      "Bootstrap",
+      "Storybook",
+      "Node.js",
+      "Socket.IO"
+    ]
+  },
+  {
+    "category": "Databases & Caching",
+    "items": [
+      "MySQL",
+      "Redis",
+      "Memcached",
+      "Elasticsearch"
+    ]
+  },
+  {
+    "category": "APIs",
+    "items": [
+      "REST APIs",
+      "GraphQL"
+    ]
+  },
+  {
+    "category": "DevOps & Infrastructure",
+    "items": [
+      "Docker",
+      "NGINX",
+      "Apache",
+      "Jenkins (CI/CD)",
+      "GitHub Actions"
+    ]
+  },
+  {
+    "category": "Testing",
+    "items": [
+      "PHPUnit",
+      "Codeception",
+      "Test-Driven Development (TDD)"
+    ]
+  },
+  {
+    "category": "Practices & Leadership",
+    "items": [
+      "Software Architecture & Design",
+      "Code Review",
+      "Mentoring",
+      "Team Leadership",
+      "Third-party & Web3/Blockchain Integrations"
+    ]
+  },
+  {
+    "category": "Spoken Languages",
+    "items": [
+      "English",
+      "Macedonian"
+    ]
+  }
+]
