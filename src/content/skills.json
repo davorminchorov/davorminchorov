@@ -23,26 +23,39 @@
     "items": [
       "Laravel",
       "Lumen",
+      "Symfony",
       "CakePHP",
+      "Statamic",
       "Vue.js",
       "Vuex",
       "Vue Router",
       "Vue I18n",
       "Vue A11y",
-      "jQuery",
+      "React",
+      "Next.js",
+      "TanStack Query",
+      "XState Store",
+      "Tailwind CSS",
       "Bootstrap",
+      "jQuery",
       "Storybook",
       "Node.js",
-      "Socket.IO"
+      "Socket.IO",
+      "Windows Forms"
     ]
   },
   {
     "category": "Databases & Caching",
     "items": [
       "MySQL",
+      "MariaDB",
+      "Percona",
+      "MongoDB",
       "Redis",
+      "KeyDB",
       "Memcached",
-      "Elasticsearch"
+      "Elasticsearch",
+      "Typesense"
     ]
   },
   {
@@ -58,6 +71,7 @@
       "Docker",
       "NGINX",
       "Apache",
+      "Laravel Cloud",
       "Jenkins (CI/CD)",
       "GitHub Actions"
     ]
@@ -77,6 +91,7 @@
       "Code Review",
       "Mentoring",
       "Team Leadership",
+      "Product Management",
       "Third-party & Web3/Blockchain Integrations"
     ]
   },
