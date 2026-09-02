@@ -4,6 +4,10 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # Rebuild daily so newly published Codyssey content (fetched at build time
+  # in src/components/Writing.astro) appears without a manual push.
+  schedule:
+    - cron: '0 6 * * *'
 
 jobs:
   deploy:
