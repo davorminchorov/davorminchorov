@@ -17,15 +17,15 @@
     "skills": ["PHP", "Laravel", "Laravel Cloud", "Statamic", "React", "Next.js", "Tailwind CSS", "TanStack Query", "XState Store", "MySQL", "Redis", "Typesense", "Product Management", "Team Leadership"]
   },
   {
-    "company": "Adeva",
+    "company": "Adeva · Toptal",
     "title": "Senior Back End Engineer",
     "location": "Remote",
     "startDate": "2023-08",
-    "endDate": null,
+    "endDate": "2026-08",
     "industry": "Nonprofit SaaS platform",
     "clientLocation": "United States",
     "outcomes": [
-      "Planned, designed, and implemented new complex features for an all-in-one nonprofit platform serving a US-based client, including workflows, CRM functionality, and RESTful APIs.",
+      "Planned, designed, and implemented new complex features for an all-in-one nonprofit platform serving a US-based client, including fundraising, workflows, CRM functionality, and RESTful APIs.",
       "Improved and refactored existing features across the platform to strengthen the reliability and maintainability of the codebase.",
       "Enhanced internal developer tools and sped up GitHub Actions build times, reducing wait time for the engineering team on every push.",
       "Investigated and fixed support issues reported by end users, restoring functionality and improving the customer experience.",
