@@ -7,7 +7,6 @@
       "Founded and built the platform.",
       "Lead the engineering team, set the roadmap, run production infrastructure, and write the course content."
     ],
-    "result": "[NUMBER: students, courses, or other metric]",
     "stack": ["PHP", "Laravel", "Laravel Cloud", "Statamic", "React", "Next.js", "Tailwind CSS", "MySQL", "Redis", "Typesense"],
     "featured": true,
     "url": "https://codyssey.dev",
@@ -26,7 +25,7 @@
       "Presented architecture proposals (vertical slice architecture, design patterns and principles) and demoed features including the Workflows feature to stakeholders.",
       "Wrote automated tests."
     ],
-    "result": "[NUMBER: build time before/after]. [NUMBER: any usage or business outcome]. Client testimonial available (Kevin R., Product Manager).",
+    "result": "Client testimonial available (Kevin R., Product Manager).",
     "stack": ["PHP", "Laravel", "MySQL", "Redis", "Typesense"],
     "colorScheme": "warm",
     "order": 2
@@ -42,7 +41,6 @@
       "Refactored for performance and readability.",
       "Worked directly with the client on requirements and delivery."
     ],
-    "result": "[NUMBER: latency or throughput before/after]",
     "stack": ["PHP", "Percona", "Memcached", "Elasticsearch"],
     "colorScheme": "blue",
     "order": 3
@@ -59,7 +57,6 @@
       "Presented delivered features to business analysts and product owners.",
       "Supported production releases."
     ],
-    "result": "[NUMBER: team size, release cadence, or other outcome]",
     "stack": ["PHP", "Laravel", "Lumen", "MySQL", "Docker"],
     "colorScheme": "warm",
     "order": 4
@@ -74,7 +71,7 @@
       "Integrated blockchain and Web3 services for crypto payments.",
       "Wrote automated tests."
     ],
-    "result": "Client testimonial available (Bartosz P., Staff Backend Engineer). [NUMBER: optional]",
+    "result": "Client testimonial available (Bartosz P., Staff Backend Engineer).",
     "stack": ["PHP", "Symfony", "MariaDB", "KeyDB", "Docker"],
     "colorScheme": "blue",
     "order": 5
@@ -90,7 +87,6 @@
       "Fixed production bugs.",
       "Wrote feature tests."
     ],
-    "result": "[NUMBER: optional]",
     "stack": ["PHP", "Laravel", "MySQL", "Docker"],
     "colorScheme": "warm",
     "order": 6
@@ -106,7 +102,6 @@
       "Wrote unit and feature tests using TDD.",
       "Designed and built a reusable UI component library."
     ],
-    "result": "[NUMBER: optional]",
     "stack": ["PHP", "Laravel", "Vue 2", "GraphQL", "Elasticsearch", "MySQL", "Redis"],
     "colorScheme": "purple",
     "order": 7

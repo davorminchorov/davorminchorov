@@ -74,7 +74,7 @@ const projects = defineCollection({
     country: z.string().optional(),
     problem: z.string(),
     did: z.array(z.string()),
-    result: z.string(),
+    result: z.string().optional(),
     stack: z.array(z.string()),
     featured: z.boolean().optional().default(false),
     url: z.string().url().optional(),

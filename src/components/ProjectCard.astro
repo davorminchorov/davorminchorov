@@ -40,10 +40,13 @@ const borderAccentMap = {
       </ul>
     </div>
 
-    <div>
-      <p class="font-mono text-[11px] text-accent uppercase tracking-widest font-medium mb-1">Result</p>
-      <p class="text-sm text-text-secondary leading-relaxed">{project.result}</p>
-    </div>
+    {project.result && (
+      <div>
+        <p class="font-mono text-[11px] text-accent uppercase tracking-widest font-medium mb-1">Result</p>
+        <p class="text-sm text-text-secondary leading-relaxed">{project.result}</p>
+      </div>
+
+    )}
   </div>
 
   <div class="flex flex-wrap gap-2 mt-5">

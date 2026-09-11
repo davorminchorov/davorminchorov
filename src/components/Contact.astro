@@ -1,9 +1,9 @@
 ---
 const profiles = [
-  { label: 'Upwork', href: 'https://www.upwork.com/freelancers/~01284b0e7aa5b9f5a9' },
-  { label: 'Toptal', href: 'https://www.toptal.com/developers/resume/davor-minchorov' },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/davorminchorov' },
-  { label: 'GitHub', href: 'https://github.com/davorminchorov' },
+  { label: 'Hire me on Upwork', href: 'https://www.upwork.com/freelancers/~01284b0e7aa5b9f5a9', style: 'btn-primary' },
+  { label: 'Hire me on Toptal', href: 'https://www.toptal.com/developers/resume/davor-minchorov', style: 'btn-secondary' },
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/davorminchorov', style: 'arrow-link' },
+  { label: 'GitHub', href: 'https://github.com/davorminchorov', style: 'arrow-link' },
 ];
 ---
 
@@ -14,19 +14,14 @@ const profiles = [
     <p class="section-desc animate delay-2">
       If you have a PHP application that needs new features, a better architecture, or a rescue, send me a short note about what you are working on. I reply within a day.
     </p>
-    <p class="text-sm text-text-muted mt-4 animate delay-3">
-      [AVAILABILITY: e.g. Available from October 2026 for long-term contracts and focused projects]
-    </p>
 
-    <div class="flex flex-wrap items-center gap-3 mt-8 animate delay-4">
-      <a href="mailto:[EMAIL]" class="btn-primary">Send me a note</a>
-    </div>
-
-    <div class="flex flex-wrap gap-6 mt-6 animate delay-5">
+    <div class="flex flex-wrap items-center gap-x-6 gap-y-3 mt-8 animate delay-3">
       {profiles.map((profile) => (
-        <a href={profile.href} class="arrow-link" target="_blank" rel="noopener noreferrer">
+        <a href={profile.href} class={profile.style} target="_blank" rel="noopener noreferrer">
           {profile.label}
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 9L9 5M9 5H5.5M9 5v3.5"/></svg>
+          {profile.style === 'arrow-link' && (
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 9L9 5M9 5H5.5M9 5v3.5"/></svg>
+          )}
         </a>
       ))}
     </div>
