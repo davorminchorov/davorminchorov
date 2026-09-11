@@ -1,15 +1,61 @@
 ---
+import type { CollectionEntry } from 'astro:content';
+
 interface Props {
-  title: string;
-  description: string;
-  colorScheme?: 'warm' | 'blue' | 'purple';
+  project: CollectionEntry<'projects'>['data'];
   animationDelay?: string;
 }
 
-const { title, description, colorScheme = 'warm', animationDelay = 'delay-3' } = Astro.props;
+const { project, animationDelay = 'delay-3' } = Astro.props;
+
+const borderAccentMap = {
+  warm: 'border-l-tag-warm',
+  blue: 'border-l-tag-blue',
+  purple: 'border-l-tag-purple',
+};
 ---
 
-<div class={`border border-border rounded-[10px] p-8 bg-bg-card shadow-sm transition-all duration-200 hover:border-border-hover hover:shadow-md hover:-translate-y-px animate ${animationDelay}`}>
-  <h3 class="text-base font-semibold mb-2 text-text tracking-tight">{title}</h3>
-  <p class="text-sm text-text-secondary leading-relaxed">{description}</p>
+<div class={`border border-border rounded-[10px] p-8 bg-bg-card shadow-sm transition-all duration-200 hover:border-border-hover hover:shadow-md hover:-translate-y-px animate ${animationDelay} border-l-[3px] ${borderAccentMap[project.colorScheme]}`}>
+  <h3 class="text-base font-semibold mb-2 text-text tracking-tight">{project.title}</h3>
+  <p class="text-[13px] text-text-muted">
+    {project.industry}
+    {project.country && <span> · {project.country}</span>}
+  </p>
+
+  <div class="space-y-4 mt-5">
+    <div>
+      <p class="font-mono text-[11px] text-accent uppercase tracking-widest font-medium mb-1">Problem</p>
+      <p class="text-sm text-text-secondary leading-relaxed">{project.problem}</p>
+    </div>
+
+    <div>
+      <p class="font-mono text-[11px] text-accent uppercase tracking-widest font-medium mb-1">What I did</p>
+      <ul class="space-y-2">
+        {project.did.map((item) => (
+          <li class="text-sm text-text-secondary leading-relaxed flex gap-2.5">
+            <span class="text-accent mt-2 flex-shrink-0 w-1 h-1 rounded-full bg-accent" aria-hidden="true"></span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <p class="font-mono text-[11px] text-accent uppercase tracking-widest font-medium mb-1">Result</p>
+      <p class="text-sm text-text-secondary leading-relaxed">{project.result}</p>
+    </div>
+  </div>
+
+  <div class="flex flex-wrap gap-2 mt-5">
+    {project.stack.map((item) => (
+      <span class="tag">{item}</span>
+    ))}
+  </div>
+
+  {project.url && (
+    <a href={project.url} class="arrow-link mt-6" target="_blank" rel="noopener noreferrer">
+      Visit site
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 9L9 5M9 5H5.5M9 5v3.5"/></svg>
+    </a>
+  )}
 </div>

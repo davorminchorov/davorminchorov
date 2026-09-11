@@ -58,4 +58,47 @@ const skills = defineCollection({
   }),
 });
 
-export const collections = { writing, experience, skills };
+// Case studies, sourced from a hand-edited JSON file.
+// Client names are left out on purpose; industry and country stand in for them.
+const projects = defineCollection({
+  loader: file('src/content/projects.json', {
+    parser: (text) =>
+      (JSON.parse(text) as Array<Record<string, unknown>>).map((item) => ({
+        ...item,
+        id: slugify(item.title as string),
+      })),
+  }),
+  schema: z.object({
+    title: z.string(),
+    industry: z.string(),
+    country: z.string().optional(),
+    problem: z.string(),
+    did: z.array(z.string()),
+    result: z.string(),
+    stack: z.array(z.string()),
+    featured: z.boolean().optional().default(false),
+    url: z.string().url().optional(),
+    colorScheme: z.enum(['warm', 'blue', 'purple']).optional().default('warm'),
+    order: z.number(),
+  }),
+});
+
+// Conference and meetup talks, sourced from a hand-edited JSON file.
+const talks = defineCollection({
+  loader: file('src/content/talks.json', {
+    parser: (text) =>
+      (JSON.parse(text) as Array<Record<string, unknown>>).map((item) => ({
+        ...item,
+        id: slugify(item.title as string),
+      })),
+  }),
+  schema: z.object({
+    title: z.string(),
+    event: z.string(),
+    date: z.string(), // YYYY-MM
+    url: z.string().url(),
+    type: z.string().default('Talk'),
+  }),
+});
+
+export const collections = { writing, experience, skills, projects, talks };
