@@ -1,98 +1,45 @@
 [
   {
-    "category": "Top Skills",
-    "items": [
-      "Software Infrastructure",
-      "Product Development",
-      "Start-up Leadership"
-    ]
-  },
-  {
-    "category": "Languages & Markup",
+    "category": "Core",
     "items": [
       "PHP",
-      "JavaScript",
-      "TypeScript",
-      "C#",
-      "HTML",
-      "CSS"
-    ]
-  },
-  {
-    "category": "Frameworks & Libraries",
-    "items": [
       "Laravel",
-      "Lumen",
       "Symfony",
-      "CakePHP",
-      "Statamic",
-      "Vue.js",
-      "Vuex",
-      "Vue Router",
-      "Vue I18n",
-      "Vue A11y",
-      "React",
-      "Next.js",
-      "TanStack Query",
-      "XState Store",
-      "Tailwind CSS",
-      "Bootstrap",
-      "jQuery",
-      "Storybook",
-      "Node.js",
-      "Socket.IO",
-      "Windows Forms"
-    ]
-  },
-  {
-    "category": "Databases & Caching",
-    "items": [
       "MySQL",
-      "MariaDB",
-      "Percona",
-      "MongoDB",
+      "PostgreSQL",
       "Redis",
-      "KeyDB",
-      "Memcached",
       "Elasticsearch",
-      "Typesense"
-    ]
-  },
-  {
-    "category": "APIs",
-    "items": [
-      "REST APIs",
+      "Typesense",
+      "Docker",
+      "PHPUnit",
+      "TDD",
+      "REST",
       "GraphQL"
     ]
   },
   {
-    "category": "DevOps & Infrastructure",
+    "category": "Architecture",
     "items": [
-      "Docker",
-      "NGINX",
-      "Apache",
+      "Software architecture and design",
+      "Domain-driven design",
+      "Vertical slice architecture",
+      "Code refactoring",
+      "Database design"
+    ]
+  },
+  {
+    "category": "Also comfortable with",
+    "items": [
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Vue.js",
+      "Tailwind CSS",
+      "Node.js",
+      "GitHub Actions",
       "Laravel Cloud",
-      "Jenkins (CI/CD)",
-      "GitHub Actions"
-    ]
-  },
-  {
-    "category": "Testing",
-    "items": [
-      "PHPUnit",
-      "Codeception",
-      "Test-Driven Development (TDD)"
-    ]
-  },
-  {
-    "category": "Practices & Leadership",
-    "items": [
-      "Software Architecture & Design",
-      "Code Review",
-      "Mentoring",
-      "Team Leadership",
-      "Product Management",
-      "Third-party & Web3/Blockchain Integrations"
+      "NGINX"
     ]
   },
   {

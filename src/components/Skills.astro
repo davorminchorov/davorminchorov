@@ -3,14 +3,9 @@ import { getCollection } from 'astro:content';
 
 // Stable display order; groups not listed fall to the end.
 const CATEGORY_ORDER = [
-  'Top Skills',
-  'Languages & Markup',
-  'Frameworks & Libraries',
-  'Databases & Caching',
-  'APIs',
-  'DevOps & Infrastructure',
-  'Testing',
-  'Practices & Leadership',
+  'Core',
+  'Architecture',
+  'Also comfortable with',
   'Spoken Languages',
 ];
 
@@ -29,7 +24,7 @@ const groups = (await getCollection('skills'))
     <span class="section-label animate">Skills</span>
     <h2 class="section-title animate delay-1">Tools & Technologies</h2>
     <p class="section-desc animate delay-2">
-      The languages, frameworks, and practices I reach for.
+      The tools I use most, and the ones I am comfortable working in.
     </p>
 
     <div class="mt-9 space-y-7">

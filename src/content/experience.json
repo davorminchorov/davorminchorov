@@ -44,7 +44,7 @@
     "clientLocation": "Montenegro",
     "outcomes": [
       "Planned, designed, and implemented new and existing features for an iGaming platform built for a Montenegro-based client.",
-      "Built internal packages from scratch to support reusable functionality across the codebase and streamline development for the team.",
+      "Built internal packages from scratch to support reusable functionality across the codebase and speed up development for the team.",
       "Worked on 3rd-party integrations, including blockchain and Web3 services, to extend the platform's capabilities beyond traditional iGaming functionality.",
       "Wrote automated tests to expand coverage and safeguard against regressions as the platform evolved."
     ],
@@ -73,6 +73,7 @@
     "startDate": "2019-12",
     "endDate": "2021-12",
     "industry": "Entertainment (enterprise web app)",
+    "clientLocation": "Canada",
     "outcomes": [
       "Planned, architected, designed, and implemented new and existing features for an enterprise web application in the entertainment industry, covering both traditional server-rendered functionality and REST API endpoints.",
       "Fixed release and production bugs to keep the application stable and minimize impact on end users.",
@@ -154,7 +155,7 @@
       "Planned, architected, designed, and implemented new and existing features for an enterprise financial web application built for a US-based client.",
       "Fixed release and production bugs to keep the application stable, and attended and supported production releases, addressing issues as they surfaced during deployment.",
       "Presented implemented features and enhancements to business analysts and product owners, walking them through the delivered work.",
-      "Spearheaded a team of developers and quality assurance engineers, coordinating day-to-day work and delivery.",
+      "Led a team of developers and quality assurance engineers, coordinating day-to-day work and delivery.",
       "Wrote and presented architectural and technical proposals aimed at improving project structure and overall code quality."
     ],
     "skills": ["PHP", "Laravel", "Lumen", "MySQL", "Docker"]
