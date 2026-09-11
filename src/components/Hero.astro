@@ -10,7 +10,7 @@ interface StatItem {
 const stats: StatItem[] = [
   { value: '10+', label: 'Years Experience' },
   { value: '6+', label: 'Industries' },
-  { value: 'IC → Team Lead', label: 'Career Range' },
+  { value: '6', label: 'Client Countries' },
 ];
 ---
 
@@ -19,14 +19,18 @@ const stats: StatItem[] = [
     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-12">
       <div class="flex-1 min-w-0">
         <div class="font-mono text-xs text-accent uppercase tracking-wider font-medium mb-5 animate">
-          Software Engineer · Contractor · Educator
+          Senior PHP Backend Engineer
         </div>
         <h1 class="font-display text-[clamp(36px,5vw,58px)] leading-[1.12] tracking-tight text-text mb-6 max-w-[680px] font-bold animate delay-1">
-          Software engineer, contractor, educator
+          I build and rescue PHP backends that have to keep working for years.
         </h1>
         <p class="text-[17px] text-text-secondary max-w-[540px] leading-relaxed animate delay-2">
-          Currently building tools for non-profits and working on <a href="https://codyssey.dev" class="text-accent font-medium no-underline hover:underline" target="_blank" rel="noopener noreferrer">Codyssey.dev</a>.
+          APIs, system architecture, and legacy refactoring for startups and enterprises.
         </p>
+        <p class="text-[17px] text-text-secondary max-w-[540px] leading-relaxed animate delay-2 mt-2">
+          I also run <a href="https://codyssey.dev" class="text-accent font-medium no-underline hover:underline" target="_blank" rel="noopener noreferrer">Codyssey.dev</a>, where I teach engineers to build maintainable software.
+        </p>
+        <div class="flex flex-wrap gap-3 mt-8 animate delay-3"><a href="#contact" class="btn-primary">Work with me</a><a href="#projects" class="btn-secondary">See my work</a></div>
       </div>
       <div class="shrink-0 animate delay-2">
         <Image

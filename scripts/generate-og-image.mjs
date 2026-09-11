@@ -39,7 +39,7 @@ async function generate() {
       Davor Minchorov
     </text>
     <text x="80" y="275" font-family="-apple-system, 'Helvetica Neue', sans-serif" font-size="26" fill="${TEXT_MUTED}" font-weight="400">
-      Software Engineer
+      Senior PHP Backend Engineer
     </text>
 
     <!-- Separator line -->
@@ -47,10 +47,10 @@ async function generate() {
 
     <!-- Description -->
     <text x="80" y="360" font-family="-apple-system, 'Helvetica Neue', sans-serif" font-size="19" fill="${TEXT_MUTED}" font-weight="400">
-      Partnering with startups and enterprises to
+      APIs, system architecture, and legacy PHP rescue
     </text>
     <text x="80" y="388" font-family="-apple-system, 'Helvetica Neue', sans-serif" font-size="19" fill="${TEXT_MUTED}" font-weight="400">
-      design and build custom software solutions.
+      for startups and enterprises.
     </text>
 
     <!-- URL -->
