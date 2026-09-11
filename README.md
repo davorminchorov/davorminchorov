@@ -26,9 +26,15 @@ src/
 │   ├── Hero.astro
 │   ├── FeaturedProject.astro
 │   ├── ProjectCard.astro
-│   ├── Expertise.astro
-│   └── Writing.astro
+│   ├── Expertise.astro      # "Services" section
+│   ├── HowIWork.astro
+│   ├── Contact.astro
+│   └── Writing.astro        # Talks (talks.json) + Codyssey writing
 ├── content/
+│   ├── experience.json # Work history (Experience section)
+│   ├── projects.json   # Case studies (Selected Work section)
+│   ├── skills.json     # Skills section
+│   ├── talks.json      # Talks in the Talks & Writing section
 │   └── writing/        # Blog posts (Markdown / MDX)
 │       └── example-post.md
 ├── layouts/
@@ -86,7 +92,7 @@ Every push to `main` will auto-deploy. Preview deployments are created for pull 
 
 1. Import repo at [vercel.com/new](https://vercel.com/new)
 2. Framework preset: Astro (auto-detected)
-3. Deploy — it handles everything automatically
+3. Deploy. It handles everything automatically
 4. Add custom domain in project settings
 
 ## Customization
@@ -94,4 +100,4 @@ Every push to `main` will auto-deploy. Preview deployments are created for pull 
 - **Colors/fonts**: Edit `tailwind.config.mjs`
 - **Content**: Edit components in `src/components/`
 - **Meta/SEO**: Edit defaults in `src/layouts/BaseLayout.astro`
-- **Projects**: Edit project cards directly in `src/pages/index.astro`
+- **Case studies, experience, skills, talks**: Edit the JSON files in `src/content/`

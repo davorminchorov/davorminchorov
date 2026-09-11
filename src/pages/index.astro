@@ -8,7 +8,9 @@ import Experience from '../components/Experience.astro';
 import Skills from '../components/Skills.astro';
 import Projects from '../components/Projects.astro';
 import Testimonials from '../components/Testimonials.astro';
+import HowIWork from '../components/HowIWork.astro';
 import Writing from '../components/Writing.astro';
+import Contact from '../components/Contact.astro';
 
 const experience = await getCollection('experience');
 const skills = await getCollection('skills');
@@ -36,8 +38,8 @@ const personJsonLd = JSON.stringify({
     "@type": "Person",
     "name": "Davor Minchorov",
     "url": "https://davorminchorov.com",
-    "jobTitle": "Software Engineer",
-    "description": "Software engineer partnering with startups and enterprises to design and build custom software solutions.",
+    "jobTitle": "Senior PHP Backend Engineer",
+    "description": "Senior PHP backend engineer. I build APIs, design system architecture, and rescue legacy PHP codebases for startups and enterprises. 10+ years, Toptal and Adeva.",
     ...(currentRole && {
       "worksFor": {
         "@type": "Organization",
@@ -49,7 +51,9 @@ const personJsonLd = JSON.stringify({
       "https://x.com/davorminchorov",
       "https://bsky.app/profile/davorminchorov.com",
       "https://linkedin.com/in/davorminchorov",
-      "https://github.com/davorminchorov"
+      "https://github.com/davorminchorov",
+      "https://www.upwork.com/freelancers/~01284b0e7aa5b9f5a9",
+      "https://www.toptal.com/developers/resume/davor-minchorov"
     ]
   }
 });
@@ -64,6 +68,8 @@ const personJsonLd = JSON.stringify({
 
   <Projects />
 
+  <HowIWork />
+
   <Experience />
 
   <Testimonials />
@@ -71,4 +77,6 @@ const personJsonLd = JSON.stringify({
   <Skills />
 
   <Writing />
+
+  <Contact />
 </BaseLayout>
