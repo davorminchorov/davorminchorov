@@ -3,10 +3,12 @@
     "title": "Codyssey.dev",
     "industry": "Developer education",
     "problem": "Most developer education teaches demos, not how to build and maintain software that lasts.",
-    "why": "Most developer education teaches demos. I wanted engineers to learn how to build software that survives contact with real users and real time. I set the roadmap, built the product, run it in production, and write the material.",
+    "why": "Engineers who only learn from demos ship code that falls over on contact with real users and real time. I wanted a place that teaches the other part of the job: keeping a product working for years.",
     "did": [
-      "Founded and built the platform.",
-      "Lead the engineering team, set the roadmap, run production infrastructure, and write the course content."
+      "Set the product direction and own the roadmap.",
+      "Designed and built the platform, and run it in production.",
+      "Lead and mentor the engineering team, and review their code.",
+      "Write and produce the courses, learning paths, and articles."
     ],
     "result": "The platform is live and in active development, with courses, learning paths, and articles published.",
     "stack": ["PHP", "Laravel", "Laravel Cloud", "Statamic", "React", "Next.js", "Tailwind CSS", "MySQL", "Redis", "Typesense"],
@@ -42,15 +44,16 @@
     "title": "Enterprise entertainment platform",
     "industry": "Entertainment",
     "country": "Canada",
-    "problem": "A high-traffic platform serving millions of daily users had search performance and caching problems.",
+    "problem": "A high-traffic platform serving millions of daily users had search performance and caching problems, and its content creation platform needed rebuilding.",
     "why": "Millions of daily users means small latency problems become support tickets and churn.",
     "did": [
       "Search performance and caching work with Elasticsearch, Memcached, and Percona.",
+      "Rebuilt the content creation platform as part of the Pay team.",
       "Designed and shipped new features (server-rendered and REST API).",
       "Refactored for performance and readability.",
       "Worked directly with the client on requirements and delivery."
     ],
-    "result": "Rebuilt the content creation platform as part of the Pay team.",
+    "result": "Search and caching work shipped on Elasticsearch, Memcached, and Percona, and the content creation platform was rebuilt as part of the Pay team.",
     "stack": ["PHP", "Percona", "Memcached", "Elasticsearch"],
     "colorScheme": "blue",
     "order": 3
@@ -59,7 +62,7 @@
     "title": "Enterprise fintech application",
     "industry": "Fintech",
     "country": "United States",
-    "problem": "A financial application under regulatory requirements needed new features delivered by a coordinated team.",
+    "problem": "A regulated financial application needed new features shipped by a team of developers and QA engineers without putting releases at risk.",
     "why": "Regulated financial software cannot ship broken. The job was delivering features while keeping releases safe, and keeping business analysts and product owners in the loop so nothing shipped that they did not expect.",
     "did": [
       "Designed and shipped features.",
@@ -106,7 +109,7 @@
       "Fixed production bugs.",
       "Wrote feature tests."
     ],
-    "result": "New API endpoints in production with feature tests covering them. Existing code refactored and production bugs fixed.",
+    "result": "New API endpoints in production, each covered by feature tests, so the team could keep changing an app that handles patient records without breaking it.",
     "stack": ["PHP", "Laravel", "MySQL", "Docker"],
     "colorScheme": "warm",
     "order": 6
@@ -115,15 +118,15 @@
     "title": "Community social network",
     "industry": "Community platform",
     "country": "Switzerland",
-    "problem": "A community social network needed new API features, external integrations, and a consistent user interface.",
-    "why": "The existing platform was very old and needed a full rewrite from scratch. The new APIs and the reusable component library gave the team a base it could keep building on.",
+    "problem": "The existing platform was too old to keep building on. The team was rewriting it from scratch and needed the new API layer, external integrations, and a consistent user interface.",
+    "why": "A rewrite only pays off if the new base is one the team can keep building on. The APIs shipped with tests from day one, and the component library gave the front end one set of building blocks.",
     "did": [
       "Designed and shipped REST and GraphQL API features.",
       "Integrated third-party APIs.",
       "Wrote unit and feature tests using TDD.",
       "Designed and built a reusable UI component library."
     ],
-    "result": "REST and GraphQL features shipped with unit and feature tests. A reusable UI component library the team could build on.",
+    "result": "REST and GraphQL APIs for the rewritten platform shipped with unit and feature tests, and a reusable UI component library the team kept building on.",
     "stack": ["PHP", "Laravel", "Vue 2", "GraphQL", "Elasticsearch", "MySQL", "Redis"],
     "colorScheme": "purple",
     "order": 7
