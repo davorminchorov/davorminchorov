@@ -77,7 +77,7 @@ This file describes the positioning the site currently uses. Copy on the site is
 
 ## Proof Points
 **Metrics on the site:**
-- 10+ years of professional experience (since 2015)
+- Years of professional experience, computed at build time from June 2015 (11+ at the time of writing)
 - 6+ industries, 6 client countries (US, Canada, Switzerland, Italy, Montenegro, UAE)
 - Non-profit engagement: GitHub Actions builds cut from 30 to 60 minutes to under 10
 - Fintech engagement: led a team of 3 developers and 2 QA engineers under regulatory requirements
