@@ -1,6 +1,6 @@
 # davorminchorov.com
 
-Personal portfolio and blog built with [Astro](https://astro.build), [Tailwind CSS](https://tailwindcss.com), and [MDX](https://mdxjs.com).
+Personal portfolio built with [Astro](https://astro.build), [Tailwind CSS](https://tailwindcss.com), and [MDX](https://mdxjs.com).
 
 ## Getting Started
 
@@ -29,43 +29,31 @@ src/
 │   ├── Expertise.astro      # "Services" section
 │   ├── HowIWork.astro
 │   ├── Contact.astro
-│   └── Writing.astro        # Talks (talks.json) + Codyssey writing
+│   └── Writing.astro        # Talks (talks.json) + Codyssey writing, fetched at build time
 ├── content/
 │   ├── experience.json # Work history (Experience section)
 │   ├── projects.json   # Case studies (Selected Work section)
 │   ├── skills.json     # Skills section
-│   ├── talks.json      # Talks in the Talks & Writing section
-│   └── writing/        # Blog posts (Markdown / MDX)
-│       └── example-post.md
+│   └── talks.json      # Talks in the Talks & Writing section
 ├── layouts/
-│   ├── BaseLayout.astro     # Site shell (nav, footer, meta)
-│   └── WritingLayout.astro  # Article page layout with prose styles
+│   └── BaseLayout.astro     # Site shell (nav, footer, meta)
 ├── pages/
 │   ├── index.astro          # Homepage
-│   └── writing/
-│       └── [slug].astro     # Dynamic blog post routes
+│   ├── 404.astro
+│   └── 500.astro
 └── styles/
     └── global.css           # Tailwind directives + custom utilities
 ```
 
-## Writing Blog Posts
+Articles live on [Codyssey.dev](https://codyssey.dev) and are pulled into the Talks & Writing section at build time. There is no local blog.
 
-Create a `.md` or `.mdx` file in `src/content/writing/`:
+## Social Share Image
 
-```markdown
----
-title: "Your Post Title"
-description: "A short description for SEO and social sharing."
-date: "2025-04-15"
-tags: ["architecture", "laravel"]
-draft: false
----
+`public/og-image.jpg` is generated from `src/assets/davor-minchorov.webp` and the site fonts. Regenerate it whenever the positioning line changes:
 
-Your article content here. Supports full Markdown and code blocks.
+```bash
+node scripts/generate-og-image.mjs
 ```
-
-- Posts with `draft: true` are excluded from the production build.
-- Posts automatically appear on the homepage (latest 5) and get their own URL at `/writing/your-post-slug`.
 
 ## Design System
 
@@ -75,25 +63,9 @@ The site uses a professional light-mode palette defined in `tailwind.config.mjs`
 - **Accent**: Deep forest green (#1A5C3A)
 - **Typography**: Source Serif 4 (display), Instrument Sans (body), IBM Plex Mono (code/labels)
 
-## Deployment (Cloudflare Pages)
+## Deployment (Cloudflare Workers)
 
-1. Push this repo to GitHub
-2. Go to [Cloudflare Pages](https://pages.cloudflare.com)
-3. Connect your GitHub repo
-4. Set build settings:
-   - **Build command**: `npm run build`
-   - **Build output directory**: `dist`
-   - **Node.js version**: `20` (set in Environment Variables as `NODE_VERSION=20`)
-5. Add custom domain: `davorminchorov.com`
-
-Every push to `main` will auto-deploy. Preview deployments are created for pull requests.
-
-### Alternative: Vercel
-
-1. Import repo at [vercel.com/new](https://vercel.com/new)
-2. Framework preset: Astro (auto-detected)
-3. Deploy. It handles everything automatically
-4. Add custom domain in project settings
+`.github/workflows/deploy.yml` builds the site and deploys it with Wrangler on every push to `main`, and once a day on a schedule so newly published Codyssey content shows up without a push. It needs the `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repository secrets. Routes and the custom domain are set in `wrangler.toml`.
 
 ## Customization
 

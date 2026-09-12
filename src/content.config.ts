@@ -1,24 +1,11 @@
 import { defineCollection, z } from 'astro:content';
-import { file, glob } from 'astro/loaders';
+import { file } from 'astro/loaders';
 
 const slugify = (value: string) =>
   value
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '');
-
-// Blog posts. Astro 6 removed the legacy `type: 'content'` collections, so
-// every collection now needs an explicit loader.
-const writing = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/writing' }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    date: z.string(),
-    tags: z.array(z.string()).optional(),
-    draft: z.boolean().optional().default(false),
-  }),
-});
 
 // Work experience, sourced from the LinkedIn profile export.
 // The source JSON has no `id` field (kept clean for hand-editing), so we
@@ -111,4 +98,4 @@ const talks = defineCollection({
   }),
 });
 
-export const collections = { writing, experience, skills, projects, talks };
+export const collections = { experience, skills, projects, talks };

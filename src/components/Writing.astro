@@ -31,11 +31,21 @@ interface WritingItem {
   type: string;
 }
 
-const res = await fetch(PROFILE_URL, { headers: { Accept: 'application/json' } });
-if (!res.ok) {
-  throw new Error(`Codyssey author profile request failed: ${res.status} ${res.statusText}`);
-}
-const profile = ((await res.json()) as { data?: CodysseyProfile }).data ?? {};
+// A Codyssey outage should not take the whole deploy down (the workflow
+// also rebuilds daily on a schedule). Fall back to an empty list and warn.
+const loadProfile = async (): Promise<CodysseyProfile> => {
+  try {
+    const res = await fetch(PROFILE_URL, { headers: { Accept: 'application/json' } });
+    if (!res.ok) {
+      throw new Error(`${res.status} ${res.statusText}`);
+    }
+    return ((await res.json()) as { data?: CodysseyProfile }).data ?? {};
+  } catch (error) {
+    console.warn(`Codyssey author profile request failed, rendering without writing: ${error}`);
+    return {};
+  }
+};
+const profile = await loadProfile();
 
 const mapItems = (arr: CodysseyItem[] | undefined, type: string, pathPrefix: string): WritingItem[] =>
   (arr ?? [])
@@ -73,9 +83,9 @@ const talks = (await getCollection('talks')).sort((a, b) => b.data.date.localeCo
 <section id="writing" class="py-[88px] border-t border-border">
   <div class="max-w-[1080px] mx-auto px-7">
     <span class="section-label animate">Talks & Writing</span>
-    <h2 class="section-title animate delay-1">Talks & Writing</h2>
+    <h2 class="section-title animate delay-1">What I've Shared</h2>
     <p class="section-desc animate delay-2">
-      A conference talk and articles on building PHP applications that stay maintainable.
+      A meetup talk and articles on building PHP applications that stay maintainable.
     </p>
 
     <p class="text-[13px] font-semibold uppercase tracking-wide text-text-muted mt-9 animate delay-2">Talks</p>
