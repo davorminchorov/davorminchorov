@@ -5,12 +5,14 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  imageAlt?: string;
 }
 
 const {
   title = 'Davor Minchorov | Product Software Engineer (PHP)',
   description = 'Product software engineer working in PHP. I help founders and product teams build APIs, design architecture, and modernise existing codebases, with an eye on what the product is for.',
   image = '/og-image.jpg',
+  imageAlt = 'Davor Minchorov, Product Software Engineer (PHP). I build PHP products that have to keep working for years.',
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
@@ -37,12 +39,16 @@ const ogImageURL = new URL(image, Astro.site).href;
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:image" content={ogImageURL} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content={imageAlt} />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImageURL} />
+  <meta name="twitter:image:alt" content={imageAlt} />
 
   <script defer data-domain="davorminchorov.com" src="https://plausible.io/js/plausible.js"></script>
 </head>
@@ -82,7 +88,7 @@ const ogImageURL = new URL(image, Astro.site).href;
   <footer class="border-t border-border py-9">
     <div class="max-w-[1080px] mx-auto px-7 flex justify-between items-center flex-wrap gap-4">
       <span class="text-[13px] text-text-dim">&copy; {new Date().getFullYear()} Davor Minchorov. All rights reserved.</span>
-      <div class="flex gap-6">
+      <div class="flex flex-wrap gap-x-6 gap-y-2">
         <a href="https://x.com/davorminchorov" target="_blank" rel="noopener noreferrer" class="text-[13px] text-text-muted font-medium no-underline hover:text-text transition-colors">X / Twitter</a>
         <a href="https://bsky.app/profile/davorminchorov.com" target="_blank" rel="noopener noreferrer" class="text-[13px] text-text-muted font-medium no-underline hover:text-text transition-colors">Bluesky</a>
         <a href="https://linkedin.com/in/davorminchorov" target="_blank" rel="noopener noreferrer" class="text-[13px] text-text-muted font-medium no-underline hover:text-text transition-colors">LinkedIn</a>
