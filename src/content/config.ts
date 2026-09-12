@@ -73,6 +73,7 @@ const projects = defineCollection({
     industry: z.string(),
     country: z.string().optional(),
     problem: z.string(),
+    why: z.string(),
     did: z.array(z.string()),
     result: z.string().optional(),
     stack: z.array(z.string()),

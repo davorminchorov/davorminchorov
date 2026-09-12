@@ -3,6 +3,7 @@
     "title": "Codyssey.dev",
     "industry": "Developer education",
     "problem": "Most developer education teaches demos, not how to build and maintain software that lasts.",
+    "why": "Most developer education teaches demos. I wanted engineers to learn how to build software that survives contact with real users and real time. I set the roadmap, built the product, run it in production, and write the material.",
     "did": [
       "Founded and built the platform.",
       "Lead the engineering team, set the roadmap, run production infrastructure, and write the course content."
@@ -19,11 +20,12 @@
     "industry": "Non-profit",
     "country": "United States",
     "problem": "An all-in-one platform for non-profits needed new fundraising, workflow, and CRM features, and the existing code needed to be more reliable and easier to maintain.",
+    "why": "Non-profits run on donations and volunteers. Slow releases and fragile features cost them money directly. The Workflows feature I proposed and built let them automate work they were doing by hand.",
     "did": [
-      "Designed and built the new features and the REST APIs behind them.",
+      "Designed and shipped the new features and the REST APIs behind them.",
       "Refactored existing features.",
-      "Improved internal developer tools and cut GitHub Actions build times.",
-      "Presented architecture proposals (vertical slice architecture, design patterns and principles) and demoed features including the Workflows feature to stakeholders.",
+      "Cut GitHub Actions build times so the team stopped waiting on CI.",
+      "Proposed and got agreement on the architecture (vertical slice architecture, design patterns and principles) and demoed features including the Workflows feature to stakeholders.",
       "Wrote automated tests."
     ],
     "result": "Fundraising, workflow, and CRM features shipped to production, backed by tests. GitHub Actions builds that took 30 to 60 minutes now finish in under 10. Client testimonial from Kevin R., Product Manager, in the Testimonials section.",
@@ -36,9 +38,10 @@
     "industry": "Entertainment",
     "country": "Canada",
     "problem": "A high-traffic platform serving millions of daily users had search performance and caching problems.",
+    "why": "Millions of daily users means small latency problems become support tickets and churn. [PLACEHOLDER: one line on what users actually felt before the search and caching work, e.g. slow search results or slow page loads.]",
     "did": [
       "Search performance and caching work with Elasticsearch, Memcached, and Percona.",
-      "Built new features (server-rendered and REST API).",
+      "Designed and shipped new features (server-rendered and REST API).",
       "Refactored for performance and readability.",
       "Worked directly with the client on requirements and delivery."
     ],
@@ -52,10 +55,11 @@
     "industry": "Fintech",
     "country": "United States",
     "problem": "A financial application under regulatory requirements needed new features delivered by a coordinated team.",
+    "why": "Regulated financial software cannot ship broken. The job was delivering features while keeping releases safe, and keeping business analysts and product owners in the loop so nothing shipped that they did not expect.",
     "did": [
-      "Designed and built features.",
+      "Designed and shipped features.",
       "Led a team of developers and QA engineers.",
-      "Wrote and presented architecture proposals.",
+      "Proposed and got agreement on the architecture.",
       "Presented delivered features to business analysts and product owners.",
       "Supported production releases."
     ],
@@ -69,6 +73,7 @@
     "industry": "iGaming",
     "country": "Montenegro",
     "problem": "An iGaming platform needed reusable internal packages and crypto payment support.",
+    "why": "Crypto payments were a business requirement, not a technical one. The integrations had to work on day one and stay maintainable for the team after I left.",
     "did": [
       "Built internal packages from scratch.",
       "Integrated blockchain and Web3 services for crypto payments.",
@@ -84,6 +89,7 @@
     "industry": "Healthcare",
     "country": "Italy",
     "problem": "A medical web application handling patient records and clinical workflows needed new API features and a cleaner codebase.",
+    "why": "Patient records and clinical workflows. Correctness mattered more than speed, so every new endpoint shipped with tests.",
     "did": [
       "Built REST API endpoints.",
       "Refactored and optimised existing code.",
@@ -100,8 +106,9 @@
     "industry": "Community platform",
     "country": "Switzerland",
     "problem": "A community social network needed new API features, external integrations, and a consistent user interface.",
+    "why": "[PLACEHOLDER: one line on what the platform's users needed and why the API and component work served that.]",
     "did": [
-      "Built REST and GraphQL API features.",
+      "Designed and shipped REST and GraphQL API features.",
       "Integrated third-party APIs.",
       "Wrote unit and feature tests using TDD.",
       "Designed and built a reusable UI component library."
