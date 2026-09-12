@@ -28,7 +28,12 @@
       "Proposed and got agreement on the architecture (vertical slice architecture, design patterns and principles) and demoed features including the Workflows feature to stakeholders.",
       "Wrote automated tests."
     ],
-    "result": "Fundraising, workflow, and CRM features shipped to production, backed by tests. GitHub Actions builds that took 30 to 60 minutes now finish in under 10. Client testimonial from Kevin R., Product Manager, in the Testimonials section.",
+    "result": "Fundraising, workflow, and CRM features shipped to production, backed by tests. GitHub Actions builds that took 30 to 60 minutes now finish in under 10.",
+    "quote": {
+      "text": "Davor consistently delivers high-impact features that drive real customer and business impact. He's built foundational capabilities that transformed how our customers manage donor relationships and organizational data. His systematic approach to complex technical challenges ensures customers can successfully scale their operations. Davor's reliable execution on high-impact projects makes him essential to our team's success.",
+      "author": "Kevin R.",
+      "role": "Product Manager"
+    },
     "stack": ["PHP", "Laravel", "MySQL", "Redis", "Typesense"],
     "colorScheme": "warm",
     "order": 2
@@ -79,7 +84,12 @@
       "Integrated blockchain and Web3 services for crypto payments.",
       "Wrote automated tests."
     ],
-    "result": "Crypto payments live in production through blockchain and Web3 integrations. Internal packages reused across the codebase. Client testimonial from Bartosz P., Staff Backend Engineer, in the Testimonials section.",
+    "result": "Crypto payments live in production through blockchain and Web3 integrations. Internal packages reused across the codebase.",
+    "quote": {
+      "text": "Davor consistently proved to be one of the most engaged and forward-thinking engineers on the team. He didn't just deliver features. He actively shaped the direction of the product. His understanding of modern development practices, design patterns, and emerging tools was always up to date, and he used that knowledge to improve the entire codebase.",
+      "author": "Bartosz P.",
+      "role": "Staff Backend Engineer"
+    },
     "stack": ["PHP", "Symfony", "MariaDB", "KeyDB", "Docker"],
     "colorScheme": "blue",
     "order": 5
