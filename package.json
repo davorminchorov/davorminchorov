@@ -10,9 +10,8 @@
     "deploy": "wrangler deploy"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.14",
+    "@astrojs/mdx": "^5.0.6",
     "@astrojs/sitemap": "^3.7.3",
-    "@astrojs/tailwind": "^6.0.2",
     "@fontsource-variable/instrument-sans": "^5.2.8",
     "@fontsource-variable/source-serif-4": "^5.2.9",
     "@fontsource/ibm-plex-mono": "^5.2.7",
@@ -21,6 +20,7 @@
     "tailwindcss": "^3.4.19"
   },
   "devDependencies": {
+    "autoprefixer": "^10.6.0",
     "wrangler": "^4.95.0"
   }
 }
