@@ -7,7 +7,6 @@ import Expertise from '../components/Expertise.astro';
 import Experience from '../components/Experience.astro';
 import Skills from '../components/Skills.astro';
 import Projects from '../components/Projects.astro';
-import Testimonials from '../components/Testimonials.astro';
 import HowIWork from '../components/HowIWork.astro';
 import Writing from '../components/Writing.astro';
 import Contact from '../components/Contact.astro';
@@ -38,8 +37,8 @@ const personJsonLd = JSON.stringify({
     "@type": "Person",
     "name": "Davor Minchorov",
     "url": "https://davorminchorov.com",
-    "jobTitle": "Senior PHP Backend Engineer",
-    "description": "Senior PHP backend engineer. I build APIs, design system architecture, and rescue legacy PHP codebases for startups and enterprises. 10+ years, Toptal and Adeva.",
+    "jobTitle": "Senior Software Engineer (PHP)",
+    "description": "Senior software engineer working in PHP. I help founders and product teams build APIs, design architecture, and rescue legacy codebases, with an eye on what the product is for.",
     ...(currentRole && {
       "worksFor": {
         "@type": "Organization",
@@ -71,8 +70,6 @@ const personJsonLd = JSON.stringify({
   <HowIWork />
 
   <Experience />
-
-  <Testimonials />
 
   <Skills />
 

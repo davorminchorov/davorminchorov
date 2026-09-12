@@ -29,6 +29,11 @@ const borderAccentMap = {
     </div>
 
     <div>
+      <p class="font-mono text-[11px] text-accent uppercase tracking-widest font-medium mb-1">Why it mattered</p>
+      <p class="text-sm text-text-secondary leading-relaxed">{project.why}</p>
+    </div>
+
+    <div>
       <p class="font-mono text-[11px] text-accent uppercase tracking-widest font-medium mb-1">What I did</p>
       <ul class="space-y-2">
         {project.did.map((item) => (
@@ -45,7 +50,13 @@ const borderAccentMap = {
         <p class="font-mono text-[11px] text-accent uppercase tracking-widest font-medium mb-1">Result</p>
         <p class="text-sm text-text-secondary leading-relaxed">{project.result}</p>
       </div>
+    )}
 
+    {project.quote && (
+      <blockquote class="border-l-2 border-accent pl-4">
+        <p class="text-sm text-text-secondary leading-relaxed italic">"{project.quote.text}"</p>
+        <footer class="text-xs text-text-muted mt-2">{project.quote.author} · {project.quote.role}</footer>
+      </blockquote>
     )}
   </div>
 

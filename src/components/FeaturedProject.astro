@@ -13,7 +13,7 @@ const { project } = Astro.props;
   <div class="absolute top-0 left-0 right-0 h-[3px] bg-accent"></div>
 
   <div class="font-mono text-[11px] text-accent uppercase tracking-widest bg-accent-light px-3.5 py-1 rounded-full inline-block mb-5 font-medium">
-    Own product
+    Own product · Founder
   </div>
   <h3 class="font-display text-[clamp(26px,3vw,34px)] leading-tight font-bold tracking-tight mb-3.5">
     {project.title}
@@ -23,6 +23,11 @@ const { project } = Astro.props;
     <div>
       <p class="font-mono text-[11px] text-accent uppercase tracking-widest font-medium mb-1">Problem</p>
       <p class="text-base text-text-secondary leading-relaxed">{project.problem}</p>
+    </div>
+
+    <div>
+      <p class="font-mono text-[11px] text-accent uppercase tracking-widest font-medium mb-1">Why it mattered</p>
+      <p class="text-base text-text-secondary leading-relaxed">{project.why}</p>
     </div>
 
     <div>
@@ -42,7 +47,13 @@ const { project } = Astro.props;
         <p class="font-mono text-[11px] text-accent uppercase tracking-widest font-medium mb-1">Result</p>
         <p class="text-base text-text-secondary leading-relaxed">{project.result}</p>
       </div>
+    )}
 
+    {project.quote && (
+      <blockquote class="border-l-2 border-accent pl-4">
+        <p class="text-base text-text-secondary leading-relaxed italic">"{project.quote.text}"</p>
+        <footer class="text-xs text-text-muted mt-2">{project.quote.author} · {project.quote.role}</footer>
+      </blockquote>
     )}
   </div>
 

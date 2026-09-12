@@ -73,8 +73,16 @@ const projects = defineCollection({
     industry: z.string(),
     country: z.string().optional(),
     problem: z.string(),
+    why: z.string(),
     did: z.array(z.string()),
     result: z.string().optional(),
+    quote: z
+      .object({
+        text: z.string(),
+        author: z.string(),
+        role: z.string(),
+      })
+      .optional(),
     stack: z.array(z.string()),
     featured: z.boolean().optional().default(false),
     url: z.string().url().optional(),

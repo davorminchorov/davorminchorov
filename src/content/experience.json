@@ -25,11 +25,11 @@
     "industry": "Nonprofit SaaS platform",
     "clientLocation": "United States",
     "outcomes": [
-      "Designed and built new features for an all-in-one nonprofit platform: fundraising, workflows, CRM features, and REST APIs.",
+      "Designed and shipped new features for an all-in-one nonprofit platform: fundraising, workflows, CRM features, and REST APIs.",
       "Refactored existing features to make the codebase more reliable and easier to maintain.",
-      "Improved internal developer tools and cut GitHub Actions build times.",
+      "Cut GitHub Actions build times so the team stopped waiting on CI.",
       "Investigated and fixed support issues reported by end users.",
-      "Presented architecture and design proposals to the team, including vertical slice architecture and design patterns and principles, and demoed the Workflows feature and other features delivered by the team to internal stakeholders.",
+      "Proposed and got agreement on the architecture, including vertical slice architecture and design patterns and principles, and demoed the Workflows feature and other features delivered by the team to internal stakeholders.",
       "Wrote automated tests to expand coverage and catch regressions."
     ],
     "skills": ["PHP", "Laravel", "MySQL", "Redis", "Typesense"]
