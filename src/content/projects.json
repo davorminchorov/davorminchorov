@@ -7,6 +7,7 @@
       "Founded and built the platform.",
       "Lead the engineering team, set the roadmap, run production infrastructure, and write the course content."
     ],
+    "result": "The platform is live and in active development, with courses, learning paths, and articles published. [NUMBER: students or subscribers].",
     "stack": ["PHP", "Laravel", "Laravel Cloud", "Statamic", "React", "Next.js", "Tailwind CSS", "MySQL", "Redis", "Typesense"],
     "featured": true,
     "url": "https://codyssey.dev",
@@ -25,7 +26,7 @@
       "Presented architecture proposals (vertical slice architecture, design patterns and principles) and demoed features including the Workflows feature to stakeholders.",
       "Wrote automated tests."
     ],
-    "result": "Client testimonial available (Kevin R., Product Manager).",
+    "result": "Fundraising, workflow, and CRM features shipped to production, backed by tests. Build times dropped from [NUMBER] to [NUMBER]. Client testimonial from Kevin R., Product Manager, in the Testimonials section.",
     "stack": ["PHP", "Laravel", "MySQL", "Redis", "Typesense"],
     "colorScheme": "warm",
     "order": 2
@@ -41,6 +42,7 @@
       "Refactored for performance and readability.",
       "Worked directly with the client on requirements and delivery."
     ],
+    "result": "Faster search and page loads on a platform serving millions of daily users. [NUMBER: latency or throughput before/after].",
     "stack": ["PHP", "Percona", "Memcached", "Elasticsearch"],
     "colorScheme": "blue",
     "order": 3
@@ -57,6 +59,7 @@
       "Presented delivered features to business analysts and product owners.",
       "Supported production releases."
     ],
+    "result": "Features delivered on schedule under regulatory requirements, with a team of [NUMBER] developers and QA engineers. Architecture proposals adopted to improve project structure and code quality.",
     "stack": ["PHP", "Laravel", "Lumen", "MySQL", "Docker"],
     "colorScheme": "warm",
     "order": 4
@@ -71,7 +74,7 @@
       "Integrated blockchain and Web3 services for crypto payments.",
       "Wrote automated tests."
     ],
-    "result": "Client testimonial available (Bartosz P., Staff Backend Engineer).",
+    "result": "Crypto payments live in production through blockchain and Web3 integrations. Internal packages reused across the codebase. Client testimonial from Bartosz P., Staff Backend Engineer, in the Testimonials section.",
     "stack": ["PHP", "Symfony", "MariaDB", "KeyDB", "Docker"],
     "colorScheme": "blue",
     "order": 5
@@ -87,13 +90,14 @@
       "Fixed production bugs.",
       "Wrote feature tests."
     ],
+    "result": "New API endpoints in production with feature tests covering them. Existing code refactored and production bugs fixed.",
     "stack": ["PHP", "Laravel", "MySQL", "Docker"],
     "colorScheme": "warm",
     "order": 6
   },
   {
     "title": "Community social network",
-    "industry": "Community social network",
+    "industry": "Community platform",
     "country": "Switzerland",
     "problem": "A community social network needed new API features, external integrations, and a consistent user interface.",
     "did": [
@@ -102,6 +106,7 @@
       "Wrote unit and feature tests using TDD.",
       "Designed and built a reusable UI component library."
     ],
+    "result": "REST and GraphQL features shipped with unit and feature tests. A reusable UI component library the team could build on.",
     "stack": ["PHP", "Laravel", "Vue 2", "GraphQL", "Elasticsearch", "MySQL", "Redis"],
     "colorScheme": "purple",
     "order": 7
