@@ -1,92 +1,129 @@
-import sharp from 'sharp';
+// Generates public/og-image.jpg, the image shown when the site is shared on
+// LinkedIn, X, Slack, and similar. Run it whenever the positioning line
+// changes: `node scripts/generate-og-image.mjs`.
+//
+// The photo and fonts come from the repo itself (src/assets and the
+// @fontsource packages), so the image can be regenerated from a fresh clone.
+
+import fs from 'fs';
+import os from 'os';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
 
+// Register the site fonts with fontconfig before sharp (libvips) loads, so
+// the SVG text below renders in the same typefaces as the page.
+const fontFiles = [
+  'node_modules/@fontsource-variable/source-serif-4/files/source-serif-4-latin-wght-normal.woff2',
+  'node_modules/@fontsource-variable/instrument-sans/files/instrument-sans-latin-wght-normal.woff2',
+  'node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2',
+];
+const fontDir = fs.mkdtempSync(path.join(os.tmpdir(), 'og-fonts-'));
+for (const file of fontFiles) {
+  fs.copyFileSync(path.join(root, file), path.join(fontDir, path.basename(file)));
+}
+const fontsConf = path.join(fontDir, 'fonts.conf');
+fs.writeFileSync(
+  fontsConf,
+  `<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig>
+  <dir>${fontDir}</dir>
+  <include ignore_missing="yes">/etc/fonts/fonts.conf</include>
+</fontconfig>
+`,
+);
+process.env.FONTCONFIG_FILE = fontsConf;
+
+const { default: sharp } = await import('sharp');
+
 const WIDTH = 1200;
 const HEIGHT = 630;
 
-// Site colors
+// Site colors (see tailwind.config.mjs)
 const BG = '#FAFAF9';
 const TEXT = '#1A1A1A';
-const TEXT_MUTED = '#7A7A7A';
+const TEXT_MUTED = '#5F5F5F';
 const ACCENT = '#1A5C3A';
-const BORDER = '#E8E4DD';
+
+const SERIF = "'Source Serif 4', 'Bitstream Charter', Georgia, serif";
+const SANS = "'Instrument Sans', 'Liberation Sans', 'Helvetica Neue', sans-serif";
+const MONO = "'IBM Plex Mono', 'Liberation Mono', 'Courier New', monospace";
+
+// Keep these in sync with the hero in src/components/Hero.astro.
+const ROLE = 'Product Software Engineer · PHP';
+const HEADLINE = ['I build PHP products that', 'have to keep working for years.'];
+const SUBLINE = ['APIs, architecture, and modernising existing', 'codebases for founders and product teams.'];
+
+const escape = (text) => text.replace(/&/g, '&amp;').replace(/</g, '&lt;');
 
 async function generate() {
-  // Load and resize the profile photo to fit nicely on the right side
-  const photoSize = 320;
-  const photo = await sharp(path.join(root, 'originals-backup/davor-minchorov-original.jpg'))
+  const photoSize = 300;
+  const photo = await sharp(path.join(root, 'src/assets/davor-minchorov.webp'))
     .resize(photoSize, photoSize, { fit: 'cover', position: 'top' })
-    .composite([{
-      input: Buffer.from(`<svg width="${photoSize}" height="${photoSize}">
+    .composite([
+      {
+        input: Buffer.from(`<svg width="${photoSize}" height="${photoSize}">
         <rect width="${photoSize}" height="${photoSize}" rx="16" ry="16" fill="white"/>
       </svg>`),
-      blend: 'dest-in'
-    }])
+        blend: 'dest-in',
+      },
+    ])
     .png()
     .toBuffer();
 
-  // Create the SVG overlay with text
   const svg = `<svg width="${WIDTH}" height="${HEIGHT}" xmlns="http://www.w3.org/2000/svg">
-    <!-- Subtle accent bar at top -->
     <rect x="0" y="0" width="${WIDTH}" height="4" fill="${ACCENT}"/>
 
-    <!-- Left side text content -->
-    <text x="80" y="220" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="700" fill="${TEXT}" letter-spacing="-1">
-      Davor Minchorov
-    </text>
-    <text x="80" y="275" font-family="-apple-system, 'Helvetica Neue', sans-serif" font-size="26" fill="${TEXT_MUTED}" font-weight="400">
-      Senior PHP Backend Engineer
+    <text x="80" y="150" font-family="${MONO}" font-size="16" font-weight="500" fill="${ACCENT}" letter-spacing="2">
+      ${escape(ROLE.toUpperCase())}
     </text>
 
-    <!-- Separator line -->
+    <text x="80" y="212" font-family="${SERIF}" font-size="40" font-weight="700" fill="${TEXT}" letter-spacing="-1">
+      ${escape(HEADLINE[0])}
+    </text>
+    <text x="80" y="262" font-family="${SERIF}" font-size="40" font-weight="700" fill="${TEXT}" letter-spacing="-1">
+      ${escape(HEADLINE[1])}
+    </text>
+
     <rect x="80" y="305" width="60" height="3" rx="1.5" fill="${ACCENT}"/>
 
-    <!-- Description -->
-    <text x="80" y="360" font-family="-apple-system, 'Helvetica Neue', sans-serif" font-size="19" fill="${TEXT_MUTED}" font-weight="400">
-      APIs, system architecture, and legacy PHP rescue
+    <text x="80" y="358" font-family="${SANS}" font-size="21" fill="${TEXT_MUTED}">
+      ${escape(SUBLINE[0])}
     </text>
-    <text x="80" y="388" font-family="-apple-system, 'Helvetica Neue', sans-serif" font-size="19" fill="${TEXT_MUTED}" font-weight="400">
-      for startups and enterprises.
+    <text x="80" y="388" font-family="${SANS}" font-size="21" fill="${TEXT_MUTED}">
+      ${escape(SUBLINE[1])}
     </text>
 
-    <!-- URL -->
-    <text x="80" y="540" font-family="'Courier New', monospace" font-size="16" fill="${ACCENT}" font-weight="600" letter-spacing="0.5">
+    <text x="80" y="505" font-family="${SERIF}" font-size="26" font-weight="700" fill="${TEXT}">
+      Davor Minchorov
+    </text>
+    <text x="80" y="540" font-family="${MONO}" font-size="16" font-weight="500" fill="${ACCENT}" letter-spacing="0.5">
       davorminchorov.com
     </text>
 
-    <!-- Subtle border bottom -->
     <rect x="0" y="${HEIGHT - 4}" width="${WIDTH}" height="4" fill="${ACCENT}"/>
   </svg>`;
 
-  // Create the base image and composite everything
+  const out = path.join(root, 'public/og-image.jpg');
   await sharp({
-    create: {
-      width: WIDTH,
-      height: HEIGHT,
-      channels: 4,
-      background: BG,
-    }
+    create: { width: WIDTH, height: HEIGHT, channels: 4, background: BG },
   })
     .composite([
-      // SVG text overlay
       { input: Buffer.from(svg), top: 0, left: 0 },
-      // Profile photo on the right
-      { input: photo, top: Math.round((HEIGHT - photoSize) / 2), left: WIDTH - photoSize - 100 },
+      { input: photo, top: Math.round((HEIGHT - photoSize) / 2), left: WIDTH - photoSize - 80 },
     ])
     .jpeg({ quality: 85 })
-    .toFile(path.join(root, 'public/og-image.jpg'));
+    .toFile(out);
 
-  console.log('OG image generated successfully!');
-
-  // Check file size
-  const { size } = await import('fs').then(fs =>
-    fs.promises.stat(path.join(root, 'public/og-image.jpg'))
-  );
-  console.log(`File size: ${(size / 1024).toFixed(1)} KB`);
+  const { size } = fs.statSync(out);
+  console.log(`OG image generated: ${out} (${(size / 1024).toFixed(1)} KB)`);
+  fs.rmSync(fontDir, { recursive: true, force: true });
 }
 
-generate().catch(console.error);
+generate().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});
