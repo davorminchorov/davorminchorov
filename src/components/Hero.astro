@@ -7,8 +7,15 @@ interface StatItem {
   label: string;
 }
 
+// First professional role started June 2015. The stat is computed at build
+// time, and the deploy workflow rebuilds the site daily, so it stays current.
+const CAREER_START = { year: 2015, month: 6 };
+const now = new Date();
+const yearsOfExperience =
+  now.getUTCFullYear() - CAREER_START.year - (now.getUTCMonth() + 1 < CAREER_START.month ? 1 : 0);
+
 const stats: StatItem[] = [
-  { value: '10+', label: 'Years Experience' },
+  { value: `${yearsOfExperience}+`, label: 'Years Experience' },
   { value: '10+', label: 'Industries' },
   { value: '6', label: 'Client Countries' },
 ];
