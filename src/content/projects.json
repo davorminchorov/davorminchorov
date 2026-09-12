@@ -62,7 +62,7 @@
     "title": "Enterprise fintech application",
     "industry": "Fintech",
     "country": "United States",
-    "problem": "A regulated financial application needed new features shipped by a team of developers and QA engineers without putting releases at risk.",
+    "problem": "A Fortune 500 company's regulated financial application needed new features shipped by a team of developers and QA engineers without putting releases at risk.",
     "why": "Regulated financial software cannot ship broken. The job was delivering features while keeping releases safe, and keeping business analysts and product owners in the loop so nothing shipped that they did not expect.",
     "did": [
       "Designed and shipped features.",
