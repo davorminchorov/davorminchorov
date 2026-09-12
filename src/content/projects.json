@@ -116,7 +116,7 @@
     "industry": "Community platform",
     "country": "Switzerland",
     "problem": "A community social network needed new API features, external integrations, and a consistent user interface.",
-    "why": "[PLACEHOLDER: one line on what the platform's users needed and why the API and component work served that.]",
+    "why": "The existing platform was very old and needed a full rewrite from scratch. The new APIs and the reusable component library gave the team a base it could keep building on.",
     "did": [
       "Designed and shipped REST and GraphQL API features.",
       "Integrated third-party APIs.",
