@@ -7,12 +7,12 @@
     "endDate": null,
     "industry": "EdTech (developer education)",
     "outcomes": [
-      "Planned, architected, and implemented features for Codyssey, an educational platform that teaches software engineers how to build and maintain long-term software products rather than quick demos and prototypes.",
-      "Led, managed, and mentored the engineering team responsible for building and shipping the platform.",
-      "Defined the product vision and owned the feature roadmap, prioritizing work aligned with the platform's long-term direction.",
-      "Reviewed code submitted by team members to maintain quality, consistency, and long-term maintainability across the codebase.",
-      "Set up and configured the infrastructure that runs the product in production.",
-      "Prepared and produced educational content for the platform, covering software engineering practices for building durable products."
+      "Designed and built the features of Codyssey, a platform that teaches software engineers how to build and maintain long-term software products instead of quick demos.",
+      "Led and mentored the engineering team building the platform.",
+      "Set the product direction and owned the feature roadmap.",
+      "Reviewed the team's code to keep quality and consistency high.",
+      "Set up and run the production infrastructure.",
+      "Wrote and produced the platform's educational content on building durable software."
     ],
     "skills": ["PHP", "Laravel", "Laravel Cloud", "Statamic", "React", "Next.js", "Tailwind CSS", "TanStack Query", "XState Store", "MySQL", "Redis", "Typesense", "Product Management", "Team Leadership"]
   },
@@ -25,12 +25,12 @@
     "industry": "Nonprofit SaaS platform",
     "clientLocation": "United States",
     "outcomes": [
-      "Planned, designed, and implemented new complex features for an all-in-one nonprofit platform serving a US-based client, including fundraising, workflows, CRM functionality, and RESTful APIs.",
-      "Improved and refactored existing features across the platform to strengthen the reliability and maintainability of the codebase.",
-      "Enhanced internal developer tools and sped up GitHub Actions build times, reducing wait time for the engineering team on every push.",
-      "Investigated and fixed support issues reported by end users, restoring functionality and improving the customer experience.",
-      "Presented ideas on software architecture and design decisions, along with features delivered by the team, to internal stakeholders.",
-      "Wrote automated tests to expand coverage and protect existing functionality against regressions."
+      "Designed and built new features for an all-in-one nonprofit platform: fundraising, workflows, CRM features, and REST APIs.",
+      "Refactored existing features to make the codebase more reliable and easier to maintain.",
+      "Improved internal developer tools and cut GitHub Actions build times.",
+      "Investigated and fixed support issues reported by end users.",
+      "Presented architecture and design proposals to the team, including vertical slice architecture and design patterns and principles, and demoed the Workflows feature and other features delivered by the team to internal stakeholders.",
+      "Wrote automated tests to expand coverage and catch regressions."
     ],
     "skills": ["PHP", "Laravel", "MySQL", "Redis", "Typesense"]
   },
@@ -43,10 +43,10 @@
     "industry": "iGaming",
     "clientLocation": "Montenegro",
     "outcomes": [
-      "Planned, designed, and implemented new and existing features for an iGaming platform built for a Montenegro-based client.",
-      "Built internal packages from scratch to support reusable functionality across the codebase and speed up development for the team.",
-      "Worked on 3rd-party integrations, including blockchain and Web3 services, to extend the platform's capabilities beyond traditional iGaming functionality.",
-      "Wrote automated tests to expand coverage and safeguard against regressions as the platform evolved."
+      "Designed and built new and existing features for an iGaming platform.",
+      "Built internal packages from scratch so the team could reuse common functionality across the codebase.",
+      "Integrated third-party services, including blockchain and Web3, for crypto payments.",
+      "Wrote automated tests to expand coverage and catch regressions."
     ],
     "skills": ["PHP", "Symfony", "MariaDB", "KeyDB", "Docker"]
   },
@@ -59,9 +59,9 @@
     "industry": "Healthcare (medical web app)",
     "clientLocation": "Italy",
     "outcomes": [
-      "Planned, designed, and implemented REST API endpoints for new features on a medical web application built for an Italy-based client.",
-      "Improved, optimised, and refactored the existing codebase for current features.",
-      "Fixed production bugs to keep the application stable.",
+      "Built REST API endpoints for new features on a medical web application.",
+      "Refactored and optimised the existing codebase.",
+      "Fixed production bugs.",
       "Wrote feature tests for the new features."
     ],
     "skills": ["PHP", "Laravel", "MySQL", "Docker"]
@@ -75,10 +75,11 @@
     "industry": "Entertainment (enterprise web app)",
     "clientLocation": "Canada",
     "outcomes": [
-      "Planned, architected, designed, and implemented new and existing features for an enterprise web application in the entertainment industry, covering both traditional server-rendered functionality and REST API endpoints.",
-      "Fixed release and production bugs to keep the application stable and minimize impact on end users.",
-      "Refactored code to improve performance and readability, making the codebase easier for the team to work with over time.",
-      "Interviewed and reviewed technical assignments submitted by PHP candidates during the hiring process, and mentored interns as part of the internship programs, besides client work."
+      "Designed and built new and existing features for an enterprise entertainment web application for a Canada-based client, both server-rendered pages and REST API endpoints.",
+      "Worked directly with the client on requirements and delivery.",
+      "Fixed release and production bugs.",
+      "Refactored code for performance and readability.",
+      "Interviewed PHP candidates and reviewed their technical assignments, and mentored interns in the internship program."
     ],
     "skills": ["PHP", "Percona", "Memcached", "Elasticsearch"]
   },
@@ -91,11 +92,11 @@
     "industry": "Community social network",
     "clientLocation": "Switzerland",
     "outcomes": [
-      "Planned, designed, and implemented new features for the REST API and GraphQL layer of a community social network web application built for a Switzerland-based client.",
-      "Integrated 3rd-party APIs to extend the platform's functionality and connect it to external services.",
-      "Fixed bugs across the application to maintain stability and improve the user experience.",
-      "Wrote unit and feature tests following a test-driven development (TDD) approach to safeguard functionality and guide implementation.",
-      "Designed and implemented UI components for the user-facing application, contributing to a consistent and reusable component library."
+      "Built new features for the REST API and GraphQL layer of a community social network web application.",
+      "Integrated third-party APIs to connect the platform to external services.",
+      "Fixed bugs across the application.",
+      "Wrote unit and feature tests using TDD.",
+      "Built UI components for the user-facing app as part of a reusable component library."
     ],
     "skills": ["PHP", "Laravel", "Vue 2", "GraphQL", "REST", "Elasticsearch", "MySQL", "Redis"]
   },
@@ -108,8 +109,8 @@
     "industry": "Employee engagement",
     "clientLocation": "Local (Macedonia)",
     "outcomes": [
-      "Planned, designed, and implemented new admin panel and REST API features for an employee engagement web application built for a local client.",
-      "Fixed bugs to keep the application stable."
+      "Built new admin panel and REST API features for an employee engagement web application.",
+      "Fixed bugs."
     ],
     "skills": ["PHP", "Laravel", "Bootstrap", "jQuery", "MySQL", "Docker"]
   },
@@ -122,9 +123,9 @@
     "industry": "Human resources",
     "clientLocation": "United Arab Emirates",
     "outcomes": [
-      "Planned, designed, and implemented new features for a human resources web application built for a UAE-based client.",
-      "Improved the existing features, code, architecture, workflow processes, and scalability of the project.",
-      "Fixed critical bugs to keep the application stable."
+      "Built new features for a human resources web application.",
+      "Improved existing features, code, architecture, workflow, and scalability.",
+      "Fixed critical bugs."
     ],
     "skills": ["PHP", "CakePHP", "JavaScript", "MySQL", "Docker"]
   },
@@ -138,7 +139,7 @@
     "outcomes": [
       "Mentored women at Adeva's Female Bootcamp 2018 as part of the Exclusive Developers' Network.",
       "Worked on internal projects alongside client work.",
-      "Prepared and reviewed the technical screening task for PHP candidates and interviewed candidates during the hiring process.",
+      "Wrote and reviewed the technical screening task for PHP candidates and interviewed candidates during hiring.",
       "Curated links for the developer community newsletter."
     ],
     "skills": []
@@ -152,11 +153,11 @@
     "industry": "Financial (fintech)",
     "clientLocation": "United States",
     "outcomes": [
-      "Planned, architected, designed, and implemented new and existing features for an enterprise financial web application built for a US-based client.",
-      "Fixed release and production bugs to keep the application stable, and attended and supported production releases, addressing issues as they surfaced during deployment.",
-      "Presented implemented features and enhancements to business analysts and product owners, walking them through the delivered work.",
-      "Led a team of developers and quality assurance engineers, coordinating day-to-day work and delivery.",
-      "Wrote and presented architectural and technical proposals aimed at improving project structure and overall code quality."
+      "Designed and built new and existing features for an enterprise financial web application.",
+      "Fixed release and production bugs, and supported production releases as issues came up during deployment.",
+      "Presented delivered features to business analysts and product owners.",
+      "Led a team of developers and QA engineers, coordinating day-to-day work and delivery.",
+      "Wrote and presented architecture and technical proposals to improve project structure and code quality."
     ],
     "skills": ["PHP", "Laravel", "Lumen", "MySQL", "Docker"]
   },
@@ -168,8 +169,8 @@
     "endDate": "2018-01",
     "industry": "Real estate",
     "outcomes": [
-      "Planned, designed, and implemented features for a small real estate web application as a part-time consultant.",
-      "Fixed bugs to keep the application stable."
+      "Built new features for a small real estate web application as a part-time consultant.",
+      "Fixed bugs."
     ],
     "skills": ["PHP", "Laravel", "Bootstrap", "jQuery", "MySQL", "Docker"]
   },
@@ -181,10 +182,10 @@
     "endDate": "2017-12",
     "industry": "Enterprise resource planning (ERP)",
     "outcomes": [
-      "Architected a scalable project structure designed to support long-term growth and ongoing feature development for both the transportation dispatcher ERP and the API for the driver app.",
-      "Planned, architected, designed, and implemented features for the ERP web application and the API for the mobile app to deliver business functionality to end users.",
-      "Planned, architected, designed, and implemented front-end features, contributing to the user-facing side of the ERP application.",
-      "Mentored interns, supporting their growth as engineers and helping them ramp up on the team's practices."
+      "Set up the project structure for the dispatcher ERP and the API for the driver app so both could grow without a rewrite.",
+      "Built features for the ERP web application and the mobile app API.",
+      "Built front-end features for the ERP.",
+      "Mentored interns and helped them learn the team's practices."
     ],
     "skills": ["PHP", "Laravel", "Lumen", "JavaScript", "jQuery", "Bootstrap", "MySQL", "MongoDB", "Redis", "Docker"]
   },
@@ -196,12 +197,12 @@
     "endDate": "2017-02",
     "industry": "Media & broadcasting",
     "outcomes": [
-      "Built web applications from the ground up as part of a small team across multiple projects in the media, broadcasting, and civic technology space.",
-      "Developed a live camera monitoring web application used to view cameras during an election, implementing admin panel features and integrating an external API to gather monitoring data.",
-      "Engineered a web application for TV broadcasters and operators to manage everyday operational activities, implementing admin panel features and integrating an external API to manage remote servers.",
-      "Architected an online video platform web application, implementing admin panel features, public-facing website functionality, REST API endpoints, and integrations with external APIs.",
-      "Implemented the front end of the customer panel for a TV-as-a-service platform serving broadcasters, media companies, and TV operators across cable, satellite, terrestrial, IPTV, and OTT.",
-      "Mentored two colleagues by reviewing their code and helping them work through solutions for the tasks they were assigned."
+      "Built web applications from scratch as part of a small team, across projects in media, broadcasting, and civic tech.",
+      "Built a live camera monitoring web app used to view cameras during an election: admin panel features and an external API integration for monitoring data.",
+      "Built a web app for TV broadcasters and operators to manage day-to-day operations: admin panel features and an external API integration for managing remote servers.",
+      "Designed and built an online video platform: admin panel, public website, REST API endpoints, and external API integrations.",
+      "Built the front end of the customer panel for a TV-as-a-service platform used by broadcasters, media companies, and TV operators across cable, satellite, terrestrial, IPTV, and OTT.",
+      "Mentored two colleagues through code reviews and pairing on their tasks."
     ],
     "skills": ["PHP", "Laravel", "Vue 2", "JavaScript", "jQuery", "Node.js", "MySQL", "Redis", "Docker"]
   },
@@ -213,10 +214,10 @@
     "endDate": "2016-03",
     "industry": "Email marketing",
     "outcomes": [
-      "Built an email marketing web application from the ground up as part of a team, implementing features, writing functional, integration, and acceptance tests, and refactoring legacy code.",
-      "Researched, planned, designed, and implemented a customer support feature from scratch with input from the team, and designed part of the broader application structure and database schema.",
-      "Powered the application with real-time functionality by building a real-time support chat for the support features as part of the main product.",
-      "Presented internal talks on BEM (CSS naming convention), real-time notifications with Laravel, Node.js, Redis, and Socket.io, automated testing, and Git workflow, and helped the team adopt new tools into the daily development workflow."
+      "Built an email marketing web application from scratch as part of a team: features, functional/integration/acceptance tests, and legacy code refactoring.",
+      "Researched, planned, and built a customer support feature from scratch with the team, and designed part of the application structure and database schema.",
+      "Built a real-time support chat for the support features.",
+      "Gave internal talks on BEM (CSS naming), real-time notifications with Laravel, Node.js, Redis, and Socket.io, automated testing, and Git workflow, and helped the team adopt new tools."
     ],
     "skills": ["PHP", "Laravel", "JavaScript", "jQuery", "Node.js", "Socket.IO", "MySQL", "Redis", "Docker"]
   },
@@ -228,9 +229,9 @@
     "endDate": "2015-11",
     "industry": "Email marketing",
     "outcomes": [
-      "Implemented new features for an email marketing web application built from the ground up with Laravel as part of a team.",
+      "Built new features for an email marketing web application built from scratch with Laravel, as part of a team.",
       "Wrote functional, integration, and acceptance tests and refactored legacy code.",
-      "Designed parts of the application structure and database schema, and contributed feature ideas to the team."
+      "Designed parts of the application structure and database schema, and contributed feature ideas."
     ],
     "skills": ["PHP", "Laravel", "JavaScript", "jQuery", "MySQL", "Apache", "PHPUnit", "Codeception"]
   },
@@ -242,7 +243,7 @@
     "endDate": "2011-08",
     "industry": "Banking",
     "outcomes": [
-      "Developed an inventory-tracking Windows Forms application in C# during a summer internship."
+      "Built an inventory-tracking Windows Forms application in C# during a summer internship."
     ],
     "skills": ["C#", "Windows Forms"]
   }
