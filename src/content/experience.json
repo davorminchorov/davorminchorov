@@ -157,7 +157,7 @@
       "Fixed release and production bugs, and supported production releases as issues came up during deployment.",
       "Presented delivered features to business analysts and product owners.",
       "Led a team of developers and QA engineers, coordinating day-to-day work and delivery.",
-      "Wrote and presented architecture and technical proposals to improve project structure and code quality, and got them adopted."
+      "Wrote and presented architecture and technical proposals to improve project structure and code quality."
     ],
     "skills": ["PHP", "Laravel", "Lumen", "MySQL", "Docker"]
   },

@@ -43,7 +43,7 @@
     "industry": "Entertainment",
     "country": "Canada",
     "problem": "A high-traffic platform serving millions of daily users had search performance and caching problems.",
-    "why": "Millions of daily users means small latency problems become support tickets and churn. [PLACEHOLDER: one line on what users actually felt before the search and caching work, e.g. slow search results or slow page loads.]",
+    "why": "Millions of daily users means small latency problems become support tickets and churn.",
     "did": [
       "Search performance and caching work with Elasticsearch, Memcached, and Percona.",
       "Designed and shipped new features (server-rendered and REST API).",
