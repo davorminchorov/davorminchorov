@@ -63,6 +63,8 @@ const ogImageURL = new URL(image, Astro.site).href;
         id="mobile-toggle"
         class="md:hidden bg-transparent border-none text-text cursor-pointer"
         aria-label="Menu"
+        aria-controls="nav-links"
+        aria-expanded="false"
       >
         <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8">
           <path d="M4 6h14M4 11h14M4 16h14" />
@@ -100,21 +102,22 @@ const ogImageURL = new URL(image, Astro.site).href;
   </footer>
 
   <script>
-    // Mobile nav toggle
-    document.getElementById('mobile-toggle')?.addEventListener('click', () => {
-      const nav = document.getElementById('nav-links');
-      nav?.classList.toggle('hidden');
-      nav?.classList.toggle('flex');
-      nav?.classList.toggle('flex-col');
-      nav?.classList.toggle('absolute');
-      nav?.classList.toggle('top-[60px]');
-      nav?.classList.toggle('left-0');
-      nav?.classList.toggle('right-0');
-      nav?.classList.toggle('bg-bg/[0.97]');
-      nav?.classList.toggle('backdrop-blur-md');
-      nav?.classList.toggle('p-5');
-      nav?.classList.toggle('border-b');
-      nav?.classList.toggle('border-border');
+    // Mobile nav toggle. The menu is an overlay on small screens, so it also
+    // closes when a section link inside it is tapped.
+    const toggle = document.getElementById('mobile-toggle');
+    const nav = document.getElementById('nav-links');
+    const OPEN_CLASSES = ['flex', 'flex-col', 'absolute', 'top-[60px]', 'left-0', 'right-0', 'bg-bg/[0.97]', 'backdrop-blur-md', 'p-5', 'border-b', 'border-border'];
+    const setMenuOpen = (open: boolean) => {
+      if (!nav || !toggle) return;
+      nav.classList.toggle('hidden', !open);
+      OPEN_CLASSES.forEach((cls) => nav.classList.toggle(cls, open));
+      toggle.setAttribute('aria-expanded', String(open));
+    };
+    toggle?.addEventListener('click', () => {
+      setMenuOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+    nav?.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setMenuOpen(false));
     });
 
     // Scroll animation observer
