@@ -5,12 +5,14 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  imageAlt?: string;
 }
 
 const {
   title = 'Davor Minchorov | Product Software Engineer (PHP)',
   description = 'Product software engineer working in PHP. I help founders and product teams build APIs, design architecture, and modernise existing codebases, with an eye on what the product is for.',
   image = '/og-image.jpg',
+  imageAlt = 'Davor Minchorov, Product Software Engineer (PHP). I build PHP products that have to keep working for years.',
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
@@ -37,12 +39,16 @@ const ogImageURL = new URL(image, Astro.site).href;
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:image" content={ogImageURL} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content={imageAlt} />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImageURL} />
+  <meta name="twitter:image:alt" content={imageAlt} />
 
   <script defer data-domain="davorminchorov.com" src="https://plausible.io/js/plausible.js"></script>
 </head>
