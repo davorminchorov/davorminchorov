@@ -27,7 +27,8 @@
       "Designed and shipped the new features and the REST APIs behind them.",
       "Refactored existing features.",
       "Cut GitHub Actions build times so the team stopped waiting on CI.",
-      "Proposed and got agreement on the architecture (vertical slice architecture, design patterns and principles) and demoed features including the Workflows feature to stakeholders.",
+      "Proposed and got agreement on the architecture: vertical slice architecture, design patterns and principles.",
+      "Demoed the Workflows feature and other features delivered by the team to stakeholders.",
       "Wrote automated tests."
     ],
     "result": "Fundraising, workflow, and CRM features shipped to production, backed by tests. GitHub Actions builds that took 30 to 60 minutes now finish in under 10.",
@@ -98,18 +99,18 @@
     "order": 5
   },
   {
-    "title": "Healthcare web application",
+    "title": "COVID testing laboratory web application",
     "industry": "Healthcare",
     "country": "Italy",
-    "problem": "A medical web application handling patient records and clinical workflows needed new API features and a cleaner codebase.",
-    "why": "Patient records and clinical workflows. Correctness mattered more than speed, so every new endpoint shipped with tests.",
+    "problem": "A laboratory running COVID tests during the pandemic had a medical web application that needed stabilising, plus new API features, on a short engagement.",
+    "why": "The app handled patient records and clinical workflows for COVID testing, so correctness mattered more than speed and every new endpoint shipped with tests.",
     "did": [
-      "Built REST API endpoints.",
-      "Refactored and optimised existing code.",
+      "Stabilised and improved the existing platform.",
+      "Built REST API endpoints for new features.",
       "Fixed production bugs.",
-      "Wrote feature tests."
+      "Wrote feature tests for the new endpoints."
     ],
-    "result": "New API endpoints in production, each covered by feature tests, so the team could keep changing an app that handles patient records without breaking it.",
+    "result": "A more stable platform for the laboratory, with new API endpoints in production, each covered by feature tests.",
     "stack": ["PHP", "Laravel", "MySQL", "Docker"],
     "colorScheme": "warm",
     "order": 6

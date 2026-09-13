@@ -29,7 +29,8 @@
       "Refactored existing features to make the codebase more reliable and easier to maintain.",
       "Cut GitHub Actions build times so the team stopped waiting on CI.",
       "Investigated and fixed support issues reported by end users.",
-      "Proposed and got agreement on the architecture, including vertical slice architecture and design patterns and principles, and demoed the Workflows feature and other features delivered by the team to internal stakeholders.",
+      "Proposed and got agreement on the architecture: vertical slice architecture, design patterns and principles.",
+      "Demoed the Workflows feature and other features delivered by the team to internal stakeholders.",
       "Wrote automated tests to expand coverage and catch regressions."
     ],
     "skills": ["PHP", "Laravel", "MySQL", "Redis", "Typesense"]
@@ -56,13 +57,13 @@
     "location": "Skopje, Macedonia | Remote",
     "startDate": "2022-01",
     "endDate": "2022-04",
-    "industry": "Healthcare (medical web app)",
+    "industry": "Healthcare (COVID testing laboratory)",
     "clientLocation": "Italy",
     "outcomes": [
-      "Built REST API endpoints for new features on a medical web application.",
-      "Refactored and optimised the existing codebase.",
+      "Stabilised and improved a medical web application for a laboratory running COVID tests, on a short engagement.",
+      "Built REST API endpoints for new features.",
       "Fixed production bugs.",
-      "Wrote feature tests for the new features."
+      "Wrote feature tests for the new endpoints."
     ],
     "skills": ["PHP", "Laravel", "MySQL", "Docker"]
   },
@@ -109,8 +110,7 @@
     "industry": "Employee engagement",
     "clientLocation": "Local (Macedonia)",
     "outcomes": [
-      "Built new admin panel and REST API features for an employee engagement web application.",
-      "Fixed bugs."
+      "Built new admin panel and REST API features for an employee engagement web application."
     ],
     "skills": ["PHP", "Laravel", "Bootstrap", "jQuery", "MySQL", "Docker"]
   },
@@ -131,21 +131,6 @@
   },
   {
     "company": "Adeva",
-    "title": "Community Member",
-    "location": "Skopje, Macedonia | Remote",
-    "startDate": "2018-01",
-    "endDate": "2019-09",
-    "industry": "Developer network / community",
-    "outcomes": [
-      "Mentored women at Adeva's Female Bootcamp 2018 as part of the Exclusive Developers' Network.",
-      "Worked on internal projects alongside client work.",
-      "Wrote and reviewed the technical screening task for PHP candidates and interviewed candidates during hiring.",
-      "Curated links for the developer community newsletter."
-    ],
-    "skills": []
-  },
-  {
-    "company": "Adeva",
     "title": "PHP Backend Engineer",
     "location": "Skopje, Macedonia | Remote",
     "startDate": "2018-01",
@@ -163,14 +148,13 @@
   },
   {
     "company": "3P Development",
-    "title": "Part-Time Freelance Consultant",
+    "title": "Part-Time Consultant",
     "location": "Remote",
     "startDate": "2017-10",
     "endDate": "2018-01",
     "industry": "Real estate",
     "outcomes": [
-      "Built new features for a small real estate web application as a part-time consultant.",
-      "Fixed bugs."
+      "Built new features for a small real estate web application as a part-time consultant."
     ],
     "skills": ["PHP", "Laravel", "Bootstrap", "jQuery", "MySQL", "Docker"]
   },
