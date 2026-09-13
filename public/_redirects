@@ -1,0 +1,30 @@
+# Redirect rules for Cloudflare Workers static assets.
+# Astro copies this file from public/ into dist/ at build time, and Wrangler
+# applies the rules at the edge instead of serving the file.
+# Format: [source] [destination] [status]
+# Docs: https://developers.cloudflare.com/workers/static-assets/redirects/
+
+# The "Building Maintainable PHP Applications" article series moved to Codyssey
+# as the free course "Building Maintainable PHP Applications: Foundations":
+# https://codyssey.dev/courses/building-maintainable-php-applications-foundations
+# Each old article path redirects permanently to its matching lesson. Cloudflare
+# matches paths exactly, so each path is listed with and without a trailing slash.
+
+/articles/building-maintainable-php-applications-accidental-vs-essential-complexity https://codyssey.dev/courses/building-maintainable-php-applications-foundations/accidental-vs-essential-complexity 301
+/articles/building-maintainable-php-applications-accidental-vs-essential-complexity/ https://codyssey.dev/courses/building-maintainable-php-applications-foundations/accidental-vs-essential-complexity 301
+/articles/building-maintainable-php-applications-thinking-data-vs-thinking-business-processes https://codyssey.dev/courses/building-maintainable-php-applications-foundations/thinking-data-vs-thinking-business-processes 301
+/articles/building-maintainable-php-applications-thinking-data-vs-thinking-business-processes/ https://codyssey.dev/courses/building-maintainable-php-applications-foundations/thinking-data-vs-thinking-business-processes 301
+/articles/building-maintainable-php-applications-framework-decoupling-vs-framework-coupling https://codyssey.dev/courses/building-maintainable-php-applications-foundations/framework-coupling-vs-framework-decoupling 301
+/articles/building-maintainable-php-applications-framework-decoupling-vs-framework-coupling/ https://codyssey.dev/courses/building-maintainable-php-applications-foundations/framework-coupling-vs-framework-decoupling 301
+
+# The old slug for "Over-engineering vs under-engineering" could not be confirmed
+# (the article is not indexed by search engines and the freek.dev link to it was
+# unreachable). The slug below follows the naming pattern of the other four
+# articles. If the real slug differs, correct the source path here.
+/articles/building-maintainable-php-applications-over-engineering-vs-under-engineering https://codyssey.dev/courses/building-maintainable-php-applications-foundations/under-engineering-vs-over-engineering 301
+/articles/building-maintainable-php-applications-over-engineering-vs-under-engineering/ https://codyssey.dev/courses/building-maintainable-php-applications-foundations/under-engineering-vs-over-engineering 301
+
+# TODO: redirect the remaining article of the series once the next course,
+# "Building Maintainable PHP Applications: The Toolkit", goes live on Codyssey.
+# It has no live lesson to point to yet, so it must stay reachable until then.
+#   /articles/building-maintainable-php-applications-data-transfer-objects
