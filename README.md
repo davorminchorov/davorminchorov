@@ -82,7 +82,7 @@ The site uses a professional light-mode palette defined in `tailwind.config.mjs`
 
 ## Deployment (Cloudflare Workers)
 
-`.github/workflows/deploy.yml` builds the site and deploys it with Wrangler on every push to `main`, and once a day on a schedule so newly published Codyssey content shows up without a push. It needs the `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repository secrets. Routes and the custom domain are set in `wrangler.toml`.
+`.github/workflows/deploy.yml` builds the site and deploys it with Wrangler on every push to `main`, and once a day on a schedule so newly published Codyssey content shows up without a push. Pull requests run the same build (including the CV PDF step) without deploying. It needs the `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repository secrets. Routes and the custom domain are set in `wrangler.toml`.
 
 ## Customization
 

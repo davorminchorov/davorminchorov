@@ -1,8 +1,11 @@
-name: Deploy to Cloudflare Workers
+name: Build and deploy
 
 on:
   push:
     branches: [main]
+  # Pull requests run the full build (including the CV PDF step) but skip the
+  # deploy, so a broken build shows up on the PR instead of on main.
+  pull_request:
   workflow_dispatch:
   # Rebuild daily so newly published Codyssey content (fetched at build time
   # in src/components/Writing.astro) appears without a manual push.
@@ -33,6 +36,7 @@ jobs:
       - run: pnpm build
 
       - uses: cloudflare/wrangler-action@v4
+        if: github.event_name != 'pull_request'
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
