@@ -1,21 +1,15 @@
 ---
 import { Image } from 'astro:assets';
 import portrait from '../assets/davor-minchorov.webp';
+import { yearsOfExperience } from '../lib/career';
 
 interface StatItem {
   value: string;
   label: string;
 }
 
-// First professional role started June 2015. The stat is computed at build
-// time, and the deploy workflow rebuilds the site daily, so it stays current.
-const CAREER_START = { year: 2015, month: 6 };
-const now = new Date();
-const yearsOfExperience =
-  now.getUTCFullYear() - CAREER_START.year - (now.getUTCMonth() + 1 < CAREER_START.month ? 1 : 0);
-
 const stats: StatItem[] = [
-  { value: `${yearsOfExperience}+`, label: 'Years Experience' },
+  { value: `${yearsOfExperience()}+`, label: 'Years Experience' },
   { value: '10+', label: 'Industries' },
   { value: '6', label: 'Client Countries' },
 ];
@@ -37,7 +31,14 @@ const stats: StatItem[] = [
         <p class="text-[17px] text-text-secondary max-w-[540px] leading-relaxed animate delay-2 mt-2">
           I also run <a href="https://codyssey.dev" class="text-accent font-medium no-underline hover:underline" target="_blank" rel="noopener noreferrer">Codyssey.dev</a>, where I teach engineers to build maintainable software.
         </p>
-        <div class="flex flex-wrap gap-3 mt-8 animate delay-3"><a href="#contact" class="btn-primary">Work with me</a><a href="#projects" class="btn-secondary">See my work</a></div>
+        <div class="flex flex-wrap gap-3 mt-8 animate delay-3">
+          <a href="#contact" class="btn-primary">Work with me</a>
+          <a href="#projects" class="btn-secondary">See my work</a>
+          <a href="/davor-minchorov-cv.pdf" download class="btn-secondary">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 2v7M4 6.5L7 9.5 10 6.5M2.5 11.5h9"/></svg>
+            Download CV
+          </a>
+        </div>
       </div>
       <div class="shrink-0 animate delay-2">
         <Image

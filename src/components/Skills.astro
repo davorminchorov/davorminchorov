@@ -1,21 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
+import { sortSkillGroups } from '../lib/career';
 
-// Stable display order; groups not listed fall to the end.
-const CATEGORY_ORDER = [
-  'Core',
-  'Architecture',
-  'Also comfortable with',
-];
-
-const orderOf = (category: string) => {
-  const index = CATEGORY_ORDER.indexOf(category);
-  return index === -1 ? CATEGORY_ORDER.length : index;
-};
-
-const groups = (await getCollection('skills'))
-  .filter((group) => group.data.items.length > 0)
-  .sort((a, b) => orderOf(a.data.category) - orderOf(b.data.category));
+const groups = sortSkillGroups(await getCollection('skills'));
 ---
 
 <section id="skills" class="py-[88px] border-t border-border">

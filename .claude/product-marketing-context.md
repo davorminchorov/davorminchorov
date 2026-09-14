@@ -89,5 +89,5 @@ This file describes the positioning the site currently uses. Copy on the site is
 
 ## Goals
 **Business goal:** Attract contract engineering work (long-term contracts and focused projects) and send engineers to Codyssey.dev
-**Conversion action:** The "Send me an email" button in the Contact section (mailto), with Upwork, Toptal, LinkedIn, and GitHub as secondary links. The site promises a reply within a day.
+**Conversion action:** The "Send me an email" button in the Contact section (mailto), with Upwork, Toptal, LinkedIn, and GitHub as secondary links. The site promises a reply within a day. A "Download CV" link in the hero and contact sections serves a PDF generated at build time from the same experience, skills, and talks data as the site (also viewable at /cv).
 **Current metrics:** Plausible Analytics is integrated; no data recorded here
