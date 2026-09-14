@@ -1,0 +1,215 @@
+---
+// A print-first CV built from the same content collections as the homepage.
+// scripts/generate-cv-pdf.mjs renders this page to /davor-minchorov-cv.pdf
+// after every build, so the PDF can never drift from the site.
+import '../styles/global.css';
+import { getCollection } from 'astro:content';
+import { formatMonth, sortSkillGroups, yearsOfExperience } from '../lib/career';
+
+const roles = (await getCollection('experience')).sort((a, b) =>
+  b.data.startDate.localeCompare(a.data.startDate),
+);
+const skillGroups = sortSkillGroups(await getCollection('skills'));
+const talks = (await getCollection('talks')).sort((a, b) => b.data.date.localeCompare(a.data.date));
+
+const title = 'Davor Minchorov | CV | Product Software Engineer (PHP)';
+const description =
+  'CV of Davor Minchorov, product software engineer working in PHP: work experience, skills, and talks. Available as a PDF download.';
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
+
+const contact = [
+  { label: 'davorminchorov@gmail.com', href: 'mailto:davorminchorov@gmail.com' },
+  { label: 'davorminchorov.com', href: 'https://davorminchorov.com' },
+  { label: 'linkedin.com/in/davorminchorov', href: 'https://linkedin.com/in/davorminchorov' },
+  { label: 'github.com/davorminchorov', href: 'https://github.com/davorminchorov' },
+];
+
+const updatedOn = new Date().toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' });
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="author" content="Davor Minchorov" />
+  <title>{title}</title>
+  <link rel="canonical" href={canonicalURL} />
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <script defer data-domain="davorminchorov.com" src="https://plausible.io/js/plausible.file-downloads.js"></script>
+</head>
+<body class="print:bg-white">
+  <!-- Toolbar: only on screen, never in the PDF or on paper -->
+  <nav class="print:hidden sticky top-0 z-10 bg-bg/85 backdrop-blur-md border-b border-border">
+    <div class="max-w-[860px] mx-auto px-5 sm:px-7 h-[56px] flex items-center justify-between gap-4">
+      <a href="/" class="text-sm font-medium text-text-muted no-underline hover:text-text transition-colors whitespace-nowrap">
+        &larr; Back to site
+      </a>
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button id="print-cv" type="button" class="btn-secondary !py-2 !px-4 whitespace-nowrap">Print</button>
+        <a href="/davor-minchorov-cv.pdf" download class="btn-primary !py-2 !px-4 whitespace-nowrap">Download PDF</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="cv max-w-[860px] mx-auto my-8 sm:my-12 px-6 py-10 sm:px-14 sm:py-14 bg-bg-card border border-border rounded-xl shadow-sm print:max-w-none print:m-0 print:p-0 print:border-0 print:rounded-none print:shadow-none">
+    <!-- Header -->
+    <header class="border-b-2 border-accent pb-5">
+      <h1 class="font-display text-[34px] leading-none font-bold tracking-tight text-text">Davor Minchorov</h1>
+      <p class="font-mono text-[12px] text-accent uppercase tracking-wider font-medium mt-2.5">
+        Product Software Engineer · PHP
+      </p>
+      <ul class="flex flex-wrap gap-x-4 gap-y-1 mt-3.5 text-[13px] text-text-secondary list-none p-0 m-0">
+        {contact.map((item) => (
+          <li>
+            <a href={item.href} class="text-text-secondary no-underline hover:text-accent">{item.label}</a>
+          </li>
+        ))}
+        <li>Skopje, Macedonia · Remote</li>
+      </ul>
+    </header>
+
+    <!-- Summary -->
+    <section class="mt-6">
+      <h2 class="cv-heading">Summary</h2>
+      <p class="cv-text">
+        Product software engineer working in PHP, building software professionally since 2015 ({yearsOfExperience()}+ years), from small startups to Fortune 500 companies, across healthcare, fintech, iGaming, entertainment, and non-profit. I work with founders, CTOs, and product teams who have a PHP application in production and need it to keep growing without falling over. Sometimes the work is new APIs and architecture. Sometimes it is taking over an existing codebase and making it safe to change again.
+      </p>
+      <p class="cv-text mt-2">
+        I ask what the business is trying to achieve before I write code, plan in writing, and ship with tests. I have worked in English through Toptal and Adeva with clients in the US, Canada, Switzerland, Italy, Montenegro, and the UAE. I also run <a href="https://codyssey.dev" class="cv-link">Codyssey.dev</a>, where I teach engineers to build maintainable software.
+      </p>
+    </section>
+
+    <!-- Experience -->
+    <section class="mt-7">
+      <h2 class="cv-heading">Experience</h2>
+      <div class="space-y-5">
+        {roles.map((role) => (
+          <article>
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-4">
+              <h3 class="text-[15px] font-semibold tracking-tight text-text m-0">
+                {role.data.title}
+                <span class="font-normal text-text-muted"> · </span>
+                <span class="font-medium text-accent">{role.data.company}</span>
+              </h3>
+              <span class="text-[12.5px] text-text-dim whitespace-nowrap">
+                {formatMonth(role.data.startDate)} – {formatMonth(role.data.endDate)}
+              </span>
+            </div>
+            <p class="text-[12.5px] text-text-muted mt-0.5">
+              {role.data.industry}
+              {role.data.clientLocation && <span> · Client: {role.data.clientLocation}</span>}
+              {role.data.location && <span> · {role.data.location}</span>}
+            </p>
+            <ul class="mt-2 space-y-1 pl-4 list-disc marker:text-accent">
+              {role.data.outcomes.map((outcome) => (
+                <li class="cv-text">{outcome}</li>
+              ))}
+            </ul>
+            {role.data.skills.length > 0 && (
+              <p class="text-[12.5px] text-text-muted mt-1.5">
+                <span class="font-medium text-text-secondary">Stack:</span> {role.data.skills.join(', ')}
+              </p>
+            )}
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="mt-7 break-inside-avoid">
+      <h2 class="cv-heading">Skills</h2>
+      <dl class="m-0 space-y-2">
+        {skillGroups.map((group) => (
+          <div class="sm:grid sm:grid-cols-[180px_1fr] sm:gap-x-4">
+            <dt class="text-[13px] font-semibold text-text tracking-tight">{group.data.category}</dt>
+            <dd class="cv-text m-0">{group.data.items.join(', ')}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+
+    <!-- Talks & writing -->
+    <section class="mt-7 break-inside-avoid">
+      <h2 class="cv-heading">Talks &amp; Writing</h2>
+      <ul class="m-0 p-0 list-none space-y-2">
+        {talks.map((talk) => (
+          <li class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-4">
+            <span class="cv-text">
+              <a href={talk.data.url} class="cv-link font-medium">{talk.data.title}</a>
+              <span class="text-text-muted"> · {talk.data.type}, {talk.data.event}</span>
+            </span>
+            <span class="text-[12.5px] text-text-dim whitespace-nowrap">{formatMonth(talk.data.date)}</span>
+          </li>
+        ))}
+        <li class="cv-text">
+          Courses, learning paths, and articles on building maintainable PHP applications, published on
+          <a href="https://codyssey.dev/author-profile/davor-minchorov" class="cv-link">Codyssey.dev</a>.
+        </li>
+      </ul>
+    </section>
+
+    <footer class="mt-8 pt-4 border-t border-border text-[11.5px] text-text-dim flex flex-wrap justify-between gap-2">
+      <span>Updated {updatedOn}</span>
+      <span>Latest version: <a href="https://davorminchorov.com/cv" class="text-text-dim no-underline hover:text-accent">davorminchorov.com/cv</a></span>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('print-cv')?.addEventListener('click', () => window.print());
+  </script>
+</body>
+</html>
+
+<style is:global>
+  @page {
+    size: A4;
+    margin: 14mm 15mm 16mm;
+  }
+
+  .cv {
+    line-height: 1.5;
+  }
+
+  .cv-heading {
+    @apply font-mono text-[11px] text-accent uppercase tracking-widest font-medium mb-2.5 pb-1.5 border-b border-border;
+  }
+
+  .cv-text {
+    @apply text-[13px] text-text-secondary leading-relaxed;
+  }
+
+  .cv-link {
+    @apply text-accent no-underline hover:underline;
+  }
+
+  @media print {
+    html {
+      scroll-behavior: auto;
+    }
+
+    /* A role may span two pages, but its heading stays with its first
+       bullets and a single bullet never splits. */
+    .cv article > div,
+    .cv article > p:first-of-type,
+    .cv h2 {
+      break-after: avoid;
+    }
+
+    .cv li {
+      break-inside: avoid;
+    }
+
+    .cv a {
+      color: inherit;
+    }
+
+    .cv .cv-link,
+    .cv .text-accent {
+      color: #1a5c3a;
+    }
+  }
+</style>

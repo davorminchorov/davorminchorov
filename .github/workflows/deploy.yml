@@ -26,6 +26,10 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
+      # Headless Chromium renders /cv to davor-minchorov-cv.pdf during the build
+      # (scripts/generate-cv-pdf.mjs).
+      - run: pnpm exec playwright install --with-deps chromium
+
       - run: pnpm build
 
       - uses: cloudflare/wrangler-action@v4

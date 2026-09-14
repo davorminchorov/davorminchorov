@@ -5,6 +5,7 @@ const profiles = [
   { label: 'Toptal', href: 'https://www.toptal.com/developers/resume/davor-minchorov', style: 'arrow-link' },
   { label: 'LinkedIn', href: 'https://linkedin.com/in/davorminchorov', style: 'arrow-link' },
   { label: 'GitHub', href: 'https://github.com/davorminchorov', style: 'arrow-link' },
+  { label: 'Download CV (PDF)', href: '/davor-minchorov-cv.pdf', style: 'arrow-link', external: false, download: true },
 ];
 ---
 
@@ -26,6 +27,7 @@ const profiles = [
           class={profile.style}
           target={profile.external === false ? undefined : '_blank'}
           rel={profile.external === false ? undefined : 'noopener noreferrer'}
+          download={profile.download ? '' : undefined}
         >
           {profile.label}
           {profile.style === 'arrow-link' && (

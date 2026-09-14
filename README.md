@@ -30,6 +30,8 @@ src/
 │   ├── HowIWork.astro
 │   ├── Contact.astro
 │   └── Writing.astro        # Talks (talks.json) + Codyssey writing, fetched at build time
+├── lib/
+│   └── career.ts       # Date formatting, years of experience, skill group order
 ├── content/
 │   ├── experience.json # Work history (Experience section)
 │   ├── projects.json   # Case studies (Selected Work section)
@@ -39,6 +41,7 @@ src/
 │   └── BaseLayout.astro     # Site shell (nav, footer, meta)
 ├── pages/
 │   ├── index.astro          # Homepage
+│   ├── cv.astro             # Print-first CV, rendered to the downloadable PDF
 │   ├── 404.astro
 │   └── 500.astro
 └── styles/
@@ -46,6 +49,20 @@ src/
 ```
 
 Articles live on [Codyssey.dev](https://codyssey.dev) and are pulled into the Talks & Writing section at build time. There is no local blog.
+
+## CV PDF
+
+`/cv` is a print-first page built from the same JSON content as the homepage (experience, skills, talks). `pnpm build` runs `astro build` and then `scripts/generate-cv-pdf.mjs`, which opens the built page in headless Chromium and writes `dist/davor-minchorov-cv.pdf`. The "Download CV" links in the hero and contact sections point to that file, and the deploy workflow rebuilds it daily, so the PDF is always in step with the site.
+
+The script needs the Playwright Chromium build:
+
+```bash
+pnpm exec playwright install chromium
+# or point it at an existing Chrome/Chromium binary
+CV_PDF_CHROMIUM_PATH=/path/to/chrome pnpm build
+```
+
+The PDF only exists after a build, so `/davor-minchorov-cv.pdf` returns 404 under `pnpm dev`. Use `pnpm build && pnpm preview` to check it.
 
 ## Social Share Image
 
@@ -73,3 +90,4 @@ The site uses a professional light-mode palette defined in `tailwind.config.mjs`
 - **Content**: Edit components in `src/components/`
 - **Meta/SEO**: Edit defaults in `src/layouts/BaseLayout.astro`
 - **Case studies, experience, skills, talks**: Edit the JSON files in `src/content/`
+- **CV**: Same JSON files, plus the summary and contact lines in `src/pages/cv.astro`
