@@ -22,15 +22,13 @@ npm run preview
 
 ```
 src/
-├── components/         # Reusable UI components
-│   ├── Hero.astro
-│   ├── FeaturedProject.astro
-│   ├── ProjectCard.astro
-│   ├── Expertise.astro      # "Services" section
-│   ├── HowIWork.astro
-│   ├── Contact.astro
-│   └── Writing.astro        # Talks (talks.json) + Codyssey writing, fetched at build time
+├── components/
+│   ├── HomePage.astro       # The whole homepage: summary panel, sections, own nav and footer
+│   ├── SiteNav.astro        # Nav for the other pages (404, 500)
+│   └── SiteFooter.astro     # Footer for the other pages (404, 500)
 ├── lib/
+│   ├── site-content.ts # Homepage copy: hero, stats, services, section text, contact links
+│   ├── codyssey.ts     # Codyssey writing, fetched at build time
 │   └── career.ts       # Date formatting, years of experience, skill group order
 ├── content/
 │   ├── experience.json # Work history (Experience section)
@@ -38,7 +36,7 @@ src/
 │   ├── skills.json     # Skills section
 │   └── talks.json      # Talks in the Talks & Writing section
 ├── layouts/
-│   └── BaseLayout.astro     # Site shell (nav, footer, meta)
+│   └── BaseLayout.astro     # Site shell (meta; nav and footer except on the homepage)
 ├── pages/
 │   ├── index.astro          # Homepage
 │   ├── cv.astro             # Print-first CV, rendered to the downloadable PDF
@@ -87,7 +85,8 @@ The site uses a professional light-mode palette defined in `tailwind.config.mjs`
 ## Customization
 
 - **Colors/fonts**: Edit `tailwind.config.mjs`
-- **Content**: Edit components in `src/components/`
+- **Homepage copy**: Edit `src/lib/site-content.ts`
+- **Homepage layout**: Edit `src/components/HomePage.astro`
 - **Meta/SEO**: Edit defaults in `src/layouts/BaseLayout.astro`
 - **Case studies, experience, skills, talks**: Edit the JSON files in `src/content/`
 - **CV**: Same JSON files, plus the summary and contact lines in `src/pages/cv.astro`
