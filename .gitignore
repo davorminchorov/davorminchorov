@@ -9,3 +9,7 @@ dist/
 # BookLib local files (the search index alone is 128 MB)
 .booklib/
 booklib.config.json
+skills/
+
+# Local Claude Code instructions
+CLAUDE.md
