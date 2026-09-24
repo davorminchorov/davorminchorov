@@ -4,9 +4,38 @@
 @import '@fontsource/ibm-plex-mono/400.css';
 @import '@fontsource/ibm-plex-mono/500.css';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+  --color-bg: #FAFAF9;
+  --color-bg-warm: #F5F3EF;
+  --color-bg-card: #FFFFFF;
+
+  --color-border: #E8E4DD;
+  --color-border-hover: #D4CFC6;
+
+  --color-text: #1A1A1A;
+  --color-text-secondary: #4A4A4A;
+  --color-text-muted: #6B6B6B;
+  --color-text-dim: #737373;
+
+  --color-accent: #1A5C3A;
+  --color-accent-light: #EDF5F0;
+
+  --color-tag-warm: #F8F0E3;
+  --color-tag-warm-text: #8B6914;
+  --color-tag-blue: #E8F0FA;
+  --color-tag-blue-text: #2A5A8C;
+  --color-tag-purple: #F0ECF8;
+  --color-tag-purple-text: #5B3E96;
+
+  --font-display: "Source Serif 4 Variable", Georgia, serif;
+  --font-body: "Instrument Sans Variable", -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 2px 8px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+}
 
 @layer base {
   html {
@@ -21,41 +50,48 @@
   ::selection {
     @apply bg-accent text-white;
   }
+
+  /* Tailwind 4 dropped the pointer cursor on buttons; keep the v3 behaviour. */
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
 }
 
-@layer components {
-  .section-label {
-    @apply font-mono text-[11px] text-accent uppercase tracking-widest font-medium mb-3;
-  }
+@utility section-label {
+  @apply font-mono text-[11px] text-accent uppercase tracking-widest font-medium mb-3;
+}
 
-  .section-title {
-    @apply font-display text-[clamp(26px,3.5vw,36px)] leading-tight tracking-tight font-bold mb-3.5;
-  }
+@utility section-title {
+  @apply font-display text-[clamp(26px,3.5vw,36px)] leading-tight tracking-tight font-bold mb-3.5;
+}
 
-  .section-desc {
-    @apply text-base text-text-secondary max-w-[520px] leading-relaxed;
-  }
+@utility section-desc {
+  @apply text-base text-text-secondary max-w-[520px] leading-relaxed;
+}
 
-  .arrow-link {
-    @apply inline-flex items-center gap-1.5 text-accent font-semibold text-sm no-underline transition-all duration-200;
-  }
-  .arrow-link:hover {
+@utility arrow-link {
+  @apply inline-flex items-center gap-1.5 text-accent font-semibold text-sm no-underline transition-all duration-200;
+
+  &:hover {
     @apply gap-3;
   }
+}
 
-  .tag {
-    @apply font-mono text-[11px] px-3 py-1 rounded bg-bg-warm text-text-muted tracking-wide;
-  }
+@utility tag {
+  @apply font-mono text-[11px] px-3 py-1 rounded-sm bg-bg-warm text-text-muted tracking-wide;
+}
 
-  .btn {
-    @apply inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-lg text-sm font-semibold no-underline transition-colors duration-200;
-  }
-  .btn-primary {
-    @apply btn bg-accent text-white hover:bg-[#154B30];
-  }
-  .btn-secondary {
-    @apply btn border border-border bg-bg-card text-text hover:border-border-hover hover:bg-bg-warm;
-  }
+@utility btn {
+  @apply inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-lg text-sm font-semibold no-underline transition-colors duration-200;
+}
+
+@utility btn-primary {
+  @apply btn bg-accent text-white hover:bg-[#154B30];
+}
+
+@utility btn-secondary {
+  @apply btn border border-border bg-bg-card text-text hover:border-border-hover hover:bg-bg-warm;
 }
 
 /* Slide-up animation */

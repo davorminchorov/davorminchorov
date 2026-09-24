@@ -49,8 +49,8 @@ const updatedOn = new Date().toLocaleDateString('en-GB', { month: 'long', year: 
         &larr; Back to site
       </a>
       <div class="flex items-center gap-2 sm:gap-3">
-        <button id="print-cv" type="button" class="btn-secondary !py-2 !px-4 whitespace-nowrap">Print</button>
-        <a href="/davor-minchorov-cv.pdf" download class="btn-primary !py-2 !px-4 whitespace-nowrap">Download PDF</a>
+        <button id="print-cv" type="button" class="btn-secondary py-2! px-4! whitespace-nowrap">Print</button>
+        <a href="/davor-minchorov-cv.pdf" download class="btn-primary py-2! px-4! whitespace-nowrap">Download PDF</a>
       </div>
     </div>
   </nav>
@@ -165,6 +165,8 @@ const updatedOn = new Date().toLocaleDateString('en-GB', { month: 'long', year: 
 </html>
 
 <style is:global>
+  @reference "../styles/global.css";
+
   @page {
     size: A4;
     margin: 14mm 15mm 16mm;
