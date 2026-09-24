@@ -5,3 +5,7 @@ dist/
 .idea/
 .wrangler/
 .dev.vars
+
+# BookLib local files (the search index alone is 128 MB)
+.booklib/
+booklib.config.json
