@@ -52,7 +52,7 @@ const SERIF = "'Source Serif 4', 'Bitstream Charter', Georgia, serif";
 const SANS = "'Instrument Sans', 'Liberation Sans', 'Helvetica Neue', sans-serif";
 const MONO = "'IBM Plex Mono', 'Liberation Mono', 'Courier New', monospace";
 
-// Keep these in sync with the hero in src/components/Hero.astro.
+// Keep these in sync with `hero` in src/lib/site-content.ts.
 const ROLE = 'Product Software Engineer · PHP';
 const HEADLINE = ['I build PHP products that', 'have to keep working for years.'];
 const SUBLINE = ['APIs, architecture, and modernising existing', 'codebases for founders and product teams.'];
