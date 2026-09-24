@@ -43,7 +43,7 @@ src/
 │   ├── 404.astro
 │   └── 500.astro
 └── styles/
-    └── global.css           # Tailwind directives + custom utilities
+    └── global.css           # Tailwind import, theme and custom utilities
 ```
 
 Articles live on [Codyssey.dev](https://codyssey.dev) and are pulled into the Talks & Writing section at build time. There is no local blog.
@@ -72,7 +72,7 @@ node scripts/generate-og-image.mjs
 
 ## Design System
 
-The site uses a professional light-mode palette defined in `tailwind.config.mjs`:
+The site uses a professional light-mode palette defined in the `@theme` block of `src/styles/global.css`:
 
 - **Background**: Warm off-white (#FAFAF9)
 - **Accent**: Deep forest green (#1A5C3A)
@@ -84,7 +84,7 @@ The site uses a professional light-mode palette defined in `tailwind.config.mjs`
 
 ## Customization
 
-- **Colors/fonts**: Edit `tailwind.config.mjs`
+- **Colors/fonts**: Edit the `@theme` block in `src/styles/global.css`
 - **Homepage copy**: Edit `src/lib/site-content.ts`
 - **Homepage layout**: Edit `src/components/HomePage.astro`
 - **Meta/SEO**: Edit defaults in `src/layouts/BaseLayout.astro`

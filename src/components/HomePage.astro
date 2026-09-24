@@ -36,7 +36,7 @@ const roles = (await getCollection('experience')).sort((a, b) => b.data.startDat
 const hiddenCount = Math.max(0, roles.length - experience.visibleCount);
 const writingItems = await latestWriting();
 
-const focus = 'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1E4FD1]';
+const focus = 'focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1E4FD1]';
 const btnPrimary = `inline-flex items-center justify-center gap-2 bg-[#1E4FD1] text-white px-6 py-3.5 text-[15px] font-semibold no-underline transition-colors hover:bg-[#17399E] ${focus}`;
 const linkArrow = `inline-flex items-center gap-2 text-[15px] font-semibold text-[#101828] underline decoration-[#101828]/25 underline-offset-[6px] transition-colors hover:decoration-[#1E4FD1] hover:text-[#1E4FD1] ${focus}`;
 const navLink = `text-[13px] text-[#5B6472] no-underline transition-colors hover:text-[#101828] ${focus}`;
@@ -66,7 +66,7 @@ const navItems = navLinks.map((item) => ({ label: item.label, href: `#${item.sec
         {navItems.map((item) => (
           <a href={item.href} class={`${navLink} whitespace-nowrap`}>{item.label}</a>
         ))}
-        <a href="#contact" class={`${btnPrimary} whitespace-nowrap !px-4 !py-2 !text-[13px]`}>{hero.ctas.primary.label}</a>
+        <a href="#contact" class={`${btnPrimary} whitespace-nowrap px-4! py-2! text-[13px]!`}>{hero.ctas.primary.label}</a>
       </nav>
 
       <details class="lg:hidden relative group">
@@ -76,7 +76,7 @@ const navItems = navLinks.map((item) => ({ label: item.label, href: `#${item.sec
         </summary>
         <nav class={`absolute right-0 top-[calc(100%+12px)] w-[240px] bg-white border ${rule} shadow-[0_16px_32px_rgba(16,24,40,0.12)] p-5 flex flex-col gap-4`} aria-label="Main">
           {navItems.map((item) => (
-            <a href={item.href} class={`${navLink} !text-[16px] !text-[#101828]`}>{item.label}</a>
+            <a href={item.href} class={`${navLink} text-[16px]! text-[#101828]!`}>{item.label}</a>
           ))}
           <a href="#contact" class={`${btnPrimary} mt-1`}>{hero.ctas.primary.label}</a>
         </nav>
@@ -96,7 +96,7 @@ const navItems = navLinks.map((item) => ({ label: item.label, href: `#${item.sec
             alt="Davor Minchorov"
             widths={[96, 144, 192]}
             sizes="96px"
-            class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover flex-shrink-0 ring-1 ring-[#E3E6EC]"
+            class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover shrink-0 ring-1 ring-[#E3E6EC]"
             loading="eager"
             decoding="async"
           />
@@ -220,7 +220,7 @@ const navItems = navLinks.map((item) => ({ label: item.label, href: `#${item.sec
                 </div>
               </div>
               {project.data.url && (
-                <a href={project.data.url} class={`${linkArrow} md:flex-shrink-0`} target="_blank" rel="noopener noreferrer">
+                <a href={project.data.url} class={`${linkArrow} md:shrink-0`} target="_blank" rel="noopener noreferrer">
                   {project.data.featured ? work.featuredLinkText : work.linkText} <span aria-hidden="true">→</span>
                 </a>
               )}
@@ -331,7 +331,7 @@ const navItems = navLinks.map((item) => ({ label: item.label, href: `#${item.sec
       </div>
 
       {hiddenCount > 0 && (
-        <button id="experience-toggle" class={`${linkArrow} mt-8 bg-transparent border-none cursor-pointer !p-0`}>
+        <button id="experience-toggle" class={`${linkArrow} mt-8 bg-transparent border-none cursor-pointer p-0!`}>
           {experience.showAllLabel(hiddenCount)}
         </button>
       )}
