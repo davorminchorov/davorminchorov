@@ -7,6 +7,9 @@
     "paragraphs": [
       "Davor consistently delivers game-changing features that drive real customer and business impact. As the primary backend developer for both Workflows and Company Contacts, he's built foundational capabilities that transformed how our customers manage donor relationships and organizational data. His systematic approach to complex technical challenges, whether implementing major new features or fixing critical import system issues, ensures customers can successfully scale their operations on [the platform]. Davor's reliable execution on high-impact projects makes him essential to our team's success."
     ],
+    "excerpt": {
+      "text": "Davor consistently delivers game-changing features that drive real customer and business impact."
+    },
     "order": 1
   },
   {
@@ -20,6 +23,10 @@
       "Beyond his technical strengths, Davor's attitude made him a standout colleague. He approached challenges with positivity, stayed open to feedback, and showed a strong willingness to learn and adapt. That combination of expertise, initiative, and mindset is rare — and it made a real impact on our work.",
       "I wholeheartedly recommend Davor to any team looking for a developer who not only writes solid code but also contributes to the bigger picture. He will be an asset wherever he goes."
     ],
+    "excerpt": {
+      "text": "I wholeheartedly recommend Davor to any team looking for a developer who not only writes solid code but also contributes to the bigger picture.",
+      "note": "Managed me directly"
+    },
     "order": 2
   }
 ]

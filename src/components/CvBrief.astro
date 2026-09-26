@@ -1,0 +1,19 @@
+---
+// A short role on the CV, shown as one line instead of a full entry. Roles
+// inside a company group (`nested`) lead with the industry, as in CvRole.
+import type { CollectionEntry } from 'astro:content';
+import { formatMonth } from '../lib/career';
+
+interface Props {
+  role: CollectionEntry<'experience'>;
+  nested?: boolean;
+}
+
+const { role, nested = false } = Astro.props;
+const { title, company, industry, startDate, endDate, brief } = role.data;
+---
+
+<li class="cv-text">
+  <span class="font-semibold text-text">{title} · {nested ? industry : company}</span>{' '}
+  ({formatMonth(startDate)} – {formatMonth(endDate)}, {brief?.context}): {brief?.text}
+</li>
