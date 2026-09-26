@@ -6,10 +6,11 @@
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import portrait from '../assets/davor-minchorov.webp';
+import SiteNav from './SiteNav.astro';
+import SiteFooter from './SiteFooter.astro';
 import { formatMonth } from '../lib/career';
 import { latestWriting, formatWritingDate } from '../lib/codyssey';
 import {
-  navLinks,
   hero,
   stats,
   about,
@@ -20,7 +21,6 @@ import {
   experience,
   writing,
   contact,
-  footer,
   CODYSSEY_URL,
   CODYSSEY_PROFILE_URL,
 } from '../lib/site-content';
@@ -41,7 +41,6 @@ const focus = 'focus-visible:outline-2 focus-visible:outline-offset-4 focus-visi
 const btnPrimary = `inline-flex items-center justify-center gap-2 bg-[#1E4FD1] text-white px-6 py-3.5 text-[15px] font-semibold no-underline transition-colors hover:bg-[#17399E] ${focus}`;
 const linkArrow = `inline-flex items-center gap-2 text-[15px] font-semibold text-[#101828] underline decoration-[#101828]/25 underline-offset-[6px] transition-colors hover:decoration-[#1E4FD1] hover:text-[#1E4FD1] ${focus}`;
 const inlineLink = `font-semibold text-[#101828] underline underline-offset-4 decoration-[#101828]/25 hover:decoration-[#1E4FD1] hover:text-[#1E4FD1] ${focus}`;
-const navLink =`text-[13px] text-[#5B6472] no-underline transition-colors hover:text-[#101828] ${focus}`;
 const marker = 'font-mono text-[11px] uppercase tracking-[0.14em] text-[#5B6472]';
 const label = 'font-mono text-[11px] uppercase tracking-[0.14em] text-[#1E4FD1] font-semibold';
 const rule = 'border-[#E3E6EC]';
@@ -51,40 +50,10 @@ const hgrid = 'grid gap-px bg-[#E3E6EC] border border-[#E3E6EC]';
 const cell = 'bg-white';
 const h2 = 'font-body text-[clamp(30px,4.2vw,50px)] leading-[1.05] tracking-[-0.01em] font-bold text-[#101828]';
 const tag = 'inline-flex items-center px-2.5 py-1 border border-[#E3E6EC] font-mono text-[11px] text-[#5B6472]';
-
-const navItems = navLinks.map((item) => ({ label: item.label, href: `#${item.section}` }));
 ---
 
 <div class="bg-white text-[#101828] font-body antialiased">
-  <!-- Header -->
-  <header class={`fixed top-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md border-b ${rule}`}>
-    <div class={`${wrap} h-[64px] flex items-center justify-between`}>
-      <a href="#top" class={`flex items-baseline gap-2.5 no-underline text-[#101828] ${focus}`}>
-        <span class="font-body text-[17px] font-bold tracking-tight whitespace-nowrap">Davor Minchorov</span>
-        <span class="hidden xl:inline font-mono text-[10px] uppercase tracking-[0.14em] text-[#5B6472]">{hero.eyebrow}</span>
-      </a>
-
-      <nav class="hidden lg:flex items-center gap-5 xl:gap-6" aria-label="Main">
-        {navItems.map((item) => (
-          <a href={item.href} class={`${navLink} whitespace-nowrap`}>{item.label}</a>
-        ))}
-        <a href="#contact" class={`${btnPrimary} whitespace-nowrap px-4! py-2! text-[13px]!`}>{hero.ctas.primary.label}</a>
-      </nav>
-
-      <details class="lg:hidden relative group">
-        <summary class={`list-none [&::-webkit-details-marker]:hidden cursor-pointer font-mono text-[11px] uppercase tracking-[0.14em] text-[#101828] border ${rule} px-3 py-2 ${focus}`}>
-          <span class="group-open:hidden">Menu</span>
-          <span class="hidden group-open:inline">Close</span>
-        </summary>
-        <nav class={`absolute right-0 top-[calc(100%+12px)] w-[240px] bg-white border ${rule} shadow-[0_16px_32px_rgba(16,24,40,0.12)] p-5 flex flex-col gap-4`} aria-label="Main">
-          {navItems.map((item) => (
-            <a href={item.href} class={`${navLink} text-[16px]! text-[#101828]!`}>{item.label}</a>
-          ))}
-          <a href="#contact" class={`${btnPrimary} mt-1`}>{hero.ctas.primary.label}</a>
-        </nav>
-      </details>
-    </div>
-  </header>
+  <SiteNav home />
 
   <!-- Summary panel (the 30-second read) -->
   <section id="top" class="pt-[100px] md:pt-[120px] pb-16 md:pb-24 scroll-mt-[64px]">
@@ -454,25 +423,5 @@ const navItems = navLinks.map((item) => ({ label: item.label, href: `#${item.sec
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class={`border-t ${rule} py-8`}>
-    <div class={`${wrap} flex flex-col md:flex-row md:items-center md:justify-between gap-4`}>
-      <p class="text-[13px] text-[#5B6472]">{footer.copyright}</p>
-      <ul class="flex flex-wrap gap-x-6 gap-y-2">
-        {footer.links.map((link) => (
-          <li>
-            <a href={link.href} class={`text-[13px] text-[#5B6472] no-underline hover:text-[#101828] ${focus}`} target="_blank" rel="noopener noreferrer">{link.label}</a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </footer>
+  <SiteFooter />
 </div>
-
-<script>
-  // The mobile menu is a <details> element; close it once a link is chosen.
-  document.querySelectorAll<HTMLAnchorElement>('header details a').forEach((link) => {
-    link.addEventListener('click', () => link.closest('details')?.removeAttribute('open'));
-  });
-
-</script>

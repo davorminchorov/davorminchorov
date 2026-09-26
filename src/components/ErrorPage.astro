@@ -1,0 +1,66 @@
+---
+// Body of the 404 and 500 pages, laid out like the homepage summary panel:
+// what happened, where to go next, and a way back. An optional `note` slot
+// adds a full-width row (the 404 page uses it for moved articles).
+import { BOOKING_URL } from '../lib/site-content';
+
+interface Props {
+  code: number;
+  title: string;
+  message: string;
+}
+
+const { code, title, message } = Astro.props;
+
+const nextLinks = [
+  { label: 'What I do', desc: 'Build, modernise, lead', href: '/#services' },
+  { label: 'Case studies', desc: 'Client work and Codyssey.dev', href: '/#projects' },
+  { label: 'Testimonials', desc: 'What people I have worked with say', href: '/#testimonials' },
+  { label: 'Contact', desc: 'Email or book an intro call', href: '/#contact' },
+];
+
+const focus = 'focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1E4FD1]';
+const btnPrimary = `inline-flex items-center justify-center gap-2 bg-[#1E4FD1] text-white px-6 py-3.5 text-[15px] font-semibold no-underline transition-colors hover:bg-[#17399E] ${focus}`;
+const linkArrow = `inline-flex items-center gap-2 text-[15px] font-semibold text-[#101828] underline decoration-[#101828]/25 underline-offset-[6px] transition-colors hover:decoration-[#1E4FD1] hover:text-[#1E4FD1] ${focus}`;
+const marker = 'font-mono text-[11px] uppercase tracking-[0.14em] text-[#5B6472]';
+const label = 'font-mono text-[11px] uppercase tracking-[0.14em] text-[#1E4FD1] font-semibold';
+const cell = 'bg-white p-6 md:p-8';
+---
+
+<section class="pt-[100px] md:pt-[120px] pb-16 md:pb-24">
+  <div class="max-w-[1240px] mx-auto px-5 md:px-10">
+    <p class={`${marker} mb-4`}>Error {code}</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-px bg-[#E3E6EC] border border-[#E3E6EC]">
+      <div class={`${cell} md:col-span-7`}>
+        <h1 class="font-display text-[clamp(30px,4vw,46px)] leading-[1.12] tracking-[-0.01em] font-semibold text-[#101828]">{title}</h1>
+        <p class="text-[16px] md:text-[17px] leading-relaxed text-[#5B6472] mt-4 max-w-[520px]">{message}</p>
+      </div>
+
+      <div class={`${cell} md:col-span-5`}>
+        <p class={label}>Where to next</p>
+        <ul class="mt-4 grid gap-y-3">
+          {nextLinks.map((link) => (
+            <li>
+              <a href={link.href} class={`block text-[15px] leading-snug font-medium text-[#101828] no-underline hover:text-[#1E4FD1] ${focus}`}>{link.label}</a>
+              <p class="text-[13px] leading-snug text-[#5B6472] mt-0.5">{link.desc}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {Astro.slots.has('note') && (
+        <div class={`${cell} md:col-span-12 border-l-4 border-l-[#1E4FD1] text-[15px] leading-relaxed text-[#5B6472]`}>
+          <slot name="note" />
+        </div>
+      )}
+
+      <div class="p-6 md:p-8 md:col-span-12 bg-[#F7F8FA] flex flex-wrap items-center gap-x-8 gap-y-4">
+        <a href="/" class={btnPrimary}>Back to homepage</a>
+        {BOOKING_URL && (
+          <a href={BOOKING_URL} class={linkArrow} target="_blank" rel="noopener noreferrer">Book an intro call <span aria-hidden="true">→</span></a>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

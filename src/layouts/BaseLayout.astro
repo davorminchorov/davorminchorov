@@ -58,48 +58,18 @@ const ogImageURL = new URL(image, Astro.site).href;
   <script defer data-domain="davorminchorov.com" src="https://plausible.io/js/plausible.file-downloads.js"></script>
 </head>
 <body>
-  {!bare && <SiteNav />}
-
-  <main>
-    <slot />
-  </main>
-
-  {!bare && <SiteFooter />}
-
-  <script>
-    // Mobile nav toggle. The menu is an overlay on small screens, so it also
-    // closes when a section link inside it is tapped.
-    const toggle = document.getElementById('mobile-toggle');
-    const nav = document.getElementById('nav-links');
-    const OPEN_CLASSES = ['flex', 'flex-col', 'absolute', 'top-[60px]', 'left-0', 'right-0', 'bg-bg/[0.97]', 'backdrop-blur-md', 'p-5', 'border-b', 'border-border'];
-    const setMenuOpen = (open: boolean) => {
-      if (!nav || !toggle) return;
-      nav.classList.toggle('hidden', !open);
-      OPEN_CLASSES.forEach((cls) => nav.classList.toggle(cls, open));
-      toggle.setAttribute('aria-expanded', String(open));
-    };
-    toggle?.addEventListener('click', () => {
-      setMenuOpen(toggle.getAttribute('aria-expanded') !== 'true');
-    });
-    nav?.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => setMenuOpen(false));
-    });
-
-    // Scroll animation observer
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.animationPlayState = 'running';
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.animate').forEach(el => {
-      if (!el.closest('.hero')) {
-        el.style.animationPlayState = 'paused';
-      }
-      observer.observe(el);
-    });
-  </script>
+  {bare ? (
+    <main>
+      <slot />
+    </main>
+  ) : (
+    <div class="bg-white text-[#101828] font-body antialiased min-h-screen flex flex-col">
+      <SiteNav />
+      <main class="flex-1">
+        <slot />
+      </main>
+      <SiteFooter />
+    </div>
+  )}
 </body>
 </html>

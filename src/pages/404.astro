@@ -1,24 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ErrorPage from '../components/ErrorPage.astro';
+
+// Old article URLs mostly redirect to Codyssey (public/_redirects); this covers
+// the ones that do not, and anyone with a mistyped link.
+const courseURL = 'https://codyssey.dev/courses/building-maintainable-php-applications-foundations';
+const linkClass = 'font-semibold text-[#1E4FD1] underline underline-offset-4 decoration-[#1E4FD1]/30 hover:decoration-[#1E4FD1] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1E4FD1]';
 ---
 
 <BaseLayout title="Page Not Found | Davor Minchorov" description="The page you're looking for doesn't exist or has been moved.">
-  <section class="pt-[148px] pb-[88px] border-b border-border">
-    <div class="max-w-[1080px] mx-auto px-7 text-center">
-      <div class="font-mono text-xs text-accent uppercase tracking-wider font-medium mb-5 animate">
-        Error 404
-      </div>
-      <h1 class="font-display text-[clamp(36px,5vw,58px)] leading-[1.12] tracking-tight text-text mb-6 font-bold animate delay-1">
-        Page not found
-      </h1>
-      <p class="text-[17px] text-text-secondary max-w-[480px] mx-auto leading-relaxed animate delay-2">
-        The page you're looking for doesn't exist or has been moved. Let's get you back on track.
-      </p>
-      <div class="mt-10 animate delay-3">
-        <a href="/" class="arrow-link text-base">
-          Back to homepage <span aria-hidden="true">→</span>
-        </a>
-      </div>
-    </div>
-  </section>
+  <ErrorPage code={404} title="Page not found" message="The page you're looking for doesn't exist or has been moved.">
+    <p slot="note">
+      Looking for an article from the Building Maintainable PHP Applications series? It is now a free course on{' '}
+      <a href={courseURL} class={linkClass} target="_blank" rel="noopener noreferrer">Codyssey.dev</a>.
+    </p>
+  </ErrorPage>
 </BaseLayout>
