@@ -36,10 +36,13 @@ export const hero = {
     author: 'Bartosz P., Staff Backend Engineer',
     linkText: 'Read what people say',
   },
+  // Booking leads the summary actions. `primary` is the header button, and the
+  // summary's main button when BOOKING_URL is empty.
   ctas: {
     primary: { label: 'Work with me', section: 'contact' },
-    secondary: { label: 'See my work', section: 'projects' },
     booking: { label: 'Book an intro call', href: BOOKING_URL },
+    secondary: { label: 'See my work', section: 'projects' },
+    email: { before: 'Prefer email? ', label: 'Send me a note', section: 'contact' },
     cv: { label: 'Download CV', href: CV_PDF },
   },
 };
@@ -88,7 +91,7 @@ export const services = {
       items: [
         {
           title: 'Codebase and architecture review',
-          desc: 'I read your code, tests, and delivery pipeline, and find what is slowing the team down. You get a written report with prioritised findings, a staged plan to fix them, and a walkthrough call with your team.',
+          desc: 'I read your code, tests, and delivery pipeline, find what is slowing the team down, and propose what to fix first.',
         },
         {
           title: 'Modernisation project',
@@ -166,14 +169,13 @@ export const writing = {
   desc: 'A meetup talk and articles on building PHP applications that stay maintainable.',
   talksHeading: 'Talks',
   writingHeading: 'Writing',
-  empty: 'New content coming soon. Stay tuned.',
   moreLinkText: 'More on Codyssey.dev',
 };
 
 export const contact = {
   label: 'Contact',
   title: 'Work with me',
-  desc: 'If your PHP application needs new features or a better architecture, your codebase has become hard to change, or your team needs technical leadership, send me a short note about what you are trying to achieve and where the software is getting in the way. I reply within a day.',
+  desc: 'If your PHP application needs new features or a better architecture, your codebase has become hard to change, or your team needs technical leadership, send me a short note about what you are trying to achieve and where the software is getting in the way.',
   nextStep: 'Next: a short call about your goals, then a written plan before any work starts.',
   availability: 'Available now for long-term contracts and focused projects.',
   primary: { label: 'Send me an email', href: `mailto:${EMAIL}` },

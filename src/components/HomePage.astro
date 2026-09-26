@@ -40,7 +40,8 @@ const writingItems = await latestWriting();
 const focus = 'focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1E4FD1]';
 const btnPrimary = `inline-flex items-center justify-center gap-2 bg-[#1E4FD1] text-white px-6 py-3.5 text-[15px] font-semibold no-underline transition-colors hover:bg-[#17399E] ${focus}`;
 const linkArrow = `inline-flex items-center gap-2 text-[15px] font-semibold text-[#101828] underline decoration-[#101828]/25 underline-offset-[6px] transition-colors hover:decoration-[#1E4FD1] hover:text-[#1E4FD1] ${focus}`;
-const navLink = `text-[13px] text-[#5B6472] no-underline transition-colors hover:text-[#101828] ${focus}`;
+const inlineLink = `font-semibold text-[#101828] underline underline-offset-4 decoration-[#101828]/25 hover:decoration-[#1E4FD1] hover:text-[#1E4FD1] ${focus}`;
+const navLink =`text-[13px] text-[#5B6472] no-underline transition-colors hover:text-[#101828] ${focus}`;
 const marker = 'font-mono text-[11px] uppercase tracking-[0.14em] text-[#5B6472]';
 const label = 'font-mono text-[11px] uppercase tracking-[0.14em] text-[#1E4FD1] font-semibold';
 const rule = 'border-[#E3E6EC]';
@@ -159,12 +160,18 @@ const navItems = navLinks.map((item) => ({ label: item.label, href: `#${item.sec
         </div>
 
         <div class="p-6 md:p-8 md:col-span-12 order-1 md:order-none bg-[#F7F8FA] flex flex-wrap items-center gap-x-8 gap-y-4">
-          <a href="#contact" class={btnPrimary}>{hero.ctas.primary.label}</a>
-          {hero.ctas.booking.href && (
-            <a href={hero.ctas.booking.href} class={linkArrow} target="_blank" rel="noopener noreferrer">{hero.ctas.booking.label} <span aria-hidden="true">→</span></a>
+          {hero.ctas.booking.href ? (
+            <a href={hero.ctas.booking.href} class={btnPrimary} target="_blank" rel="noopener noreferrer">{hero.ctas.booking.label} <span aria-hidden="true">→</span></a>
+          ) : (
+            <a href="#contact" class={btnPrimary}>{hero.ctas.primary.label}</a>
           )}
           <a href="#projects" class={linkArrow}>{hero.ctas.secondary.label}</a>
-          <a href={hero.ctas.cv.href} download class={linkArrow}>{hero.ctas.cv.label} <span aria-hidden="true">↓</span></a>
+          <p class="w-full text-[14px] leading-relaxed text-[#5B6472]">
+            {hero.ctas.booking.href && (
+              <Fragment>{hero.ctas.email.before}<a href="#contact" class={inlineLink}>{hero.ctas.email.label}</a><span aria-hidden="true" class="mx-2">·</span></Fragment>
+            )}
+            <a href={hero.ctas.cv.href} download class={inlineLink}>{hero.ctas.cv.label}</a>
+          </p>
         </div>
       </div>
     </div>
@@ -396,11 +403,10 @@ const navItems = navLinks.map((item) => ({ label: item.label, href: `#${item.sec
                 ))}
               </ul>
             </div>
-            <div class="mt-8 md:mt-0">
-              <h3 class={label}>{writing.writingHeading}</h3>
-              {writingItems.length === 0 ? (
-                <p class="text-[16px] text-[#5B6472] mt-4">{writing.empty}</p>
-              ) : (
+            {/* The list comes from the Codyssey API at build time; if it is down, the column is left out rather than shown empty. */}
+            {writingItems.length > 0 && (
+              <div class="mt-8 md:mt-0">
+                <h3 class={label}>{writing.writingHeading}</h3>
                 <ul class={`mt-4 border-t ${rule}`}>
                   {writingItems.map((item) => (
                     <li class={`border-b ${rule} py-5`}>
@@ -409,8 +415,8 @@ const navItems = navLinks.map((item) => ({ label: item.label, href: `#${item.sec
                     </li>
                   ))}
                 </ul>
-              )}
-            </div>
+              </div>
+            )}
           </div>
 
           <a href={CODYSSEY_PROFILE_URL} class={`${linkArrow} mt-8`} target="_blank" rel="noopener noreferrer">{writing.moreLinkText} <span aria-hidden="true">→</span></a>

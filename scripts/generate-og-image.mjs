@@ -42,7 +42,7 @@ const { default: sharp } = await import('sharp');
 const WIDTH = 1200;
 const HEIGHT = 630;
 
-// Site colors (see tailwind.config.mjs)
+// Site colors (see the @theme block in src/styles/global.css)
 const BG = '#FAFAF9';
 const TEXT = '#1A1A1A';
 const TEXT_MUTED = '#5F5F5F';
