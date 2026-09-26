@@ -59,7 +59,7 @@ const languages = 'English (professional), Macedonian (native)';
 
 const title = 'Davor Minchorov | CV | PHP Consultant & Product Engineer';
 const description =
-  'CV of Davor Minchorov, PHP consultant and product engineer: what I do, work experience, testimonials, skills, and talks. Available as a PDF download.';
+  'CV of Davor Minchorov, PHP consultant and product engineer: what I do, testimonials, work experience, skills, and talks. Available as a PDF download.';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 
 const contact = [
@@ -141,6 +141,26 @@ const updatedOn = new Date().toLocaleDateString('en-GB', { month: 'long', year: 
       </dl>
     </section>
 
+    <!-- Testimonials -->
+    <section class="mt-7 break-inside-avoid">
+      <h2 class="cv-heading">What People Say</h2>
+      <div class="space-y-3">
+        {testimonials.filter((item) => item.data.excerpt).map((item) => (
+          <figure class="break-inside-avoid border-l-2 border-accent pl-4">
+            <blockquote class="m-0">
+              <p class="cv-text">“{item.data.excerpt!.text}”</p>
+            </blockquote>
+            <figcaption class="text-[12.5px] text-text-muted mt-1">
+              <span class="font-semibold text-text">{item.data.author}</span>, {item.data.role}{item.data.excerpt!.note && ` · ${item.data.excerpt!.note}`}
+            </figcaption>
+          </figure>
+        ))}
+        <p class="cv-text">
+          Full testimonials at <a href="https://davorminchorov.com/#testimonials" class="cv-link">davorminchorov.com</a>
+        </p>
+      </div>
+    </section>
+
     <!-- Experience -->
     <section class="mt-7">
       <h2 class="cv-heading">Experience</h2>
@@ -194,26 +214,6 @@ const updatedOn = new Date().toLocaleDateString('en-GB', { month: 'long', year: 
             </ul>
           </div>
         )}
-      </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="mt-7 break-inside-avoid">
-      <h2 class="cv-heading">What People Say</h2>
-      <div class="space-y-3">
-        {testimonials.filter((item) => item.data.excerpt).map((item) => (
-          <figure class="break-inside-avoid border-l-2 border-accent pl-4">
-            <blockquote class="m-0">
-              <p class="cv-text">“{item.data.excerpt!.text}”</p>
-            </blockquote>
-            <figcaption class="text-[12.5px] text-text-muted mt-1">
-              <span class="font-semibold text-text">{item.data.author}</span>, {item.data.role}{item.data.excerpt!.note && ` · ${item.data.excerpt!.note}`}
-            </figcaption>
-          </figure>
-        ))}
-        <p class="cv-text">
-          Full testimonials at <a href="https://davorminchorov.com/#testimonials" class="cv-link">davorminchorov.com</a>
-        </p>
       </div>
     </section>
 
