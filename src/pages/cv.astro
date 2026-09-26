@@ -12,9 +12,9 @@ const roles = (await getCollection('experience')).sort((a, b) =>
 const skillGroups = sortSkillGroups(await getCollection('skills'));
 const talks = (await getCollection('talks')).sort((a, b) => b.data.date.localeCompare(a.data.date));
 
-const title = 'Davor Minchorov | CV | Product Software Engineer (PHP)';
+const title = 'Davor Minchorov | CV | PHP Consultant & Product Engineer';
 const description =
-  'CV of Davor Minchorov, product software engineer working in PHP: work experience, skills, and talks. Available as a PDF download.';
+  'CV of Davor Minchorov, PHP consultant and product engineer: work experience, skills, and talks. Available as a PDF download.';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 
 const contact = [
@@ -60,7 +60,7 @@ const updatedOn = new Date().toLocaleDateString('en-GB', { month: 'long', year: 
     <header class="border-b-2 border-accent pb-5">
       <h1 class="font-display text-[34px] leading-none font-bold tracking-tight text-text">Davor Minchorov</h1>
       <p class="font-mono text-[12px] text-accent uppercase tracking-wider font-medium mt-2.5">
-        Product Software Engineer · PHP
+        PHP Consultant &amp; Product Engineer
       </p>
       <ul class="flex flex-wrap gap-x-4 gap-y-1 mt-3.5 text-[13px] text-text-secondary list-none p-0 m-0">
         {contact.map((item) => (
@@ -76,10 +76,10 @@ const updatedOn = new Date().toLocaleDateString('en-GB', { month: 'long', year: 
     <section class="mt-6">
       <h2 class="cv-heading">Summary</h2>
       <p class="cv-text">
-        Product software engineer working in PHP, building software professionally since 2015 ({yearsOfExperience()}+ years), from small startups to Fortune 500 companies, across healthcare, fintech, iGaming, entertainment, and non-profit. I work with founders, CTOs, and product teams who have a PHP application in production and need it to keep growing without falling over. Sometimes the work is new APIs and architecture. Sometimes it is taking over an existing codebase and making it safe to change again.
+        PHP consultant and product engineer, building software professionally since 2015 ({yearsOfExperience()}+ years), from small startups to Fortune 500 companies, across healthcare, fintech, iGaming, entertainment, logistics, and non-profit. I work with founders, CTOs, and product teams who have a PHP application in production and need it to keep growing without falling over. Some of the work is hands-on: new products, partner APIs, and making an existing codebase safe to change again. Some of it is leading the team: planning the work, reviewing code, and agreeing on the practices that keep the product maintainable.
       </p>
       <p class="cv-text mt-2">
-        I ask what the business is trying to achieve before I write code, plan in writing, and ship with tests. I have worked in English through Toptal and Adeva with clients in the US, Canada, Switzerland, Italy, Montenegro, and the UAE. I also run <a href="https://codyssey.dev" class="cv-link">Codyssey.dev</a>, where I teach engineers to build maintainable software.
+        I ask what the business is trying to achieve before I write code, plan in writing, and ship with tests. I have worked in English with clients in the US, Canada, Switzerland, Italy, Montenegro, and the UAE. I also run <a href="https://codyssey.dev" class="cv-link">Codyssey.dev</a>, where I teach engineers to build maintainable software.
       </p>
     </section>
 

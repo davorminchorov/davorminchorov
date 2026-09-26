@@ -25,10 +25,8 @@ import {
   CODYSSEY_PROFILE_URL,
 } from '../lib/site-content';
 
-const allProjects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
-const featuredProject = allProjects.find((p) => p.data.featured);
-const otherProjects = allProjects.filter((p) => !p.data.featured);
-const caseStudies = featuredProject ? [featuredProject, ...otherProjects] : otherProjects;
+// Client work leads; the featured own product keeps its badge but follows `order`.
+const caseStudies = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 
 const talks = (await getCollection('talks')).sort((a, b) => b.data.date.localeCompare(a.data.date));
 const skillGroups = sortSkillGroups(await getCollection('skills'));
@@ -127,9 +125,12 @@ const navItems = navLinks.map((item) => ({ label: item.label, href: `#${item.sec
 
         <div class={`${cell} p-6 md:p-8 md:col-span-7 order-2 md:order-none`}>
           <p class={label}>{services.title}</p>
-          <ul class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
-            {services.items.map((item) => (
-              <li class="text-[15px] leading-snug text-[#101828] font-medium">{item.title}</li>
+          <ul class="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-x-8 gap-y-3">
+            {services.groups.map((group) => (
+              <li>
+                <a href="#services" class={`block text-[15px] leading-snug font-medium text-[#101828] no-underline hover:text-[#1E4FD1] ${focus}`}>{group.title}</a>
+                <p class="text-[13px] leading-snug text-[#5B6472] mt-1">{group.summary}</p>
+              </li>
             ))}
           </ul>
         </div>
@@ -180,12 +181,20 @@ const navItems = navLinks.map((item) => ({ label: item.label, href: `#${item.sec
         </div>
       </div>
 
-      <div class={`${hgrid} grid-cols-1 sm:grid-cols-2 mt-10 md:mt-14`}>
-        {services.items.map((item) => (
+      <div class={`${hgrid} grid-cols-1 lg:grid-cols-3 mt-10 md:mt-14`}>
+        {services.groups.map((group) => (
           <div class={`${cell} p-7 md:p-9`}>
-            <p class="font-mono text-[12px] text-[#1E4FD1]">{item.num}</p>
-            <h3 class="font-body text-[21px] md:text-[23px] font-bold leading-snug text-[#101828] mt-3">{item.title}</h3>
-            <p class="text-[15px] leading-relaxed text-[#5B6472] mt-3">{item.desc}</p>
+            <p class="font-mono text-[12px] text-[#1E4FD1]">{group.num}</p>
+            <h3 class="font-body text-[25px] md:text-[27px] font-bold leading-snug text-[#101828] mt-3">{group.title}</h3>
+            <p class="text-[15px] leading-relaxed text-[#5B6472] mt-2">{group.desc}</p>
+            <ul class={`mt-6 border-t ${rule}`}>
+              {group.items.map((item) => (
+                <li class={`border-b ${rule} py-5`}>
+                  <h4 class="font-body text-[17px] font-bold leading-snug text-[#101828]">{item.title}</h4>
+                  <p class="text-[15px] leading-relaxed text-[#5B6472] mt-2">{item.desc}</p>
+                </li>
+              ))}
+            </ul>
           </div>
         ))}
       </div>
@@ -257,7 +266,7 @@ const navItems = navLinks.map((item) => ({ label: item.label, href: `#${item.sec
             {project.data.quote && (
               <blockquote class={`p-6 md:p-8 border-t ${rule} border-l-4 border-l-[#1E4FD1]`}>
                 <p class="text-[18px] md:text-[19px] italic font-medium leading-[1.5] text-[#101828]">{project.data.quote.text}</p>
-                <footer class={`${marker} mt-3`}>{project.data.quote.author} · {project.data.quote.role}</footer>
+                <footer class={`${marker} mt-3`}>{project.data.quote.author} · {project.data.quote.role}{project.data.quote.source && ` · ${project.data.quote.source}`}</footer>
               </blockquote>
             )}
           </article>
@@ -418,8 +427,11 @@ const navItems = navLinks.map((item) => ({ label: item.label, href: `#${item.sec
           <p class="text-[17px] md:text-[18px] leading-relaxed text-[#101828] mt-6 max-w-[720px]">{contact.desc}</p>
           <p class={`${marker} mt-4`}>{contact.availability}</p>
 
-          <div class="mt-8">
+          <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
             <a href={contact.primary.href} class={btnPrimary}>{contact.primary.label}</a>
+            {contact.booking.href && (
+              <a href={contact.booking.href} class={linkArrow} target="_blank" rel="noopener noreferrer">{contact.booking.label} <span aria-hidden="true">→</span></a>
+            )}
           </div>
 
           <div class="flex flex-wrap items-center gap-x-8 gap-y-4 mt-8">

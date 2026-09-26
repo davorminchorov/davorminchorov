@@ -53,9 +53,12 @@ const SANS = "'Instrument Sans', 'Liberation Sans', 'Helvetica Neue', sans-serif
 const MONO = "'IBM Plex Mono', 'Liberation Mono', 'Courier New', monospace";
 
 // Keep these in sync with `hero` in src/lib/site-content.ts.
-const ROLE = 'Product Software Engineer · PHP';
-const HEADLINE = ['I build PHP products that', 'have to keep working for years.'];
-const SUBLINE = ['APIs, architecture, and modernising existing', 'codebases for founders and product teams.'];
+const ROLE = 'PHP Consultant & Product Engineer';
+const HEADLINE = ['I help product teams build and', 'modernise PHP products that', 'have to keep working for years.'];
+const SUBLINE = ['Build, modernise, and lead: new products,', 'partner APIs, codebase reviews, tech leadership.'];
+
+// Baseline of the last headline line; the rule and subline sit below it.
+const HEADLINE_END = 212 + (HEADLINE.length - 1) * 50;
 
 const escape = (text) => text.replace(/&/g, '&amp;').replace(/</g, '&lt;');
 
@@ -81,21 +84,19 @@ async function generate() {
       ${escape(ROLE.toUpperCase())}
     </text>
 
-    <text x="80" y="212" font-family="${SERIF}" font-size="40" font-weight="700" fill="${TEXT}" letter-spacing="-1">
-      ${escape(HEADLINE[0])}
-    </text>
-    <text x="80" y="262" font-family="${SERIF}" font-size="40" font-weight="700" fill="${TEXT}" letter-spacing="-1">
-      ${escape(HEADLINE[1])}
-    </text>
+    ${HEADLINE.map(
+      (line, i) => `<text x="80" y="${212 + i * 50}" font-family="${SERIF}" font-size="40" font-weight="700" fill="${TEXT}" letter-spacing="-1">
+      ${escape(line)}
+    </text>`,
+    ).join('\n')}
 
-    <rect x="80" y="305" width="60" height="3" rx="1.5" fill="${ACCENT}"/>
+    <rect x="80" y="${HEADLINE_END + 43}" width="60" height="3" rx="1.5" fill="${ACCENT}"/>
 
-    <text x="80" y="358" font-family="${SANS}" font-size="21" fill="${TEXT_MUTED}">
-      ${escape(SUBLINE[0])}
-    </text>
-    <text x="80" y="388" font-family="${SANS}" font-size="21" fill="${TEXT_MUTED}">
-      ${escape(SUBLINE[1])}
-    </text>
+    ${SUBLINE.map(
+      (line, i) => `<text x="80" y="${HEADLINE_END + 96 + i * 30}" font-family="${SANS}" font-size="21" fill="${TEXT_MUTED}">
+      ${escape(line)}
+    </text>`,
+    ).join('\n')}
 
     <text x="80" y="505" font-family="${SERIF}" font-size="26" font-weight="700" fill="${TEXT}">
       Davor Minchorov

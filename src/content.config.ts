@@ -70,6 +70,8 @@ const projects = defineCollection({
         text: z.string(),
         author: z.string(),
         role: z.string(),
+        // Where the quote came from, when it was not a public recommendation.
+        source: z.string().optional(),
       })
       .optional(),
     stack: z.array(z.string()),
