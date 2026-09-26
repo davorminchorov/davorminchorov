@@ -29,6 +29,11 @@ const experience = defineCollection({
     clientLocation: z.string().optional(),
     // For roles that ran alongside another one, e.g. "Part-time contract".
     employmentType: z.string().optional(),
+    // Extra context shown under the title on the CV, e.g. how the role started.
+    note: z.string().optional(),
+    // Short roles the CV shows as one line instead of a full entry:
+    // "Title · Company (dates, context): text".
+    brief: z.object({ context: z.string(), text: z.string() }).optional(),
     outcomes: z.array(z.string()),
     skills: z.array(z.string()).default([]),
   }),
@@ -91,6 +96,8 @@ const testimonials = defineCollection({
     note: z.string().optional(),
     project: reference('projects'),
     paragraphs: z.array(z.string()),
+    // One verbatim sentence for the CV. `note` replaces the full note there.
+    excerpt: z.object({ text: z.string(), note: z.string().optional() }).optional(),
     order: z.number(),
   }),
 });
