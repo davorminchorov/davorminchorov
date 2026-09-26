@@ -94,5 +94,5 @@ Quotes are verbatim, including the authors' em dashes and word choices. The clie
 
 ## Goals
 **Business goal:** Attract contract engineering work (long-term contracts and focused projects) and send engineers to Codyssey.dev
-**Conversion action:** The "Send me an email" button in the Contact section (mailto), a "Book an intro call" Cal.com link (shown once `BOOKING_URL` is set in `site-content.ts`), and LinkedIn and GitHub as secondary links. Upwork and Toptal are not linked anywhere on the site. The site promises a reply within a day. A "Download CV" link in the hero and contact sections serves a PDF generated at build time from the same experience, skills, and talks data as the site (also viewable at /cv).
+**Conversion action:** The "Send me an email" button in the Contact section (mailto), a "Book an intro call" Cal.com link (https://cal.com/davor-minchorov, in the summary actions and Contact), and LinkedIn and GitHub as secondary links. Upwork and Toptal are not linked anywhere on the site. The site promises a reply within a day. A "Download CV" link in the hero and contact sections serves a PDF generated at build time from the same experience, skills, and talks data as the site (also viewable at /cv).
 **Current metrics:** Plausible Analytics is integrated; no data recorded here

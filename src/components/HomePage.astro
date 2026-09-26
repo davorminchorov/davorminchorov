@@ -6,7 +6,7 @@
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import portrait from '../assets/davor-minchorov.webp';
-import { formatMonth, sortSkillGroups } from '../lib/career';
+import { formatMonth } from '../lib/career';
 import { latestWriting, formatWritingDate } from '../lib/codyssey';
 import {
   navLinks,
@@ -18,7 +18,6 @@ import {
   testimonials,
   howIWork,
   experience,
-  skills,
   writing,
   contact,
   footer,
@@ -33,7 +32,6 @@ const testimonialItems = (await getCollection('testimonials')).sort((a, b) => a.
 const projectsById = new Map(caseStudies.map((project) => [project.id, project]));
 
 const talks = (await getCollection('talks')).sort((a, b) => b.data.date.localeCompare(a.data.date));
-const skillGroups = sortSkillGroups(await getCollection('skills'));
 const roles = (await getCollection('experience'))
   .sort((a, b) => b.data.startDate.localeCompare(a.data.startDate))
   .slice(0, experience.visibleCount);
@@ -162,6 +160,9 @@ const navItems = navLinks.map((item) => ({ label: item.label, href: `#${item.sec
 
         <div class="p-6 md:p-8 md:col-span-12 order-1 md:order-none bg-[#F7F8FA] flex flex-wrap items-center gap-x-8 gap-y-4">
           <a href="#contact" class={btnPrimary}>{hero.ctas.primary.label}</a>
+          {hero.ctas.booking.href && (
+            <a href={hero.ctas.booking.href} class={linkArrow} target="_blank" rel="noopener noreferrer">{hero.ctas.booking.label} <span aria-hidden="true">→</span></a>
+          )}
           <a href="#projects" class={linkArrow}>{hero.ctas.secondary.label}</a>
           <a href={hero.ctas.cv.href} download class={linkArrow}>{hero.ctas.cv.label} <span aria-hidden="true">↓</span></a>
         </div>
@@ -292,12 +293,12 @@ const navItems = navLinks.map((item) => ({ label: item.label, href: `#${item.sec
         </div>
       </div>
 
-      <div class={`${hgrid} grid-cols-1 lg:grid-cols-2 mt-10 md:mt-14`}>
+      <div class={`${hgrid} grid-cols-1 mt-10 md:mt-14`}>
         {testimonialItems.map((item) => {
           const project = projectsById.get(item.data.project.id);
           return (
             <figure class={`${cell} p-7 md:p-9 flex flex-col`}>
-              <blockquote class="space-y-4 flex-1">
+              <blockquote class="space-y-4 max-w-[760px]">
                 {item.data.paragraphs.map((paragraph) => (
                   <p class="text-[16px] md:text-[17px] leading-[1.6] text-[#101828]">{paragraph}</p>
                 ))}
@@ -374,37 +375,11 @@ const navItems = navLinks.map((item) => ({ label: item.label, href: `#${item.sec
     </div>
   </section>
 
-  <!-- Skills -->
-  <section id="skills" class={`border-t ${rule} py-16 md:py-24 scroll-mt-[64px]`}>
-    <div class={wrap}>
-      <div class={grid}>
-        <p class={`${marker} md:col-span-2 md:pt-1 mb-6 md:mb-0`}>08 / {skills.label}</p>
-        <div class="md:col-span-10">
-          <h2 class={h2}>{skills.title}</h2>
-          <p class="text-[17px] leading-relaxed text-[#5B6472] mt-5 max-w-[560px]">{skills.desc}</p>
-
-          <div class="mt-10 md:mt-14 space-y-8">
-            {skillGroups.map((group) => (
-              <div class={`border-t ${rule} pt-6`}>
-                <h3 class={label}>{group.data.category}</h3>
-                <div class="flex flex-wrap gap-2 mt-4">
-                  {group.data.items.map((item) => (
-                    <span class={tag}>{item}</span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Talks & writing -->
   <section id="writing" class={`border-t ${rule} py-16 md:py-24 scroll-mt-[64px]`}>
     <div class={wrap}>
       <div class={grid}>
-        <p class={`${marker} md:col-span-2 md:pt-1 mb-6 md:mb-0`}>09 / {writing.label}</p>
+        <p class={`${marker} md:col-span-2 md:pt-1 mb-6 md:mb-0`}>08 / {writing.label}</p>
         <div class="md:col-span-10">
           <h2 class={h2}>{writing.title}</h2>
           <p class="text-[17px] leading-relaxed text-[#5B6472] mt-5 max-w-[560px]">{writing.desc}</p>
@@ -448,7 +423,7 @@ const navItems = navLinks.map((item) => ({ label: item.label, href: `#${item.sec
   <section id="contact" class={`border-t ${rule} py-16 md:py-24 scroll-mt-[64px]`}>
     <div class={wrap}>
       <div class={grid}>
-        <p class={`${marker} md:col-span-2 md:pt-1 mb-6 md:mb-0`}>10 / {contact.label}</p>
+        <p class={`${marker} md:col-span-2 md:pt-1 mb-6 md:mb-0`}>09 / {contact.label}</p>
         <div class="md:col-span-10">
           <h2 class={h2}>{contact.title}</h2>
           <p class="text-[17px] md:text-[18px] leading-relaxed text-[#101828] mt-6 max-w-[720px]">{contact.desc}</p>

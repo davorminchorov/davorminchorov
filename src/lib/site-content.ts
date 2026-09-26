@@ -8,7 +8,7 @@ export const CV_PDF = '/davor-minchorov-cv.pdf';
 export const CODYSSEY_URL = 'https://codyssey.dev';
 export const CODYSSEY_PROFILE_URL = 'https://codyssey.dev/author-profile/davor-minchorov';
 // Cal.com booking page for intro calls. The button stays hidden while this is empty.
-export const BOOKING_URL = '';
+export const BOOKING_URL = 'https://cal.com/davor-minchorov';
 
 export const navLinks = [
   { label: 'About', section: 'about' },
@@ -23,7 +23,7 @@ export const hero = {
   eyebrow: 'PHP Consultant & Product Engineer',
   headline: 'I help product teams build and modernise PHP products that have to keep working for years.',
   intro:
-    'I join teams as a senior engineer or tech lead, review and modernise existing codebases, and build new products and partner APIs. I care about what the software is for, not just whether it compiles.',
+    'I join teams as a senior engineer or tech lead, review and modernise existing codebases, and build new products and partner APIs in Laravel and Symfony. I care about what the software is for, not just whether it compiles.',
   // Rendered as: before + link(Codyssey.dev) + after
   codyssey: {
     before: 'I also run ',
@@ -39,6 +39,7 @@ export const hero = {
   ctas: {
     primary: { label: 'Work with me', section: 'contact' },
     secondary: { label: 'See my work', section: 'projects' },
+    booking: { label: 'Book an intro call', href: BOOKING_URL },
     cv: { label: 'Download CV', href: CV_PDF },
   },
 };
@@ -54,7 +55,7 @@ export const about = {
   title: 'Who I Am',
   paragraphs: [
     "I'm Davor, a PHP consultant and product engineer from Macedonia. I've been building software professionally since 2015, from small startups to Fortune 500 companies, across healthcare, fintech, iGaming, entertainment, logistics, and non-profit. I have worked in English with clients in the US, Canada, Switzerland, Italy, Montenegro, and the UAE.",
-    'I work with founders, CTOs, and product teams who have a PHP application in production and need it to keep growing without falling over. I ask what the business is trying to achieve before I write code, and I will tell you when a feature is not worth building. Some of the work is hands-on: new products, partner APIs, and making an existing codebase safe to change again. Some of it is about the team: leading the work, reviewing code, and agreeing on the practices that keep the product maintainable.',
+    'I work with founders, CTOs, and product teams who have a PHP application in production and need it to keep growing without falling over. I ask what the business is trying to achieve before I write code, and I will tell you when a feature is not worth building.',
   ],
 };
 
@@ -99,7 +100,7 @@ export const services = {
       num: '03',
       title: 'Lead',
       desc: 'For teams that need someone to lead the technical work, not just do it.',
-      summary: 'Embedded or fractional tech lead, team enablement',
+      summary: 'Senior engineer or tech lead, fractional lead, team enablement',
       items: [
         {
           title: 'Senior engineer or tech lead in your team',
@@ -144,10 +145,8 @@ export const howIWork = {
     'Every engagement starts with a call about what you are trying to achieve, then a written plan we agree on before I build.',
     'I write tests. If a codebase has none, that is the first thing I fix.',
     'I work directly with product owners and stakeholders, not through a ticket queue.',
-    'I will tell you when a feature is not worth building, and suggest what to do instead.',
     'I plan the handover from the start, so your team can run what I built without me.',
     'Working hours are agreed with each client, around your team and its time zone.',
-    'I have led teams and mentored engineers, so I can work alone or inside an existing team.',
   ],
 };
 
@@ -159,12 +158,6 @@ export const experience = {
   visibleCount: 3,
   cv: { label: 'Full history in the CV (PDF)', href: CV_PDF },
   cvPage: { label: 'View it online', href: '/cv' },
-};
-
-export const skills = {
-  label: 'Skills',
-  title: 'Tools & Technologies',
-  desc: 'The tools I use most, and the ones I am comfortable working in.',
 };
 
 export const writing = {

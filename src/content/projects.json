@@ -57,7 +57,7 @@
     "industry": "iGaming",
     "country": "Montenegro",
     "problem": "An iGaming platform needed features and improvements to reach launch, integrations with third-party services, and a way to show players' crypto wallet balances in the app.",
-    "why": "The team needed to ship quickly without copying the same integration code and business rules into several places.",
+    "why": "The platform had a launch date to hit. The team needed to ship quickly without copying the same integration code and business rules into several places.",
     "did": [
       "Built features, improvements, and bug fixes that helped the product ship.",
       "Built internal packages from scratch for third-party integrations and shared domain logic, reused across the codebase.",
