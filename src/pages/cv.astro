@@ -4,25 +4,54 @@
 // after every build, so the PDF can never drift from the site.
 import '../styles/global.css';
 import { getCollection } from 'astro:content';
+import CvRole from '../components/CvRole.astro';
 import { formatMonth, sortSkillGroups, yearsOfExperience } from '../lib/career';
+import { BOOKING_URL, EMAIL, services } from '../lib/site-content';
 
 const roles = (await getCollection('experience')).sort((a, b) =>
   b.data.startDate.localeCompare(a.data.startDate),
 );
 const skillGroups = sortSkillGroups(await getCollection('skills'));
 const talks = (await getCollection('talks')).sort((a, b) => b.data.date.localeCompare(a.data.date));
+const testimonials = (await getCollection('testimonials')).sort((a, b) => a.data.order - b.data.order);
+
+// Client engagements through Adeva are grouped under one heading, so seven
+// contracts read as one long relationship rather than seven short jobs. The
+// group sits where its most recent engagement would.
+const GROUP_COMPANY = 'Adeva';
+const inGroup = (role: (typeof roles)[number]) => role.data.company.startsWith(GROUP_COMPANY);
+const groupRoles = roles.filter(inGroup);
+const group = {
+  company: GROUP_COMPANY,
+  startDate: groupRoles.map((role) => role.data.startDate).sort()[0],
+  endDate: groupRoles.some((role) => !role.data.endDate)
+    ? null
+    : groupRoles.map((role) => role.data.endDate as string).sort().at(-1)!,
+  roles: groupRoles,
+};
+type Entry = { kind: 'role'; role: (typeof roles)[number] } | { kind: 'group' };
+const entries: Entry[] = [];
+for (const role of roles) {
+  if (!inGroup(role)) entries.push({ kind: 'role', role });
+  else if (!entries.some((entry) => entry.kind === 'group')) entries.push({ kind: 'group' });
+}
+
+const languages = 'English (professional), Macedonian (native)';
 
 const title = 'Davor Minchorov | CV | PHP Consultant & Product Engineer';
 const description =
-  'CV of Davor Minchorov, PHP consultant and product engineer: work experience, skills, and talks. Available as a PDF download.';
+  'CV of Davor Minchorov, PHP consultant and product engineer: what I do, work experience, testimonials, skills, and talks. Available as a PDF download.';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 
 const contact = [
-  { label: 'davorminchorov@gmail.com', href: 'mailto:davorminchorov@gmail.com' },
+  { label: EMAIL, href: `mailto:${EMAIL}` },
   { label: 'davorminchorov.com', href: 'https://davorminchorov.com' },
   { label: 'linkedin.com/in/davorminchorov', href: 'https://linkedin.com/in/davorminchorov' },
   { label: 'github.com/davorminchorov', href: 'https://github.com/davorminchorov' },
+  ...(BOOKING_URL ? [{ label: `Intro call: ${BOOKING_URL.replace('https://', '')}`, href: BOOKING_URL }] : []),
 ];
+
+const focus = 'focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent';
 
 const updatedOn = new Date().toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' });
 ---
@@ -41,31 +70,31 @@ const updatedOn = new Date().toLocaleDateString('en-GB', { month: 'long', year: 
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <script defer data-domain="davorminchorov.com" src="https://plausible.io/js/plausible.file-downloads.js"></script>
 </head>
-<body class="print:bg-white">
+<body class="bg-bg-subtle print:bg-white">
   <!-- Toolbar: only on screen, never in the PDF or on paper -->
-  <nav class="print:hidden sticky top-0 z-10 bg-bg/85 backdrop-blur-md border-b border-border">
-    <div class="max-w-[860px] mx-auto px-5 sm:px-7 h-[56px] flex items-center justify-between gap-4">
-      <a href="/" class="text-sm font-medium text-text-muted no-underline hover:text-text transition-colors whitespace-nowrap">
+  <nav class="print:hidden sticky top-0 z-10 bg-white/95 backdrop-blur-md border-b border-border">
+    <div class="max-w-[860px] mx-auto px-5 sm:px-7 h-[64px] flex items-center justify-between gap-4">
+      <a href="/" class={`text-[13px] text-text-muted no-underline hover:text-text transition-colors whitespace-nowrap ${focus}`}>
         &larr; Back to site
       </a>
-      <div class="flex items-center gap-2 sm:gap-3">
-        <button id="print-cv" type="button" class="btn-secondary py-2! px-4! whitespace-nowrap">Print</button>
-        <a href="/davor-minchorov-cv.pdf" download class="btn-primary py-2! px-4! whitespace-nowrap">Download PDF</a>
+      <div class="flex items-center gap-4 sm:gap-6">
+        <button id="print-cv" type="button" class={`text-[13px] font-semibold text-text underline decoration-text/25 underline-offset-[6px] hover:text-accent hover:decoration-accent whitespace-nowrap ${focus}`}>Print</button>
+        <a href="/davor-minchorov-cv.pdf" download class={`inline-flex items-center bg-accent text-white px-4 py-2 text-[13px] font-semibold no-underline hover:bg-accent-hover whitespace-nowrap ${focus}`}>Download PDF</a>
       </div>
     </div>
   </nav>
 
-  <main class="cv max-w-[860px] mx-auto my-8 sm:my-12 px-6 py-10 sm:px-14 sm:py-14 bg-bg-card border border-border rounded-xl shadow-sm print:max-w-none print:m-0 print:p-0 print:border-0 print:rounded-none print:shadow-none">
+  <main class="cv max-w-[860px] mx-auto my-8 sm:my-12 px-6 py-10 sm:px-14 sm:py-14 bg-white border border-border print:max-w-none print:m-0 print:p-0 print:border-0">
     <!-- Header -->
     <header class="border-b-2 border-accent pb-5">
-      <h1 class="font-display text-[34px] leading-none font-bold tracking-tight text-text">Davor Minchorov</h1>
-      <p class="font-mono text-[12px] text-accent uppercase tracking-wider font-medium mt-2.5">
+      <h1 class="font-display text-[34px] leading-none font-semibold tracking-tight text-text">Davor Minchorov</h1>
+      <p class="font-mono text-[11.5px] text-accent uppercase tracking-[0.14em] font-medium mt-3">
         PHP Consultant &amp; Product Engineer
       </p>
-      <ul class="flex flex-wrap gap-x-4 gap-y-1 mt-3.5 text-[13px] text-text-secondary list-none p-0 m-0">
+      <ul class="flex flex-wrap gap-x-4 gap-y-1 mt-3.5 text-[13px] text-text-muted list-none p-0 m-0">
         {contact.map((item) => (
           <li>
-            <a href={item.href} class="text-text-secondary no-underline hover:text-accent">{item.label}</a>
+            <a href={item.href} class="text-text-muted no-underline hover:text-accent">{item.label}</a>
           </li>
         ))}
         <li>Skopje, Macedonia · Remote</li>
@@ -83,39 +112,61 @@ const updatedOn = new Date().toLocaleDateString('en-GB', { month: 'long', year: 
       </p>
     </section>
 
+    <!-- What I do -->
+    <section class="mt-7 break-inside-avoid">
+      <h2 class="cv-heading">What I Do</h2>
+      <dl class="m-0 space-y-1.5">
+        {services.groups.map((group) => (
+          <div class="sm:grid sm:grid-cols-[180px_1fr] sm:gap-x-4">
+            <dt class="text-[13px] font-semibold text-text tracking-tight">{group.title}</dt>
+            <dd class="cv-text m-0">{group.summary}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+
     <!-- Experience -->
     <section class="mt-7">
       <h2 class="cv-heading">Experience</h2>
       <div class="space-y-5">
-        {roles.map((role) => (
-          <article>
-            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-4">
-              <h3 class="text-[15px] font-semibold tracking-tight text-text m-0">
-                {role.data.title}
-                <span class="font-normal text-text-muted"> · </span>
-                <span class="font-medium text-accent">{role.data.company}</span>
-              </h3>
-              <span class="text-[12.5px] text-text-dim whitespace-nowrap">
-                {formatMonth(role.data.startDate)} – {formatMonth(role.data.endDate)}
-              </span>
+        {entries.map((entry) =>
+          entry.kind === 'role' ? (
+            <CvRole role={entry.role} />
+          ) : (
+            <div>
+              <div class="cv-group-head flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-4">
+                <h3 class="text-[15px] font-semibold tracking-tight text-accent m-0">{group.company}</h3>
+                <span class="font-mono text-[11.5px] text-text-muted whitespace-nowrap">
+                  {formatMonth(group.startDate)} – {formatMonth(group.endDate)}
+                </span>
+              </div>
+              <p class="text-[12.5px] text-text-muted mt-0.5">Client engagements through {group.company}</p>
+              <div class="mt-3 pl-4 border-l-2 border-border space-y-4">
+                {group.roles.map((role) => (
+                  <CvRole role={role} nested groupCompany={group.company} />
+                ))}
+              </div>
             </div>
-            <p class="text-[12.5px] text-text-muted mt-0.5">
-              {role.data.industry}
-              {role.data.clientLocation && <span> · Client: {role.data.clientLocation}</span>}
-              {role.data.employmentType && <span> · {role.data.employmentType}</span>}
-              {role.data.location && <span> · {role.data.location}</span>}
-            </p>
-            <ul class="mt-2 space-y-1 pl-4 list-disc marker:text-accent">
-              {role.data.outcomes.map((outcome) => (
-                <li class="cv-text">{outcome}</li>
+          ),
+        )}
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="mt-7">
+      <h2 class="cv-heading">What People Say</h2>
+      <div class="space-y-5">
+        {testimonials.map((item) => (
+          <figure class="break-inside-avoid border-l-2 border-accent pl-4">
+            <blockquote class="m-0 space-y-2">
+              {item.data.paragraphs.map((paragraph) => (
+                <p class="cv-text">{paragraph}</p>
               ))}
-            </ul>
-            {role.data.skills.length > 0 && (
-              <p class="text-[12.5px] text-text-muted mt-1.5">
-                <span class="font-medium text-text-secondary">Stack:</span> {role.data.skills.join(', ')}
-              </p>
-            )}
-          </article>
+            </blockquote>
+            <figcaption class="text-[12.5px] text-text-muted mt-2">
+              <span class="font-semibold text-text">{item.data.author}</span>, {item.data.role} · {item.data.note}
+            </figcaption>
+          </figure>
         ))}
       </div>
     </section>
@@ -130,6 +181,10 @@ const updatedOn = new Date().toLocaleDateString('en-GB', { month: 'long', year: 
             <dd class="cv-text m-0">{group.data.items.join(', ')}</dd>
           </div>
         ))}
+        <div class="sm:grid sm:grid-cols-[180px_1fr] sm:gap-x-4">
+          <dt class="text-[13px] font-semibold text-text tracking-tight">Languages</dt>
+          <dd class="cv-text m-0">{languages}</dd>
+        </div>
       </dl>
     </section>
 
@@ -143,7 +198,7 @@ const updatedOn = new Date().toLocaleDateString('en-GB', { month: 'long', year: 
               <a href={talk.data.url} class="cv-link font-medium">{talk.data.title}</a>
               <span class="text-text-muted"> · {talk.data.type}, {talk.data.event}</span>
             </span>
-            <span class="text-[12.5px] text-text-dim whitespace-nowrap">{formatMonth(talk.data.date)}</span>
+            <span class="font-mono text-[11.5px] text-text-muted whitespace-nowrap">{formatMonth(talk.data.date)}</span>
           </li>
         ))}
         <li class="cv-text">
@@ -153,9 +208,9 @@ const updatedOn = new Date().toLocaleDateString('en-GB', { month: 'long', year: 
       </ul>
     </section>
 
-    <footer class="mt-8 pt-4 border-t border-border text-[11.5px] text-text-dim flex flex-wrap justify-between gap-2">
+    <footer class="mt-8 pt-4 border-t border-border text-[11.5px] text-text-muted flex flex-wrap justify-between gap-2">
       <span>Updated {updatedOn}</span>
-      <span>Latest version: <a href="https://davorminchorov.com/cv" class="text-text-dim no-underline hover:text-accent">davorminchorov.com/cv</a></span>
+      <span>Latest version: <a href="https://davorminchorov.com/cv" class="text-text-muted no-underline hover:text-accent">davorminchorov.com/cv</a></span>
     </footer>
   </main>
 
@@ -178,11 +233,11 @@ const updatedOn = new Date().toLocaleDateString('en-GB', { month: 'long', year: 
   }
 
   .cv-heading {
-    @apply font-mono text-[11px] text-accent uppercase tracking-widest font-medium mb-2.5 pb-1.5 border-b border-border;
+    @apply font-mono text-[11px] text-accent uppercase tracking-[0.14em] font-semibold mb-2.5 pb-1.5 border-b border-border;
   }
 
   .cv-text {
-    @apply text-[13px] text-text-secondary leading-relaxed;
+    @apply text-[13px] text-text-muted leading-relaxed;
   }
 
   .cv-link {
@@ -198,6 +253,8 @@ const updatedOn = new Date().toLocaleDateString('en-GB', { month: 'long', year: 
        bullets and a single bullet never splits. */
     .cv article > div,
     .cv article > p:first-of-type,
+    .cv .cv-group-head,
+    .cv .cv-group-head + p,
     .cv h2 {
       break-after: avoid;
     }
@@ -212,7 +269,7 @@ const updatedOn = new Date().toLocaleDateString('en-GB', { month: 'long', year: 
 
     .cv .cv-link,
     .cv .text-accent {
-      color: #1a5c3a;
+      color: #1e4fd1;
     }
   }
 </style>

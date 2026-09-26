@@ -1,0 +1,47 @@
+---
+// One role on the CV. Roles inside a company group (`nested`) lead with the
+// industry instead of repeating the company name.
+import type { CollectionEntry } from 'astro:content';
+import { formatMonth } from '../lib/career';
+
+interface Props {
+  role: CollectionEntry<'experience'>;
+  nested?: boolean;
+  // The group's company name; shown only when this role's differs from it.
+  groupCompany?: string;
+}
+
+const { role, nested = false, groupCompany } = Astro.props;
+const { title, company, industry, clientLocation, employmentType, startDate, endDate, outcomes, skills } = role.data;
+
+const meta = [
+  nested ? null : industry,
+  clientLocation && `Client: ${clientLocation}`,
+  employmentType,
+  nested && company !== groupCompany ? company : null,
+].filter(Boolean);
+---
+
+<article>
+  <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-4">
+    <h3 class={`${nested ? 'text-[14px]' : 'text-[15px]'} font-semibold tracking-tight text-text m-0`}>
+      {title}
+      <span class="font-normal text-text-muted"> · </span>
+      <span class={nested ? 'font-medium text-text' : 'font-semibold text-accent'}>{nested ? industry : company}</span>
+    </h3>
+    <span class="font-mono text-[11.5px] text-text-muted whitespace-nowrap">
+      {formatMonth(startDate)} – {formatMonth(endDate)}
+    </span>
+  </div>
+  {meta.length > 0 && <p class="text-[12.5px] text-text-muted mt-0.5">{meta.join(' · ')}</p>}
+  <ul class="mt-2 space-y-1 pl-4 list-disc marker:text-accent">
+    {outcomes.map((outcome) => (
+      <li class="cv-text">{outcome}</li>
+    ))}
+  </ul>
+  {skills.length > 0 && (
+    <p class="text-[12.5px] text-text-muted mt-1.5">
+      <span class="font-medium text-text">Stack:</span> {skills.join(', ')}
+    </p>
+  )}
+</article>

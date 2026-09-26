@@ -7,34 +7,18 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-bg: #FAFAF9;
-  --color-bg-warm: #F5F3EF;
-  --color-bg-card: #FFFFFF;
-
-  --color-border: #E8E4DD;
-  --color-border-hover: #D4CFC6;
-
-  --color-text: #1A1A1A;
-  --color-text-secondary: #4A4A4A;
-  --color-text-muted: #6B6B6B;
-  --color-text-dim: #737373;
-
-  --color-accent: #1A5C3A;
-  --color-accent-light: #EDF5F0;
-
-  --color-tag-warm: #F8F0E3;
-  --color-tag-warm-text: #8B6914;
-  --color-tag-blue: #E8F0FA;
-  --color-tag-blue-text: #2A5A8C;
-  --color-tag-purple: #F0ECF8;
-  --color-tag-purple-text: #5B3E96;
+  /* The homepage palette (src/components/HomePage.astro). */
+  --color-bg: #FFFFFF;
+  --color-bg-subtle: #F7F8FA;
+  --color-border: #E3E6EC;
+  --color-text: #101828;
+  --color-text-muted: #5B6472;
+  --color-accent: #1E4FD1;
+  --color-accent-hover: #17399E;
 
   --font-display: "Source Serif 4 Variable", Georgia, serif;
   --font-body: "Instrument Sans Variable", -apple-system, sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
-
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-md: 0 2px 8px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
 }
 
 @layer base {
@@ -56,16 +40,4 @@
   [role="button"]:not(:disabled) {
     cursor: pointer;
   }
-}
-
-@utility btn {
-  @apply inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-lg text-sm font-semibold no-underline transition-colors duration-200;
-}
-
-@utility btn-primary {
-  @apply btn bg-accent text-white hover:bg-[#154B30];
-}
-
-@utility btn-secondary {
-  @apply btn border border-border bg-bg-card text-text hover:border-border-hover hover:bg-bg-warm;
 }
