@@ -306,8 +306,9 @@ const tag = 'inline-flex items-center px-2.5 py-1 border border-[#E3E6EC] font-m
       </div>
 
       <div class={`${hgrid} grid-cols-1 md:grid-cols-2 mt-10 md:mt-14`}>
-        {howIWork.points.map((point, i) => (
-          <div class={`${cell} p-6 md:p-8 flex gap-4`}>
+        {howIWork.points.map((point, i, points) => (
+          // An odd last point spans both columns so the grid has no empty cell.
+          <div class={`${cell} p-6 md:p-8 flex gap-4 ${points.length % 2 === 1 && i === points.length - 1 ? 'md:col-span-2' : ''}`}>
             <span class="font-mono text-[12px] text-[#1E4FD1] pt-1">{String(i + 1).padStart(2, '0')}</span>
             <p class="text-[16px] md:text-[17px] leading-[1.5] text-[#101828]">{point}</p>
           </div>

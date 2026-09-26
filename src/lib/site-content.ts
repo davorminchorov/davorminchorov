@@ -150,6 +150,7 @@ export const howIWork = {
     'I work directly with product owners and stakeholders, not through a ticket queue.',
     'I plan the handover from the start, so your team can run what I built without me.',
     'Working hours are agreed with each client, around your team and its time zone.',
+    'I use AI coding assistants where they speed up the work. I review and test everything that ships, and I follow your rules on what code and data can go into outside tools.',
   ],
 };
 
