@@ -15,6 +15,7 @@ import {
   about,
   services,
   work,
+  testimonials,
   howIWork,
   experience,
   skills,
@@ -28,10 +29,14 @@ import {
 // Client work leads; the featured own product keeps its badge but follows `order`.
 const caseStudies = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 
+const testimonialItems = (await getCollection('testimonials')).sort((a, b) => a.data.order - b.data.order);
+const projectsById = new Map(caseStudies.map((project) => [project.id, project]));
+
 const talks = (await getCollection('talks')).sort((a, b) => b.data.date.localeCompare(a.data.date));
 const skillGroups = sortSkillGroups(await getCollection('skills'));
-const roles = (await getCollection('experience')).sort((a, b) => b.data.startDate.localeCompare(a.data.startDate));
-const hiddenCount = Math.max(0, roles.length - experience.visibleCount);
+const roles = (await getCollection('experience'))
+  .sort((a, b) => b.data.startDate.localeCompare(a.data.startDate))
+  .slice(0, experience.visibleCount);
 const writingItems = await latestWriting();
 
 const focus = 'focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1E4FD1]';
@@ -135,7 +140,15 @@ const navItems = navLinks.map((item) => ({ label: item.label, href: `#${item.sec
           </ul>
         </div>
 
-        <div class={`${cell} p-6 md:p-8 md:col-span-12 order-3 md:order-none`}>
+        <figure class={`${cell} p-6 md:p-8 md:col-span-12 order-3 md:order-none border-l-4 border-l-[#1E4FD1]`}>
+          <blockquote class="font-display text-[20px] md:text-[23px] italic leading-[1.4] text-[#101828]">“{hero.quote.text}”</blockquote>
+          <figcaption class="mt-3 flex flex-wrap items-baseline gap-x-6 gap-y-2">
+            <span class={marker}>{hero.quote.author}</span>
+            <a href="#testimonials" class={linkArrow}>{hero.quote.linkText} <span aria-hidden="true">→</span></a>
+          </figcaption>
+        </figure>
+
+        <div class={`${cell} p-6 md:p-8 md:col-span-12 order-4 md:order-none`}>
           <p class={label}>{work.title}</p>
           <ul class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4">
             {caseStudies.map((project) => (
@@ -151,7 +164,6 @@ const navItems = navLinks.map((item) => ({ label: item.label, href: `#${item.sec
           <a href="#contact" class={btnPrimary}>{hero.ctas.primary.label}</a>
           <a href="#projects" class={linkArrow}>{hero.ctas.secondary.label}</a>
           <a href={hero.ctas.cv.href} download class={linkArrow}>{hero.ctas.cv.label} <span aria-hidden="true">↓</span></a>
-          <a href={contact.primary.href} class={linkArrow}>{contact.primary.label}</a>
         </div>
       </div>
     </div>
@@ -263,14 +275,45 @@ const navItems = navLinks.map((item) => ({ label: item.label, href: `#${item.sec
               )}
             </div>
 
-            {project.data.quote && (
-              <blockquote class={`p-6 md:p-8 border-t ${rule} border-l-4 border-l-[#1E4FD1]`}>
-                <p class="text-[18px] md:text-[19px] italic font-medium leading-[1.5] text-[#101828]">{project.data.quote.text}</p>
-                <footer class={`${marker} mt-3`}>{project.data.quote.author} · {project.data.quote.role}{project.data.quote.source && ` · ${project.data.quote.source}`}</footer>
-              </blockquote>
-            )}
           </article>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class={`border-t ${rule} py-16 md:py-24 scroll-mt-[64px]`}>
+    <div class={wrap}>
+      <div class={grid}>
+        <p class={`${marker} md:col-span-2 md:pt-1 mb-6 md:mb-0`}>05 / {testimonials.label}</p>
+        <div class="md:col-span-10">
+          <h2 class={h2}>{testimonials.title}</h2>
+          <p class="text-[17px] leading-relaxed text-[#5B6472] mt-5 max-w-[560px]">{testimonials.desc}</p>
+        </div>
+      </div>
+
+      <div class={`${hgrid} grid-cols-1 lg:grid-cols-2 mt-10 md:mt-14`}>
+        {testimonialItems.map((item) => {
+          const project = projectsById.get(item.data.project.id);
+          return (
+            <figure class={`${cell} p-7 md:p-9 flex flex-col`}>
+              <blockquote class="space-y-4 flex-1">
+                {item.data.paragraphs.map((paragraph) => (
+                  <p class="text-[16px] md:text-[17px] leading-[1.6] text-[#101828]">{paragraph}</p>
+                ))}
+              </blockquote>
+              <figcaption class={`mt-8 pt-6 border-t ${rule}`}>
+                <p class="font-body text-[16px] font-bold text-[#101828]">{item.data.author}</p>
+                <p class={`${marker} mt-1.5`}>{item.data.role}{item.data.note && ` · ${item.data.note}`}</p>
+                {project && (
+                  <a href={`#project-${project.id}`} class={`${linkArrow} mt-4 text-[14px]!`}>
+                    {project.data.industry}{project.data.country && `, ${project.data.country}`}: {testimonials.projectLinkText} <span aria-hidden="true">→</span>
+                  </a>
+                )}
+              </figcaption>
+            </figure>
+          );
+        })}
       </div>
     </div>
   </section>
@@ -279,7 +322,7 @@ const navItems = navLinks.map((item) => ({ label: item.label, href: `#${item.sec
   <section id="how-i-work" class={`border-t ${rule} py-16 md:py-24 scroll-mt-[64px]`}>
     <div class={wrap}>
       <div class={grid}>
-        <p class={`${marker} md:col-span-2 md:pt-1 mb-6 md:mb-0`}>05 / {howIWork.label}</p>
+        <p class={`${marker} md:col-span-2 md:pt-1 mb-6 md:mb-0`}>06 / {howIWork.label}</p>
         <div class="md:col-span-10">
           <h2 class={h2}>{howIWork.title}</h2>
         </div>
@@ -300,50 +343,34 @@ const navItems = navLinks.map((item) => ({ label: item.label, href: `#${item.sec
   <section id="experience" class={`border-t ${rule} py-16 md:py-24 scroll-mt-[64px]`}>
     <div class={wrap}>
       <div class={grid}>
-        <p class={`${marker} md:col-span-2 md:pt-1 mb-6 md:mb-0`}>06 / {experience.label}</p>
+        <p class={`${marker} md:col-span-2 md:pt-1 mb-6 md:mb-0`}>07 / {experience.label}</p>
         <div class="md:col-span-10">
           <h2 class={h2}>{experience.title}</h2>
           <p class="text-[17px] leading-relaxed text-[#5B6472] mt-5 max-w-[560px]">{experience.desc}</p>
         </div>
       </div>
 
-      <div class="flex flex-col gap-px bg-[#E3E6EC] border border-[#E3E6EC] mt-10 md:mt-14">
-        {roles.map((role, i) => (
-          <article class:list={[cell, 'p-6 md:p-8', i >= experience.visibleCount && 'experience-extra hidden']}>
-            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
-              <h3 class="font-body text-[20px] md:text-[22px] font-bold leading-tight text-[#101828]">{role.data.title}</h3>
-              <span class={`${marker} whitespace-nowrap`}>{formatMonth(role.data.startDate)} – {formatMonth(role.data.endDate)}</span>
+      <ul class={`${hgrid} grid-cols-1 mt-10 md:mt-14`}>
+        {roles.map((role) => (
+          <li class={`${cell} p-6 md:px-8 md:py-6 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-6`}>
+            <div>
+              <p class="font-body text-[18px] md:text-[20px] font-bold leading-tight text-[#101828]">{role.data.title}</p>
+              <p class="text-[14px] text-[#5B6472] mt-1.5">
+                <span class="font-semibold text-[#1E4FD1]">{role.data.company}</span>
+                <span> · {role.data.industry}</span>
+                {role.data.clientLocation && <span> · Client: {role.data.clientLocation}</span>}
+                {role.data.employmentType && <span> · {role.data.employmentType}</span>}
+              </p>
             </div>
-            <p class="text-[15px] font-semibold text-[#1E4FD1] mt-1.5">{role.data.company}</p>
-            <p class="text-[13px] text-[#5B6472] mt-1">
-              {role.data.industry}
-              {role.data.clientLocation && <span> · Client: {role.data.clientLocation}</span>}
-              {role.data.location && <span> · {role.data.location}</span>}
-            </p>
-            <ul class="mt-4 space-y-2">
-              {role.data.outcomes.map((outcome) => (
-                <li class="text-[15px] leading-relaxed text-[#101828] grid grid-cols-[16px_minmax(0,1fr)]">
-                  <span class="text-[#1E4FD1]" aria-hidden="true">+</span>
-                  <span>{outcome}</span>
-                </li>
-              ))}
-            </ul>
-            {role.data.skills.length > 0 && (
-              <div class="flex flex-wrap gap-2 mt-4">
-                {role.data.skills.map((skill) => (
-                  <span class={tag}>{skill}</span>
-                ))}
-              </div>
-            )}
-          </article>
+            <span class={`${marker} whitespace-nowrap`}>{formatMonth(role.data.startDate)} – {formatMonth(role.data.endDate)}</span>
+          </li>
         ))}
-      </div>
+      </ul>
 
-      {hiddenCount > 0 && (
-        <button id="experience-toggle" class={`${linkArrow} mt-8 bg-transparent border-none cursor-pointer p-0!`}>
-          {experience.showAllLabel(hiddenCount)}
-        </button>
-      )}
+      <div class="flex flex-wrap items-center gap-x-8 gap-y-4 mt-8">
+        <a href={experience.cv.href} download class={linkArrow}>{experience.cv.label} <span aria-hidden="true">↓</span></a>
+        <a href={experience.cvPage.href} class={linkArrow}>{experience.cvPage.label} <span aria-hidden="true">→</span></a>
+      </div>
     </div>
   </section>
 
@@ -351,7 +378,7 @@ const navItems = navLinks.map((item) => ({ label: item.label, href: `#${item.sec
   <section id="skills" class={`border-t ${rule} py-16 md:py-24 scroll-mt-[64px]`}>
     <div class={wrap}>
       <div class={grid}>
-        <p class={`${marker} md:col-span-2 md:pt-1 mb-6 md:mb-0`}>07 / {skills.label}</p>
+        <p class={`${marker} md:col-span-2 md:pt-1 mb-6 md:mb-0`}>08 / {skills.label}</p>
         <div class="md:col-span-10">
           <h2 class={h2}>{skills.title}</h2>
           <p class="text-[17px] leading-relaxed text-[#5B6472] mt-5 max-w-[560px]">{skills.desc}</p>
@@ -377,7 +404,7 @@ const navItems = navLinks.map((item) => ({ label: item.label, href: `#${item.sec
   <section id="writing" class={`border-t ${rule} py-16 md:py-24 scroll-mt-[64px]`}>
     <div class={wrap}>
       <div class={grid}>
-        <p class={`${marker} md:col-span-2 md:pt-1 mb-6 md:mb-0`}>08 / {writing.label}</p>
+        <p class={`${marker} md:col-span-2 md:pt-1 mb-6 md:mb-0`}>09 / {writing.label}</p>
         <div class="md:col-span-10">
           <h2 class={h2}>{writing.title}</h2>
           <p class="text-[17px] leading-relaxed text-[#5B6472] mt-5 max-w-[560px]">{writing.desc}</p>
@@ -421,10 +448,11 @@ const navItems = navLinks.map((item) => ({ label: item.label, href: `#${item.sec
   <section id="contact" class={`border-t ${rule} py-16 md:py-24 scroll-mt-[64px]`}>
     <div class={wrap}>
       <div class={grid}>
-        <p class={`${marker} md:col-span-2 md:pt-1 mb-6 md:mb-0`}>09 / {contact.label}</p>
+        <p class={`${marker} md:col-span-2 md:pt-1 mb-6 md:mb-0`}>10 / {contact.label}</p>
         <div class="md:col-span-10">
           <h2 class={h2}>{contact.title}</h2>
           <p class="text-[17px] md:text-[18px] leading-relaxed text-[#101828] mt-6 max-w-[720px]">{contact.desc}</p>
+          <p class="text-[16px] leading-relaxed text-[#5B6472] mt-4 max-w-[720px]">{contact.nextStep}</p>
           <p class={`${marker} mt-4`}>{contact.availability}</p>
 
           <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
@@ -466,9 +494,4 @@ const navItems = navLinks.map((item) => ({ label: item.label, href: `#${item.sec
     link.addEventListener('click', () => link.closest('details')?.removeAttribute('open'));
   });
 
-  const toggle = document.getElementById('experience-toggle');
-  toggle?.addEventListener('click', () => {
-    document.querySelectorAll('.experience-extra').forEach((el) => el.classList.remove('hidden'));
-    toggle.remove();
-  });
 </script>

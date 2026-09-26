@@ -77,7 +77,7 @@
     "clientLocation": "Canada",
     "outcomes": [
       "Designed and built new and existing features for an enterprise entertainment web application for a Canada-based client, both server-rendered pages and REST API endpoints.",
-      "Built the REST APIs behind a redesign of the platform's creator tools, which launched after I left.",
+      "Designed and built the REST API behind the redesigned creator upload and publishing tools, which launched after I left.",
       "Worked directly with the client on requirements and delivery.",
       "Fixed release and production bugs.",
       "Refactored code for performance and readability.",
@@ -100,7 +100,8 @@
       "Wrote unit and feature tests using TDD.",
       "Built UI components for the user-facing app as part of a reusable component library."
     ],
-    "skills": ["PHP", "Laravel", "Vue 2", "GraphQL", "REST", "Elasticsearch", "MySQL", "Redis"]
+    "skills": ["PHP", "Laravel", "Vue 2", "GraphQL", "REST", "Elasticsearch", "MySQL", "Redis"],
+    "employmentType": "Part-time contract"
   },
   {
     "company": "Adeva",
@@ -113,7 +114,8 @@
     "outcomes": [
       "Built new admin panel and REST API features for an employee engagement web application."
     ],
-    "skills": ["PHP", "Laravel", "Bootstrap", "jQuery", "MySQL", "Docker"]
+    "skills": ["PHP", "Laravel", "Bootstrap", "jQuery", "MySQL", "Docker"],
+    "employmentType": "Part-time contract"
   },
   {
     "company": "Adeva",
@@ -139,10 +141,10 @@
     "industry": "Financial (fintech)",
     "clientLocation": "United States",
     "outcomes": [
+      "Led a team of 3 developers and 2 QA engineers on a REST API that lets banks use the main loan origination flow: planned and split the work and designed the API. The project was on schedule when I handed it over before launch.",
       "Designed and built new and existing features for an enterprise financial web application.",
       "Fixed release and production bugs, and supported production releases as issues came up during deployment.",
-      "Presented delivered work to business analysts and product owners.",
-      "Led a team of 3 developers and 2 QA engineers on a REST API that lets banks use the main loan origination flow: planned and split the work and designed the API. The project was on schedule when I handed it over before launch."
+      "Presented delivered work to business analysts and product owners."
     ],
     "skills": ["PHP", "Laravel", "Lumen", "MySQL", "Docker"]
   },

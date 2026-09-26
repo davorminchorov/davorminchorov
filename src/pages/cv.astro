@@ -102,6 +102,7 @@ const updatedOn = new Date().toLocaleDateString('en-GB', { month: 'long', year: 
             <p class="text-[12.5px] text-text-muted mt-0.5">
               {role.data.industry}
               {role.data.clientLocation && <span> · Client: {role.data.clientLocation}</span>}
+              {role.data.employmentType && <span> · {role.data.employmentType}</span>}
               {role.data.location && <span> · {role.data.location}</span>}
             </p>
             <ul class="mt-2 space-y-1 pl-4 list-disc marker:text-accent">

@@ -14,8 +14,7 @@ export const navLinks = [
   { label: 'About', section: 'about' },
   { label: 'Services', section: 'services' },
   { label: 'Work', section: 'projects' },
-  { label: 'Experience', section: 'experience' },
-  { label: 'Skills', section: 'skills' },
+  { label: 'Testimonials', section: 'testimonials' },
   { label: 'Talks & Writing', section: 'writing' },
   { label: 'Contact', section: 'contact' },
 ];
@@ -30,6 +29,12 @@ export const hero = {
     before: 'I also run ',
     linkText: 'Codyssey.dev',
     after: ', where I teach engineers to build maintainable software. I bring the same practices to the teams I work with.',
+  },
+  // A short verbatim line from the testimonials section, linked to it.
+  quote: {
+    text: "He didn't just deliver features — he actively shaped the direction of the product.",
+    author: 'Bartosz P., Staff Backend Engineer',
+    linkText: 'Read what people say',
   },
   ctas: {
     primary: { label: 'Work with me', section: 'contact' },
@@ -82,7 +87,7 @@ export const services = {
       items: [
         {
           title: 'Codebase and architecture review',
-          desc: 'I read your code, tests, and delivery pipeline, then write up what is slowing the team down and a staged plan to fix it.',
+          desc: 'I read your code, tests, and delivery pipeline, and find what is slowing the team down. You get a written report with prioritised findings, a staged plan to fix them, and a walkthrough call with your team.',
         },
         {
           title: 'Modernisation project',
@@ -124,6 +129,13 @@ export const work = {
   parts: { problem: 'Problem', why: 'Why it mattered', did: 'What I did', result: 'Result' },
 };
 
+export const testimonials = {
+  label: 'Testimonials',
+  title: "What people I've worked with say",
+  desc: 'In full, as they wrote them. Client names left out.',
+  projectLinkText: 'See the case study',
+};
+
 export const howIWork = {
   label: 'How I Work',
   title: 'Working with me',
@@ -142,10 +154,11 @@ export const howIWork = {
 export const experience = {
   label: 'Experience',
   title: "Where I've Worked",
-  desc: 'Over a decade of building for startups and enterprises across many industries.',
-  // Roles shown before the "Show all experience" button.
-  visibleCount: 2,
-  showAllLabel: (hidden: number) => `Show all experience (${hidden} more)`,
+  desc: 'Since 2015, from startups to Fortune 500 clients. The most recent roles are below; the CV has the full history.',
+  // The homepage lists only the most recent roles; the CV lists every one.
+  visibleCount: 3,
+  cv: { label: 'Full history in the CV (PDF)', href: CV_PDF },
+  cvPage: { label: 'View it online', href: '/cv' },
 };
 
 export const skills = {
@@ -168,6 +181,7 @@ export const contact = {
   label: 'Contact',
   title: 'Work with me',
   desc: 'If your PHP application needs new features or a better architecture, your codebase has become hard to change, or your team needs technical leadership, send me a short note about what you are trying to achieve and where the software is getting in the way. I reply within a day.',
+  nextStep: 'Next: a short call about your goals, then a written plan before any work starts.',
   availability: 'Available now for long-term contracts and focused projects.',
   primary: { label: 'Send me an email', href: `mailto:${EMAIL}` },
   booking: { label: 'Book an intro call', href: BOOKING_URL },

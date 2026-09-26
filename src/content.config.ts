@@ -1,4 +1,4 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection, reference, z } from 'astro:content';
 import { file } from 'astro/loaders';
 
 const slugify = (value: string) =>
@@ -27,6 +27,8 @@ const experience = defineCollection({
     endDate: z.string().nullable(), // null = current role
     industry: z.string(),
     clientLocation: z.string().optional(),
+    // For roles that ran alongside another one, e.g. "Part-time contract".
+    employmentType: z.string().optional(),
     outcomes: z.array(z.string()),
     skills: z.array(z.string()).default([]),
   }),
@@ -65,19 +67,30 @@ const projects = defineCollection({
     why: z.string(),
     did: z.array(z.string()),
     result: z.string().optional(),
-    quote: z
-      .object({
-        text: z.string(),
-        author: z.string(),
-        role: z.string(),
-        // Where the quote came from, when it was not a public recommendation.
-        source: z.string().optional(),
-      })
-      .optional(),
     stack: z.array(z.string()),
     featured: z.boolean().optional().default(false),
     url: z.string().url().optional(),
     colorScheme: z.enum(['warm', 'blue', 'purple']).optional().default('warm'),
+    order: z.number(),
+  }),
+});
+
+// Testimonials, kept verbatim. Client and product names are redacted in square brackets.
+const testimonials = defineCollection({
+  loader: file('src/content/testimonials.json', {
+    parser: (text) =>
+      (JSON.parse(text) as Array<Record<string, unknown>>).map((item) => ({
+        ...item,
+        id: slugify(item.author as string),
+      })),
+  }),
+  schema: z.object({
+    author: z.string(),
+    role: z.string(),
+    // Relationship or source, e.g. "Managed me directly".
+    note: z.string().optional(),
+    project: reference('projects'),
+    paragraphs: z.array(z.string()),
     order: z.number(),
   }),
 });
@@ -100,4 +113,4 @@ const talks = defineCollection({
   }),
 });
 
-export const collections = { experience, skills, projects, talks };
+export const collections = { experience, skills, projects, testimonials, talks };

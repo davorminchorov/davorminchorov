@@ -85,7 +85,7 @@ This file describes the positioning the site currently uses. Copy on the site is
 - Fintech engagement: led 3 developers and 2 QA engineers on a REST API letting banks use the loan origination flow; on schedule at handover before launch
 - Routyx: chose the stack and set up the structure for a logistics dispatch ERP and driver app API; both grew without a rewrite
 **Customers:** Non-profit SaaS, fintech, community platforms, iGaming, logistics, entertainment enterprises (healthcare stays in Experience only)
-**Testimonials:** Shown on the case study cards, not in a separate section
+**Testimonials:** A "What people I've worked with say" section after the case studies shows both in full (`src/content/testimonials.json`), each linked to its case study. Bartosz's "He didn't just deliver features" line also sits in the summary panel. Case study cards carry no quotes. Kevin's original has no closing full stop; the site adds one
 Quotes are verbatim, including the authors' em dashes and word choices. The client's product name is redacted as [the platform]. Sources: Kevin's is a company values award nomination (he agreed to publication); Bartosz's is a LinkedIn recommendation (he managed Davor directly).
 
 > "He didn't just deliver features — he actively shaped the direction of the product." (Bartosz P., Staff Backend Engineer, iGaming)

@@ -14,12 +14,6 @@
       "Reviewed pull requests, demoed delivered features to stakeholders, and wrote automated tests."
     ],
     "result": "Workflows and Company Contacts shipped to production, backed by tests. CI builds went from 30 to 60 minutes to under 10, so merges and deploys moved faster and CI costs dropped.",
-    "quote": {
-      "text": "Davor consistently delivers game-changing features that drive real customer and business impact. As the primary backend developer for both Workflows and Company Contacts, he's built foundational capabilities that transformed how our customers manage donor relationships and organizational data. His systematic approach to complex technical challenges, whether implementing major new features or fixing critical import system issues, ensures customers can successfully scale their operations on [the platform]. Davor's reliable execution on high-impact projects makes him essential to our team's success",
-      "author": "Kevin R.",
-      "role": "Product Manager",
-      "source": "Company values award nomination"
-    },
     "stack": ["PHP", "Laravel", "MySQL", "Redis", "Typesense", "GitHub Actions"],
     "colorScheme": "warm",
     "order": 1
@@ -72,11 +66,6 @@
       "Wrote automated tests."
     ],
     "result": "The platform launched. Integrations and shared business rules live in internal packages the team reuses, and players see their crypto wallet balances in the app.",
-    "quote": {
-      "text": "He didn't just deliver features — he actively shaped the direction of the product. Davor brought a steady stream of valuable ideas, from conceptual improvements to meaningful architectural suggestions. His understanding of modern development practices, design patterns, and emerging tools was always up to date, and he used that knowledge to elevate the entire codebase. When you asked for his opinion, you could rely on it being thoughtful, well-reasoned, and grounded in real technical insight. … I wholeheartedly recommend Davor to any team looking for a developer who not only writes solid code but also contributes to the bigger picture.",
-      "author": "Bartosz P.",
-      "role": "Staff Backend Engineer"
-    },
     "stack": ["PHP", "Symfony", "MariaDB", "KeyDB", "Docker"],
     "colorScheme": "blue",
     "order": 4
@@ -116,18 +105,18 @@
     "order": 6
   },
   {
-    "title": "Creator tools redesign for an entertainment platform",
+    "title": "Creator publishing API for a video platform",
     "industry": "Entertainment",
     "country": "Canada",
-    "problem": "An entertainment platform with millions of daily users was redesigning its product for the creators who upload content to it.",
-    "why": "Creators supply the platform's content, so the redesigned tools had to work for them at the platform's scale.",
+    "problem": "A video platform with millions of daily users was redesigning the tools creators use to upload and publish their videos.",
+    "why": "Creators supply the platform's content. If uploading and publishing does not work, millions of viewers have nothing new to watch.",
     "did": [
-      "Built the REST APIs behind the new creator designs.",
-      "Worked directly with the client on requirements and delivery.",
-      "Fixed release and production bugs, and refactored code for performance and readability.",
-      "Interviewed PHP candidates and mentored interns for my employer."
+      "Designed and built the REST API behind the redesigned creator upload and publishing tools.",
+      "Worked with the client on scope and requirements, and fed back on the designs.",
+      "Fixed release and production bugs so the live platform kept running while the redesign was built.",
+      "Refactored code for performance and readability."
     ],
-    "result": "The backend for the redesign was in place when I left, and the redesigned product launched after that.",
+    "result": "The API for the redesign was in place when I left, and the redesigned creator tools launched after that.",
     "stack": ["PHP", "Percona", "Memcached", "Elasticsearch"],
     "colorScheme": "warm",
     "order": 7
