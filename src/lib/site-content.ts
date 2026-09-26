@@ -144,7 +144,7 @@ export const howIWork = {
   label: 'How I Work',
   title: 'Working with me',
   points: [
-    'I ask why before I ask how. If the goal is unclear, I say so before building.',
+    'I ask why before I ask how. If the goal is unclear, I say so before building. I choose tools for the problem, not the other way round.',
     'Every engagement starts with a call about what you are trying to achieve, then a written plan we agree on before I build.',
     'I write tests. If a codebase has none, that is the first thing I fix.',
     'I work directly with product owners and stakeholders, not through a ticket queue.',
