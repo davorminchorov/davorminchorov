@@ -1,0 +1,25 @@
+[
+  {
+    "author": "Kevin R.",
+    "role": "Product Manager",
+    "note": "Company values award nomination",
+    "project": "non-profit-fundraising-and-crm-platform",
+    "paragraphs": [
+      "Davor consistently delivers game-changing features that drive real customer and business impact. As the primary backend developer for both Workflows and Company Contacts, he's built foundational capabilities that transformed how our customers manage donor relationships and organizational data. His systematic approach to complex technical challenges, whether implementing major new features or fixing critical import system issues, ensures customers can successfully scale their operations on [the platform]. Davor's reliable execution on high-impact projects makes him essential to our team's success."
+    ],
+    "order": 1
+  },
+  {
+    "author": "Bartosz P.",
+    "role": "Staff Backend Engineer",
+    "note": "Managed me directly",
+    "project": "igaming-platform-with-crypto-wallet-integration",
+    "paragraphs": [
+      "I had the pleasure of working with Davor in his role as a Symfony PHP Developer, and he consistently proved to be one of the most engaged and forward-thinking engineers on the team. His curiosity and genuine interest in the project were evident from day one. He didn't just deliver features — he actively shaped the direction of the product.",
+      "Davor brought a steady stream of valuable ideas, from conceptual improvements to meaningful architectural suggestions. His understanding of modern development practices, design patterns, and emerging tools was always up to date, and he used that knowledge to elevate the entire codebase. When you asked for his opinion, you could rely on it being thoughtful, well-reasoned, and grounded in real technical insight.",
+      "Beyond his technical strengths, Davor's attitude made him a standout colleague. He approached challenges with positivity, stayed open to feedback, and showed a strong willingness to learn and adapt. That combination of expertise, initiative, and mindset is rare — and it made a real impact on our work.",
+      "I wholeheartedly recommend Davor to any team looking for a developer who not only writes solid code but also contributes to the bigger picture. He will be an asset wherever he goes."
+    ],
+    "order": 2
+  }
+]

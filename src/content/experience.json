@@ -25,12 +25,12 @@
     "industry": "Nonprofit SaaS platform",
     "clientLocation": "United States",
     "outcomes": [
-      "Designed and shipped new features for an all-in-one nonprofit platform: fundraising, workflows, CRM features, and REST APIs.",
+      "Primary backend developer for Workflows, which automates contact data updates staff were doing by hand, and Company Contacts, which lets customers track businesses as donors.",
       "Refactored existing features to make the codebase more reliable and easier to maintain.",
-      "Cut GitHub Actions build times so the team stopped waiting on CI.",
-      "Investigated and fixed support issues reported by end users.",
-      "Proposed and got agreement on the architecture: vertical slice architecture, design patterns and principles.",
-      "Demoed the Workflows feature and other features delivered by the team to internal stakeholders.",
+      "Cut GitHub Actions build times from 30 to 60 minutes to under 10 by running tests in parallel, which sped up merges and deploys and lowered CI costs.",
+      "Fixed critical issues in the import system and investigated support issues reported by end users.",
+      "Proposed coding standards and vertical slice architecture. The team adopted some of the standards.",
+      "Reviewed pull requests and demoed the Workflows feature and other features delivered by the team to internal stakeholders.",
       "Wrote automated tests to expand coverage and catch regressions."
     ],
     "skills": ["PHP", "Laravel", "MySQL", "Redis", "Typesense"]
@@ -44,9 +44,9 @@
     "industry": "iGaming",
     "clientLocation": "Montenegro",
     "outcomes": [
-      "Designed and built new and existing features for an iGaming platform.",
-      "Built internal packages from scratch so the team could reuse common functionality across the codebase.",
-      "Integrated third-party services, including blockchain and Web3, for crypto payments.",
+      "Built features, improvements, and bug fixes that helped an iGaming platform ship.",
+      "Built internal packages from scratch for third-party integrations and shared domain logic, reused across the codebase.",
+      "Integrated blockchain and Web3 services to show players' crypto wallet balances in the app.",
       "Wrote automated tests to expand coverage and catch regressions."
     ],
     "skills": ["PHP", "Symfony", "MariaDB", "KeyDB", "Docker"]
@@ -60,7 +60,7 @@
     "industry": "Healthcare (COVID testing laboratory)",
     "clientLocation": "Italy",
     "outcomes": [
-      "Stabilised and improved a medical web application for a laboratory running COVID tests, on a short engagement.",
+      "Built features and improvements for a medical web application for a laboratory running COVID tests, on a short engagement.",
       "Built REST API endpoints for new features.",
       "Fixed production bugs.",
       "Wrote feature tests for the new endpoints."
@@ -77,6 +77,7 @@
     "clientLocation": "Canada",
     "outcomes": [
       "Designed and built new and existing features for an enterprise entertainment web application for a Canada-based client, both server-rendered pages and REST API endpoints.",
+      "Designed and built the REST API behind the redesigned creator upload and publishing tools, which launched after I left.",
       "Worked directly with the client on requirements and delivery.",
       "Fixed release and production bugs.",
       "Refactored code for performance and readability.",
@@ -99,7 +100,8 @@
       "Wrote unit and feature tests using TDD.",
       "Built UI components for the user-facing app as part of a reusable component library."
     ],
-    "skills": ["PHP", "Laravel", "Vue 2", "GraphQL", "REST", "Elasticsearch", "MySQL", "Redis"]
+    "skills": ["PHP", "Laravel", "Vue 2", "GraphQL", "REST", "Elasticsearch", "MySQL", "Redis"],
+    "employmentType": "Part-time contract"
   },
   {
     "company": "Adeva",
@@ -112,7 +114,8 @@
     "outcomes": [
       "Built new admin panel and REST API features for an employee engagement web application."
     ],
-    "skills": ["PHP", "Laravel", "Bootstrap", "jQuery", "MySQL", "Docker"]
+    "skills": ["PHP", "Laravel", "Bootstrap", "jQuery", "MySQL", "Docker"],
+    "employmentType": "Part-time contract"
   },
   {
     "company": "Adeva",
@@ -124,7 +127,7 @@
     "clientLocation": "United Arab Emirates",
     "outcomes": [
       "Built new features for a human resources web application.",
-      "Improved existing features, code, architecture, workflow, and scalability.",
+      "Improved existing features.",
       "Fixed critical bugs."
     ],
     "skills": ["PHP", "CakePHP", "JavaScript", "MySQL", "Docker"]
@@ -138,11 +141,10 @@
     "industry": "Financial (fintech)",
     "clientLocation": "United States",
     "outcomes": [
+      "Led a team of 3 developers and 2 QA engineers on a REST API that lets banks use the main loan origination flow: planned and split the work and designed the API. The project was on schedule when I handed it over before launch.",
       "Designed and built new and existing features for an enterprise financial web application.",
       "Fixed release and production bugs, and supported production releases as issues came up during deployment.",
-      "Presented delivered features to business analysts and product owners.",
-      "Led a team of developers and QA engineers, coordinating day-to-day work and delivery.",
-      "Wrote and presented architecture and technical proposals to improve project structure and code quality."
+      "Presented delivered work to business analysts and product owners."
     ],
     "skills": ["PHP", "Laravel", "Lumen", "MySQL", "Docker"]
   },
@@ -164,9 +166,9 @@
     "location": "Skopje, Macedonia",
     "startDate": "2017-03",
     "endDate": "2017-12",
-    "industry": "Enterprise resource planning (ERP)",
+    "industry": "Logistics (dispatch ERP)",
     "outcomes": [
-      "Set up the project structure for the dispatcher ERP and the API for the driver app so both could grow without a rewrite.",
+      "Chose the stack and set up the project structure for a delivery and logistics dispatcher ERP and the API for its driver app. Both kept growing without a rewrite.",
       "Built features for the ERP web application and the mobile app API.",
       "Built front-end features for the ERP.",
       "Mentored interns and helped them learn the team's practices."
@@ -201,7 +203,7 @@
       "Built an email marketing web application from scratch as part of a team: features, functional/integration/acceptance tests, and legacy code refactoring.",
       "Researched, planned, and built a customer support feature from scratch with the team, and designed part of the application structure and database schema.",
       "Built a real-time support chat for the support features.",
-      "Gave internal talks on BEM (CSS naming), real-time notifications with Laravel, Node.js, Redis, and Socket.io, automated testing, and Git workflow, and helped the team adopt new tools."
+      "Gave internal talks on BEM (CSS naming), real-time notifications with Laravel, Node.js, Redis, and Socket.io, automated testing, and Git workflow. The team adopted the testing practice, the Git workflow, and the real-time stack."
     ],
     "skills": ["PHP", "Laravel", "JavaScript", "jQuery", "Node.js", "Socket.IO", "MySQL", "Redis", "Docker"]
   },

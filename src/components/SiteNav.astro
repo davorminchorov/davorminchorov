@@ -1,31 +1,58 @@
 ---
+// The site header, shared by the homepage and the error pages. On the
+// homepage (`home`) the links jump to sections on the same page; elsewhere
+// they go back to those sections on the homepage.
+import { navLinks, hero } from '../lib/site-content';
+
+interface Props {
+  home?: boolean;
+}
+
+const { home = false } = Astro.props;
+const base = home ? '' : '/';
+
+const focus = 'focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1E4FD1]';
+const btnPrimary = `inline-flex items-center justify-center gap-2 bg-[#1E4FD1] text-white px-6 py-3.5 text-[15px] font-semibold no-underline transition-colors hover:bg-[#17399E] ${focus}`;
+const navLink = `text-[13px] text-[#5B6472] no-underline transition-colors hover:text-[#101828] ${focus}`;
+const rule = 'border-[#E3E6EC]';
+const wrap = 'max-w-[1240px] mx-auto px-5 md:px-10';
+
+const navItems = navLinks.map((item) => ({ label: item.label, href: `${base}#${item.section}` }));
+const contactHref = `${base}#${hero.ctas.primary.section}`;
 ---
 
-<!-- Nav -->
-<nav class="fixed top-0 left-0 right-0 z-50 bg-bg/85 backdrop-blur-md border-b border-border">
-  <div class="max-w-[1080px] mx-auto px-7 flex items-center justify-between h-[60px]">
-    <a href="/" class="font-display text-[17px] font-semibold text-text no-underline tracking-tight">
-      Davor Minchorov
+<header class={`fixed top-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md border-b ${rule}`}>
+  <div class={`${wrap} h-[64px] flex items-center justify-between`}>
+    <a href={home ? '#top' : '/'} class={`flex items-baseline gap-2.5 no-underline text-[#101828] ${focus}`}>
+      <span class="font-body text-[17px] font-bold tracking-tight whitespace-nowrap">Davor Minchorov</span>
+      <span class="hidden xl:inline font-mono text-[10px] uppercase tracking-[0.14em] text-[#5B6472]">{hero.eyebrow}</span>
     </a>
-    <button
-      id="mobile-toggle"
-      class="md:hidden bg-transparent border-none text-text cursor-pointer"
-      aria-label="Menu"
-      aria-controls="nav-links"
-      aria-expanded="false"
-    >
-      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8">
-        <path d="M4 6h14M4 11h14M4 16h14" />
-      </svg>
-    </button>
-    <div id="nav-links" class="hidden md:flex gap-9 items-center">
-      <a href="/#about" class="text-sm font-medium text-text-muted no-underline hover:text-text transition-colors">About</a>
-      <a href="/#services" class="text-sm font-medium text-text-muted no-underline hover:text-text transition-colors">Services</a>
-      <a href="/#projects" class="text-sm font-medium text-text-muted no-underline hover:text-text transition-colors">Work</a>
-      <a href="/#experience" class="text-sm font-medium text-text-muted no-underline hover:text-text transition-colors">Experience</a>
-      <a href="/#skills" class="text-sm font-medium text-text-muted no-underline hover:text-text transition-colors">Skills</a>
-      <a href="/#writing" class="text-sm font-medium text-text-muted no-underline hover:text-text transition-colors">Talks &amp; Writing</a>
-      <a href="/#contact" class="text-sm font-medium text-text-muted no-underline hover:text-text transition-colors">Contact</a>
-    </div>
+
+    <nav class="hidden lg:flex items-center gap-5 xl:gap-6" aria-label="Main">
+      {navItems.map((item) => (
+        <a href={item.href} class={`${navLink} whitespace-nowrap`}>{item.label}</a>
+      ))}
+      <a href={contactHref} class={`${btnPrimary} whitespace-nowrap px-4! py-2! text-[13px]!`}>{hero.ctas.primary.label}</a>
+    </nav>
+
+    <details class="lg:hidden relative group">
+      <summary class={`list-none [&::-webkit-details-marker]:hidden cursor-pointer font-mono text-[11px] uppercase tracking-[0.14em] text-[#101828] border ${rule} px-3 py-2 ${focus}`}>
+        <span class="group-open:hidden">Menu</span>
+        <span class="hidden group-open:inline">Close</span>
+      </summary>
+      <nav class={`absolute right-0 top-[calc(100%+12px)] w-[240px] bg-white border ${rule} shadow-[0_16px_32px_rgba(16,24,40,0.12)] p-5 flex flex-col gap-4`} aria-label="Main">
+        {navItems.map((item) => (
+          <a href={item.href} class={`${navLink} text-[16px]! text-[#101828]!`}>{item.label}</a>
+        ))}
+        <a href={contactHref} class={`${btnPrimary} mt-1`}>{hero.ctas.primary.label}</a>
+      </nav>
+    </details>
   </div>
-</nav>
+</header>
+
+<script>
+  // The mobile menu is a <details> element; close it once a link is chosen.
+  document.querySelectorAll<HTMLAnchorElement>('header details a').forEach((link) => {
+    link.addEventListener('click', () => link.closest('details')?.removeAttribute('open'));
+  });
+</script>

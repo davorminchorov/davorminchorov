@@ -1,119 +1,39 @@
 [
   {
-    "title": "Codyssey.dev",
-    "industry": "Developer education",
-    "problem": "Most developer education teaches demos, not how to build and maintain software that lasts.",
-    "why": "Engineers who only learn from demos ship code that falls over on contact with real users and real time. I wanted a place that teaches the other part of the job: keeping a product working for years.",
+    "title": "Non-profit fundraising and CRM platform",
+    "industry": "Non-profit",
+    "country": "United States",
+    "problem": "An all-in-one fundraising platform for non-profits needed new CRM and automation features, built by a team of 5 to 10 engineers on a codebase that had to stay reliable and easy to change. CI builds took 30 to 60 minutes.",
+    "why": "Non-profit staff were updating contact records by hand, and the CRM only tracked individual donors, not the businesses that give. Slow CI held up every merge and deploy for the whole team.",
     "did": [
-      "Set the product direction and own the roadmap.",
-      "Design and build the platform, and run it in production.",
-      "Lead and mentor the engineering team, and review their code.",
-      "Write and produce the courses, learning paths, and articles."
+      "Primary backend developer for Workflows, which automates the contact data updates staff were doing by hand. Designed it with the team from product's brief.",
+      "Primary backend developer for Company Contacts, so customers can track businesses as donors, not just individuals.",
+      "Split the test suite into parallel runs to cut GitHub Actions build times.",
+      "Proposed coding standards and vertical slice architecture. The team adopted some of the standards.",
+      "Fixed critical issues in the import system.",
+      "Reviewed pull requests, demoed delivered features to stakeholders, and wrote automated tests."
     ],
-    "result": "The platform is live and in active development, with courses, learning paths, and articles published.",
-    "stack": ["PHP", "Laravel", "Laravel Cloud", "Statamic", "React", "Next.js", "Tailwind CSS", "MySQL", "Redis", "Typesense"],
-    "featured": true,
-    "url": "https://codyssey.dev",
+    "result": "Workflows and Company Contacts shipped to production, backed by tests. CI builds went from 30 to 60 minutes to under 10, so merges and deploys moved faster and CI costs dropped.",
+    "stack": ["PHP", "Laravel", "MySQL", "Redis", "Typesense", "GitHub Actions"],
     "colorScheme": "warm",
     "order": 1
   },
   {
-    "title": "Non-profit fundraising and CRM platform",
-    "industry": "Non-profit",
-    "country": "United States",
-    "problem": "An all-in-one platform for non-profits needed new fundraising, workflow, and CRM features, and the existing code needed to be more reliable and easier to maintain.",
-    "why": "Non-profits run on donations and volunteers. Slow releases and fragile features cost them money directly. The Workflows feature I proposed and built let them automate work they were doing by hand.",
-    "did": [
-      "Designed and shipped the new features and the REST APIs behind them.",
-      "Refactored existing features.",
-      "Cut GitHub Actions build times so the team stopped waiting on CI.",
-      "Proposed and got agreement on the architecture: vertical slice architecture, design patterns and principles.",
-      "Demoed the Workflows feature and other features delivered by the team to stakeholders.",
-      "Wrote automated tests."
-    ],
-    "result": "Fundraising, workflow, and CRM features shipped to production, backed by tests. GitHub Actions builds that took 30 to 60 minutes now finish in under 10.",
-    "quote": {
-      "text": "Davor consistently delivers high-impact features that drive real customer and business impact. He's built foundational capabilities that transformed how our customers manage donor relationships and organizational data. His systematic approach to complex technical challenges ensures customers can successfully scale their operations. Davor's reliable execution on high-impact projects makes him essential to our team's success.",
-      "author": "Kevin R.",
-      "role": "Product Manager"
-    },
-    "stack": ["PHP", "Laravel", "MySQL", "Redis", "Typesense"],
-    "colorScheme": "warm",
-    "order": 2
-  },
-  {
-    "title": "Enterprise entertainment platform",
-    "industry": "Entertainment",
-    "country": "Canada",
-    "problem": "A high-traffic platform serving millions of daily users had search performance and caching problems, and its content creation platform needed rebuilding.",
-    "why": "Millions of daily users means small latency problems become support tickets and churn.",
-    "did": [
-      "Search performance and caching work with Elasticsearch, Memcached, and Percona.",
-      "Rebuilt the content creation platform as part of the Pay team.",
-      "Designed and shipped new features (server-rendered and REST API).",
-      "Refactored for performance and readability.",
-      "Worked directly with the client on requirements and delivery."
-    ],
-    "result": "Search and caching work shipped on Elasticsearch, Memcached, and Percona, and the content creation platform was rebuilt as part of the Pay team.",
-    "stack": ["PHP", "Percona", "Memcached", "Elasticsearch"],
-    "colorScheme": "blue",
-    "order": 3
-  },
-  {
-    "title": "Enterprise fintech application",
+    "title": "Bank integration API for an enterprise loan platform",
     "industry": "Fintech",
     "country": "United States",
-    "problem": "A Fortune 500 company's regulated financial application needed new features shipped by a team of developers and QA engineers without putting releases at risk.",
-    "why": "Regulated financial software cannot ship broken. The job was delivering features while keeping releases safe, and keeping business analysts and product owners in the loop so nothing shipped that they did not expect.",
+    "problem": "A Fortune 500 company's regulated loan application only worked through its own interface. Banks wanted to integrate with it and use the main loan origination flow directly.",
+    "why": "Regulated financial software cannot ship broken. The API had to open the core loan flow to outside banks without putting the live product or its releases at risk, and business analysts and product owners needed to see progress as it happened.",
     "did": [
-      "Designed and shipped features.",
-      "Led a team of developers and QA engineers.",
-      "Proposed and got agreement on the architecture.",
-      "Presented delivered features to business analysts and product owners.",
-      "Supported production releases."
+      "Led a team of 3 developers and 2 QA engineers on the project, and planned and split the work.",
+      "Designed the REST API that lets banks use the main loan origination flow.",
+      "Reported progress and presented delivered work to business analysts and product owners.",
+      "Built features, fixed bugs, and supported production releases on the main application."
     ],
-    "result": "Features delivered on schedule under regulatory requirements, with a team of 3 developers and 2 QA engineers. Architecture proposals adopted to improve project structure and code quality.",
+    "result": "The project was on schedule when I handed it over before launch.",
     "stack": ["PHP", "Laravel", "Lumen", "MySQL", "Docker"],
-    "colorScheme": "warm",
-    "order": 4
-  },
-  {
-    "title": "iGaming platform with crypto payments",
-    "industry": "iGaming",
-    "country": "Montenegro",
-    "problem": "An iGaming platform needed reusable internal packages and crypto payment support.",
-    "why": "Crypto payments were a business requirement, not a technical one. The integrations had to work on day one and stay maintainable for the team after I left.",
-    "did": [
-      "Built internal packages from scratch.",
-      "Integrated blockchain and Web3 services for crypto payments.",
-      "Wrote automated tests."
-    ],
-    "result": "Crypto payments live in production through blockchain and Web3 integrations. Internal packages reused across the codebase.",
-    "quote": {
-      "text": "Davor consistently proved to be one of the most engaged and forward-thinking engineers on the team. He didn't just deliver features. He actively shaped the direction of the product. His understanding of modern development practices, design patterns, and emerging tools was always up to date, and he used that knowledge to improve the entire codebase.",
-      "author": "Bartosz P.",
-      "role": "Staff Backend Engineer"
-    },
-    "stack": ["PHP", "Symfony", "MariaDB", "KeyDB", "Docker"],
     "colorScheme": "blue",
-    "order": 5
-  },
-  {
-    "title": "COVID testing laboratory web application",
-    "industry": "Healthcare",
-    "country": "Italy",
-    "problem": "A laboratory running COVID tests during the pandemic had a medical web application that needed stabilising, plus new API features, on a short engagement.",
-    "why": "The app handled patient records and clinical workflows for COVID testing, so correctness mattered more than speed and every new endpoint shipped with tests.",
-    "did": [
-      "Stabilised and improved the existing platform.",
-      "Built REST API endpoints for new features.",
-      "Fixed production bugs.",
-      "Wrote feature tests for the new endpoints."
-    ],
-    "result": "A more stable platform for the laboratory, with new API endpoints in production, each covered by feature tests.",
-    "stack": ["PHP", "Laravel", "MySQL", "Docker"],
-    "colorScheme": "warm",
-    "order": 6
+    "order": 2
   },
   {
     "title": "Community social network",
@@ -122,14 +42,83 @@
     "problem": "The existing platform was too old to keep building on. The team was rewriting it from scratch and needed the new API layer, external integrations, and a consistent user interface.",
     "why": "A rewrite only pays off if the new base is one the team can keep building on. The APIs shipped with tests from day one, and the component library gave the front end one set of building blocks.",
     "did": [
-      "Designed and shipped REST and GraphQL API features.",
+      "Designed and shipped REST and GraphQL API features for the new platform.",
       "Integrated third-party APIs.",
       "Wrote unit and feature tests using TDD.",
-      "Designed and built a reusable UI component library."
+      "Designed and built the reusable UI component library for the front end."
     ],
-    "result": "REST and GraphQL APIs for the rewritten platform shipped with unit and feature tests, and a reusable UI component library the team kept building on.",
+    "result": "The rewritten platform launched on REST and GraphQL APIs covered by unit and feature tests, with a reusable UI component library for the front end.",
     "stack": ["PHP", "Laravel", "Vue 2", "GraphQL", "Elasticsearch", "MySQL", "Redis"],
     "colorScheme": "purple",
+    "order": 3
+  },
+  {
+    "title": "iGaming platform with crypto wallet integration",
+    "industry": "iGaming",
+    "country": "Montenegro",
+    "problem": "An iGaming platform needed features and improvements to reach launch, integrations with third-party services, and a way to show players' crypto wallet balances in the app.",
+    "why": "The platform had a launch date to hit. The team needed to ship quickly without copying the same integration code and business rules into several places.",
+    "did": [
+      "Built features, improvements, and bug fixes that helped the product ship.",
+      "Built internal packages from scratch for third-party integrations and shared domain logic, reused across the codebase.",
+      "Integrated blockchain and Web3 services to show players' crypto wallet balances in the app.",
+      "Suggested architectural and conceptual improvements to the codebase.",
+      "Wrote automated tests."
+    ],
+    "result": "The platform launched. Integrations and shared business rules live in internal packages the team reuses, and players see their crypto wallet balances in the app.",
+    "stack": ["PHP", "Symfony", "MariaDB", "KeyDB", "Docker"],
+    "colorScheme": "blue",
+    "order": 4
+  },
+  {
+    "title": "Codyssey.dev",
+    "industry": "Developer education",
+    "problem": "Most developer education teaches demos, not how to build and maintain software that lasts.",
+    "why": "Engineers who only learn from demos ship code that falls over on contact with real users and real time. I wanted a place that teaches the other part of the job: keeping a product working for years.",
+    "did": [
+      "Set the product direction: what to build, what to cut, and the pricing model.",
+      "Chose the stack, built the platform, and run it in production.",
+      "Lead and mentor a team of 1 to 2 engineers, and review their code.",
+      "Decide the curriculum and write the courses, learning paths, and articles."
+    ],
+    "result": "The platform is live and in active development, with courses, learning paths, and articles published.",
+    "stack": ["PHP", "Laravel", "Laravel Cloud", "Statamic", "React", "Next.js", "Tailwind CSS", "MySQL", "Redis", "Typesense"],
+    "featured": true,
+    "url": "https://codyssey.dev",
+    "colorScheme": "warm",
+    "order": 5
+  },
+  {
+    "title": "Dispatch ERP and driver app API",
+    "industry": "Logistics",
+    "problem": "A new delivery and logistics product needed a dispatcher ERP for the office and an API for the drivers' mobile app, built from scratch.",
+    "why": "Both apps would keep growing after the first release. The structure set at the start decides whether that growth needs a rewrite later.",
+    "did": [
+      "Chose the stack for the ERP and the driver app API.",
+      "Set up the project structure for both apps.",
+      "Built ERP features, front-end features, and the mobile app API.",
+      "Mentored interns in the team's practices."
+    ],
+    "result": "Both apps kept growing on the structure I set up, without a rewrite.",
+    "stack": ["PHP", "Laravel", "Lumen", "MySQL", "MongoDB", "Redis", "Docker"],
+    "colorScheme": "purple",
+    "order": 6
+  },
+  {
+    "title": "Creator publishing API for a video platform",
+    "industry": "Entertainment",
+    "country": "Canada",
+    "problem": "A video platform with millions of daily users was redesigning the tools creators use to upload and publish their videos.",
+    "why": "Creators supply the platform's content. If uploading and publishing does not work, millions of viewers have nothing new to watch.",
+    "did": [
+      "Designed and built the REST API behind the redesigned creator upload and publishing tools.",
+      "Worked with the client on scope and requirements, and fed back on the designs.",
+      "Fixed release and production bugs so the live platform kept running while the redesign was built.",
+      "Refactored code for performance and readability."
+    ],
+    "result": "The API for the redesign was in place when I left, and the redesigned creator tools launched after that.",
+    "stack": ["PHP", "Percona", "Memcached", "Elasticsearch"],
+    "colorScheme": "warm",
     "order": 7
   }
 ]
