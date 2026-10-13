@@ -26,6 +26,6 @@
   "devDependencies": {
     "@sparticuz/chromium": "153.0.0",
     "playwright": "^1.63.0",
-    "wrangler": "^4.95.0"
+    "wrangler": "^4.149.0"
   }
 }
