@@ -5,6 +5,10 @@
 //
 // Requirements: the Playwright Chromium build (`pnpm exec playwright install
 // chromium`), or a Chromium/Chrome binary named in CV_PDF_CHROMIUM_PATH.
+// On Cloudflare Workers Builds (WORKERS_CI=1) neither is needed: the build
+// image has no root access, so Playwright cannot install Chromium's system
+// libraries there. Instead the script uses @sparticuz/chromium, a Chromium
+// build that ships the few libraries it needs (NSS, NSPR, Expat).
 
 import fs from 'fs';
 import http from 'http';
@@ -57,6 +61,25 @@ const serveDist = () =>
     server.listen(0, '127.0.0.1', () => resolve(server));
   });
 
+// @sparticuz/chromium only unpacks its bundled libraries when it detects an
+// Amazon Linux 2023 style environment, which it reads from
+// AWS_LAMBDA_JS_RUNTIME. Setting it before the import makes it unpack them to
+// /tmp/al2023/lib and add that folder to LD_LIBRARY_PATH.
+async function launchOptions() {
+  if (process.env.CV_PDF_CHROMIUM_PATH) {
+    return { executablePath: process.env.CV_PDF_CHROMIUM_PATH };
+  }
+  if (process.env.WORKERS_CI !== '1') {
+    return {};
+  }
+  process.env.AWS_LAMBDA_JS_RUNTIME ??= 'nodejs24.x';
+  const { default: bundledChromium } = await import('@sparticuz/chromium');
+  return {
+    executablePath: await bundledChromium.executablePath(),
+    args: bundledChromium.args,
+  };
+}
+
 async function generate() {
   if (!fs.existsSync(path.join(dist, CV_PATH, 'index.html'))) {
     throw new Error(`dist${CV_PATH}index.html not found. Run \`astro build\` first.`);
@@ -64,9 +87,7 @@ async function generate() {
 
   const server = await serveDist();
   const { port } = server.address();
-  const browser = await chromium.launch({
-    executablePath: process.env.CV_PDF_CHROMIUM_PATH || undefined,
-  });
+  const browser = await chromium.launch(await launchOptions());
 
   try {
     const page = await browser.newPage();

@@ -1,0 +1,30 @@
+name: Build check
+
+# Deploys happen on Cloudflare Workers Builds (see the README). This workflow
+# only runs the full build (including the CV PDF step) on pull requests, so a
+# broken build shows up on the PR instead of on main.
+on:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 11
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      # Headless Chromium renders /cv to davor-minchorov-cv.pdf during the build
+      # (scripts/generate-cv-pdf.mjs).
+      - run: pnpm exec playwright install --with-deps chromium
+
+      - run: pnpm build

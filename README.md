@@ -50,7 +50,7 @@ Articles live on [Codyssey.dev](https://codyssey.dev) and are pulled into the Ta
 
 ## CV PDF
 
-`/cv` is a print-first page built from the same JSON content as the homepage (experience, skills, talks). `pnpm build` runs `astro build` and then `scripts/generate-cv-pdf.mjs`, which opens the built page in headless Chromium and writes `dist/davor-minchorov-cv.pdf`. The "Download CV" links in the hero and contact sections point to that file, and the deploy workflow rebuilds it daily, so the PDF is always in step with the site.
+`/cv` is a print-first page built from the same JSON content as the homepage (experience, skills, talks). `pnpm build` runs `astro build` and then `scripts/generate-cv-pdf.mjs`, which opens the built page in headless Chromium and writes `dist/davor-minchorov-cv.pdf`. The "Download CV" links in the hero and contact sections point to that file, and every deploy (including the daily rebuild) regenerates it, so the PDF is always in step with the site.
 
 The script needs the Playwright Chromium build:
 
@@ -80,7 +80,15 @@ The site uses a professional light-mode palette defined in the `@theme` block of
 
 ## Deployment (Cloudflare Workers)
 
-`.github/workflows/deploy.yml` builds the site and deploys it with Wrangler on every push to `main`, and once a day on a schedule so newly published Codyssey content shows up without a push. Pull requests run the same build (including the CV PDF step) without deploying. It needs the `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repository secrets. Routes and the custom domain are set in `wrangler.toml`.
+The site deploys with [Cloudflare Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/), which is connected to this repository. Every push to `main` runs `pnpm build` and then `npx wrangler deploy`. Both commands are set in the Worker's build settings in the Cloudflare dashboard (Worker `davorminchorov-com`, then **Settings → Build**), not in this repository.
+
+The Workers Builds image has no root access, so Playwright can't install Chromium's system libraries there. When `WORKERS_CI=1` is set (Workers Builds sets it), `scripts/generate-cv-pdf.mjs` uses `@sparticuz/chromium` instead, a Chromium build that ships its own libraries.
+
+The site also rebuilds once a day, so newly published Codyssey content shows up without a push. `wrangler.toml` sets a cron trigger (06:00 UTC), and the `scheduled` handler in `worker/index.js` calls a Workers Builds deploy hook. The hook URL is stored as the `DEPLOY_HOOK_URL` Worker secret. To start a rebuild by hand, re-run the latest build from the Worker's build history in the Cloudflare dashboard.
+
+`.github/workflows/build-check.yml` runs the same build (including the CV PDF step) on pull requests, so a broken build shows up before it reaches `main`. It doesn't deploy.
+
+Routes and the custom domain are set in `wrangler.toml`.
 
 ## Customization
 

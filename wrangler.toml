@@ -1,4 +1,5 @@
 name = "davorminchorov-com"
+main = "worker/index.js"
 compatibility_date = "2026-05-01"
 
 routes = [
@@ -8,5 +9,10 @@ routes = [
 
 [assets]
 directory = "./dist"
+binding = "ASSETS"
 not_found_handling = "404-page"
 html_handling = "auto-trailing-slash"
+
+# Daily rebuild at 06:00 UTC, see worker/index.js.
+[triggers]
+crons = ["0 6 * * *"]
