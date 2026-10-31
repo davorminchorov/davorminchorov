@@ -4,27 +4,98 @@
 # Format: [source] [destination] [status]
 # Docs: https://developers.cloudflare.com/workers/static-assets/redirects/
 
-# The "Building Maintainable PHP Applications" article series moved to Codyssey
-# as the free course "Building Maintainable PHP Applications: Foundations":
-# https://codyssey.dev/courses/building-maintainable-php-applications-foundations
-# Each old article path redirects permanently to its matching lesson. Cloudflare
-# matches paths exactly, so each path is listed with and without a trailing slash.
 
-/articles/building-maintainable-php-applications-accidental-vs-essential-complexity https://codyssey.dev/courses/building-maintainable-php-applications-foundations/accidental-vs-essential-complexity 301
-/articles/building-maintainable-php-applications-accidental-vs-essential-complexity/ https://codyssey.dev/courses/building-maintainable-php-applications-foundations/accidental-vs-essential-complexity 301
-/articles/building-maintainable-php-applications-thinking-data-vs-thinking-business-processes https://codyssey.dev/courses/building-maintainable-php-applications-foundations/thinking-data-vs-thinking-business-processes 301
-/articles/building-maintainable-php-applications-thinking-data-vs-thinking-business-processes/ https://codyssey.dev/courses/building-maintainable-php-applications-foundations/thinking-data-vs-thinking-business-processes 301
-/articles/building-maintainable-php-applications-framework-decoupling-vs-framework-coupling https://codyssey.dev/courses/building-maintainable-php-applications-foundations/framework-coupling-vs-framework-decoupling 301
-/articles/building-maintainable-php-applications-framework-decoupling-vs-framework-coupling/ https://codyssey.dev/courses/building-maintainable-php-applications-foundations/framework-coupling-vs-framework-decoupling 301
+# Old writing moved to Codyssey (https://codyssey.dev). Paths come from the
+# Wayback Machine, the old site repositories and a backlink check on 2026-10-31.
+# Cloudflare matches paths exactly, so each path is listed with and without a
+# trailing slash. Static rules must come before the splat rules at the end.
 
-# The old slug for "Over-engineering vs under-engineering" could not be confirmed
-# (the article is not indexed by search engines and the freek.dev link to it was
-# unreachable). The slug below follows the naming pattern of the other four
-# articles. If the real slug differs, correct the source path here.
+# Building Maintainable PHP Applications articles: now lessons of the free course
+# "Building Maintainable PHP Applications: Foundations".
+/articles/building-maintainable-php-applications-introduction https://codyssey.dev/courses/building-maintainable-php-applications-foundations/introduction-why-most-codebases-rot 301
+/articles/building-maintainable-php-applications-introduction/ https://codyssey.dev/courses/building-maintainable-php-applications-foundations/introduction-why-most-codebases-rot 301
+/articles/building-maintainable-php-applications-context https://codyssey.dev/courses/building-maintainable-php-applications-foundations/it-all-depends-on-the-context-you-are-in 301
+/articles/building-maintainable-php-applications-context/ https://codyssey.dev/courses/building-maintainable-php-applications-foundations/it-all-depends-on-the-context-you-are-in 301
 /articles/building-maintainable-php-applications-over-engineering-vs-under-engineering https://codyssey.dev/courses/building-maintainable-php-applications-foundations/under-engineering-vs-over-engineering 301
 /articles/building-maintainable-php-applications-over-engineering-vs-under-engineering/ https://codyssey.dev/courses/building-maintainable-php-applications-foundations/under-engineering-vs-over-engineering 301
+/articles/building-maintainable-php-applications-accidental-vs-essential-complexity https://codyssey.dev/courses/building-maintainable-php-applications-foundations/accidental-vs-essential-complexity 301
+/articles/building-maintainable-php-applications-accidental-vs-essential-complexity/ https://codyssey.dev/courses/building-maintainable-php-applications-foundations/accidental-vs-essential-complexity 301
+/articles/building-maintainable-php-applications-framework-decoupling-vs-framework-coupling https://codyssey.dev/courses/building-maintainable-php-applications-foundations/framework-coupling-vs-framework-decoupling 301
+/articles/building-maintainable-php-applications-framework-decoupling-vs-framework-coupling/ https://codyssey.dev/courses/building-maintainable-php-applications-foundations/framework-coupling-vs-framework-decoupling 301
+/articles/building-maintainable-php-applications-thinking-data-vs-thinking-business-processes https://codyssey.dev/courses/building-maintainable-php-applications-foundations/thinking-data-vs-thinking-business-processes 301
+/articles/building-maintainable-php-applications-thinking-data-vs-thinking-business-processes/ https://codyssey.dev/courses/building-maintainable-php-applications-foundations/thinking-data-vs-thinking-business-processes 301
+/articles/building-maintaining-php-applications-planning https://codyssey.dev/courses/building-maintainable-php-applications-foundations/planning-before-you-code 301
+/articles/building-maintaining-php-applications-planning/ https://codyssey.dev/courses/building-maintainable-php-applications-foundations/planning-before-you-code 301
 
-# TODO: redirect the remaining article of the series once the next course,
-# "Building Maintainable PHP Applications: The Toolkit", goes live on Codyssey.
-# It has no live lesson to point to yet, so it must stay reachable until then.
-#   /articles/building-maintainable-php-applications-data-transfer-objects
+# Later articles in the series: now lessons of
+# "Building Maintainable PHP Applications: Patterns and Principles".
+/articles/building-maintainable-php-applications-data-transfer-objects https://codyssey.dev/courses/building-maintainable-php-applications-patterns-and-principles/data-transfer-objects 301
+/articles/building-maintainable-php-applications-data-transfer-objects/ https://codyssey.dev/courses/building-maintainable-php-applications-patterns-and-principles/data-transfer-objects 301
+/articles/building-maintainable-php-applications-value-objects https://codyssey.dev/courses/building-maintainable-php-applications-patterns-and-principles/value-objects 301
+/articles/building-maintainable-php-applications-value-objects/ https://codyssey.dev/courses/building-maintainable-php-applications-patterns-and-principles/value-objects 301
+/articles/building-maintainable-php-applications-the-misconceptions-of-design-patterns-and-principles https://codyssey.dev/courses/building-maintainable-php-applications-patterns-and-principles/introduction-tools-not-rules 301
+/articles/building-maintainable-php-applications-the-misconceptions-of-design-patterns-and-principles/ https://codyssey.dev/courses/building-maintainable-php-applications-patterns-and-principles/introduction-tools-not-rules 301
+
+# The tools and books posts, under both their 2022 and 2024 paths: now Codyssey insights.
+/articles/8-code-quality-tools-to-use-in-your-long-term-php-applications https://codyssey.dev/insights/7-php-tools-that-pay-off-three-years-from-now 301
+/articles/8-code-quality-tools-to-use-in-your-long-term-php-applications/ https://codyssey.dev/insights/7-php-tools-that-pay-off-three-years-from-now 301
+/8-code-quality-tools-to-use-in-php-applications https://codyssey.dev/insights/7-php-tools-that-pay-off-three-years-from-now 301
+/8-code-quality-tools-to-use-in-php-applications/ https://codyssey.dev/insights/7-php-tools-that-pay-off-three-years-from-now 301
+/articles/top-10-books-for-php-developers https://codyssey.dev/insights/the-php-books-that-changed-how-i-build-software 301
+/articles/top-10-books-for-php-developers/ https://codyssey.dev/insights/the-php-books-that-changed-how-i-build-software 301
+/top-10-books-for-php-developers https://codyssey.dev/insights/the-php-books-that-changed-how-i-build-software 301
+/top-10-books-for-php-developers/ https://codyssey.dev/insights/the-php-books-that-changed-how-i-build-software 301
+
+# Learning resource posts: the Codyssey learning paths replace them.
+/articles/top-laravel-and-vuejs-learning-resources-that-helped-me-in-my-career https://codyssey.dev/learning-paths/laravel-mastery 301
+/articles/top-laravel-and-vuejs-learning-resources-that-helped-me-in-my-career/ https://codyssey.dev/learning-paths/laravel-mastery 301
+/top-laravel-and-vuejs-learning-resources-that-helped-me-in-my-career https://codyssey.dev/learning-paths/laravel-mastery 301
+/top-laravel-and-vuejs-learning-resources-that-helped-me-in-my-career/ https://codyssey.dev/learning-paths/laravel-mastery 301
+/blog/my-top-laravel-and-vue-learning-resources-that-helped-me-in-my-career https://codyssey.dev/learning-paths/laravel-mastery 301
+/blog/my-top-laravel-and-vue-learning-resources-that-helped-me-in-my-career/ https://codyssey.dev/learning-paths/laravel-mastery 301
+/blog/my-top-learning-resources-that-helped-me-in-my-career https://codyssey.dev/learning-paths/php-mastery 301
+/blog/my-top-learning-resources-that-helped-me-in-my-career/ https://codyssey.dev/learning-paths/php-mastery 301
+
+# Posts with no Codyssey counterpart, and the old listing pages: the author
+# profile on Codyssey lists everything published there.
+/articles/my-career-journey-from-a-web-developer-to-software-engineer https://codyssey.dev/author-profile/davor-minchorov 301
+/articles/my-career-journey-from-a-web-developer-to-software-engineer/ https://codyssey.dev/author-profile/davor-minchorov 301
+/articles/top-mistakes-php-developers-make-when-they-use-laravel https://codyssey.dev/author-profile/davor-minchorov 301
+/articles/top-mistakes-php-developers-make-when-they-use-laravel/ https://codyssey.dev/author-profile/davor-minchorov 301
+/articles/how-to-learn-web-development https://codyssey.dev/author-profile/davor-minchorov 301
+/articles/how-to-learn-web-development/ https://codyssey.dev/author-profile/davor-minchorov 301
+/how-to-learn-web-development https://codyssey.dev/author-profile/davor-minchorov 301
+/how-to-learn-web-development/ https://codyssey.dev/author-profile/davor-minchorov 301
+/how-to-stay-focused-in-web-development https://codyssey.dev/author-profile/davor-minchorov 301
+/how-to-stay-focused-in-web-development/ https://codyssey.dev/author-profile/davor-minchorov 301
+/articles/introducing-learnhub-dev https://codyssey.dev/author-profile/davor-minchorov 301
+/articles/introducing-learnhub-dev/ https://codyssey.dev/author-profile/davor-minchorov 301
+/introducing-learnhub-dev https://codyssey.dev/author-profile/davor-minchorov 301
+/introducing-learnhub-dev/ https://codyssey.dev/author-profile/davor-minchorov 301
+/articles/welcome-to-my-blog https://codyssey.dev/author-profile/davor-minchorov 301
+/articles/welcome-to-my-blog/ https://codyssey.dev/author-profile/davor-minchorov 301
+/welcome-to-my-blog https://codyssey.dev/author-profile/davor-minchorov 301
+/welcome-to-my-blog/ https://codyssey.dev/author-profile/davor-minchorov 301
+/articles https://codyssey.dev/author-profile/davor-minchorov 301
+/articles/ https://codyssey.dev/author-profile/davor-minchorov 301
+/blog https://codyssey.dev/author-profile/davor-minchorov 301
+/blog/ https://codyssey.dev/author-profile/davor-minchorov 301
+/posts/tags https://codyssey.dev/author-profile/davor-minchorov 301
+/posts/tags/ https://codyssey.dev/author-profile/davor-minchorov 301
+
+# Old about and contact pages: the matching homepage sections.
+/about /#about 301
+/about/ /#about 301
+/contact /#contact 301
+/contact/ /#contact 301
+
+# Old RSS and Atom feeds: the Codyssey feed.
+/feed https://codyssey.dev/feed.xml 301
+/feed/ https://codyssey.dev/feed.xml 301
+/feed/articles https://codyssey.dev/feed.xml 301
+/feed/articles/ https://codyssey.dev/feed.xml 301
+/feed/atom https://codyssey.dev/feed.xml 301
+/feed/atom/ https://codyssey.dev/feed.xml 301
+
+# Old tag pages (dynamic rule, so it stays after every static rule).
+/posts/tags/* https://codyssey.dev/author-profile/davor-minchorov 301
