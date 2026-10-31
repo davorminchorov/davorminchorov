@@ -389,7 +389,10 @@ const tag = 'inline-flex items-center px-2.5 py-1 border border-[#E3E6EC] font-m
             )}
           </div>
 
-          <a href={CODYSSEY_PROFILE_URL} class={`${linkArrow} mt-8`} target="_blank" rel="noopener noreferrer">{writing.moreLinkText} <span aria-hidden="true">→</span></a>
+          <div class="flex flex-wrap gap-x-8 gap-y-4 mt-8">
+            <a href="/writing" class={linkArrow}>{writing.allLinkText} <span aria-hidden="true">→</span></a>
+            <a href={CODYSSEY_PROFILE_URL} class={linkArrow} target="_blank" rel="noopener noreferrer">{writing.moreLinkText} <span aria-hidden="true">→</span></a>
+          </div>
         </div>
       </div>
     </div>

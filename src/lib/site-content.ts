@@ -170,7 +170,22 @@ export const writing = {
   desc: 'A meetup talk and articles on building PHP applications that stay maintainable.',
   talksHeading: 'Talks',
   writingHeading: 'Writing',
+  allLinkText: 'Everything I have written',
   moreLinkText: 'More on Codyssey.dev',
+};
+
+export const writingPage = {
+  title: 'Writing on Maintainable PHP | Davor Minchorov',
+  description:
+    'Every course, lesson, insight, code review and quick tip I have published on Codyssey.dev about building PHP applications that stay maintainable.',
+  label: 'Writing',
+  heading: "Everything I've Written",
+  intro:
+    'I publish on Codyssey.dev, the developer education platform I run. This page lists every course with its lessons, and every insight, code review, quick tip, learning path and guided project that is live there.',
+  coursesHeading: 'Courses',
+  lessonCount: (count: number) => `${count} ${count === 1 ? 'lesson' : 'lessons'}`,
+  empty: 'The list could not be loaded right now. Everything is on Codyssey.dev.',
+  moreLinkText: 'My author profile on Codyssey.dev',
 };
 
 export const contact = {
