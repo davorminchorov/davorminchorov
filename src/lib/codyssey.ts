@@ -1,8 +1,8 @@
 // Codyssey writing, fetched at build time for the homepage's Talks & Writing
 // section and the /writing page. The Codyssey API only allows CORS requests
 // from codyssey.dev, so a browser-side fetch from this domain would be
-// blocked. Fetching here avoids that and gives crawlers real links. The deploy
-// workflow runs on a daily schedule so newly published content shows up
+// blocked. Fetching here avoids that and gives crawlers real links. A daily
+// cron in wrangler.toml rebuilds the site so newly published content shows up
 // without a push.
 
 const API_URL = 'https://core.codyssey.dev/api';
@@ -67,8 +67,8 @@ export interface AllWriting {
   groups: WritingGroup[];
 }
 
-// A Codyssey outage should not take the whole deploy down (the workflow
-// also rebuilds daily on a schedule). Fall back to an empty result and warn.
+// A Codyssey outage should not take the whole deploy down (the site also
+// rebuilds daily). Fall back to an empty result and warn.
 const fetchJson = async <T>(url: string, fallback: T, what: string): Promise<T> => {
   try {
     const res = await fetch(url, { headers: { Accept: 'application/json' } });
