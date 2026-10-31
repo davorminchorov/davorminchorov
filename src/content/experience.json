@@ -10,8 +10,7 @@
       "Built and run Codyssey, a live platform that teaches software engineers to build and maintain long-term software products instead of quick demos, with courses, learning paths, and articles published.",
       "Set the product direction: what to build, what to cut, and the pricing model.",
       "Led and mentored a team of 1 to 2 engineers building the platform, and reviewed their code.",
-      "Chose the stack, and set up and run the production infrastructure.",
-      "Set the curriculum and wrote the courses, learning paths, and articles on building durable software."
+      "Chose the stack, and set up and run the production infrastructure."
     ],
     "skills": ["PHP", "Laravel", "Laravel Cloud", "Statamic", "React", "Next.js", "Tailwind CSS", "TanStack Query", "XState Store", "MySQL", "Redis", "Typesense"]
   },
@@ -29,8 +28,7 @@
       "Cut GitHub Actions build times for a team of 5 to 10 engineers from 30 to 60 minutes to under 10 by splitting the test suite into parallel runs, so merges and deploys moved faster and CI costs dropped.",
       "Nominated by the product manager for a company values award.",
       "Fixed critical issues in the import system and investigated support issues reported by end users.",
-      "Proposed coding standards and vertical slice architecture. The team adopted some of the standards.",
-      "Reviewed pull requests, demoed delivered features to internal stakeholders, and refactored existing features to make the codebase easier to maintain."
+      "Proposed coding standards and vertical slice architecture. The team adopted some of the standards."
     ],
     "skills": ["PHP", "Laravel", "MySQL", "Redis", "Typesense"]
   },
@@ -59,8 +57,7 @@
     "industry": "Healthcare (COVID testing laboratory)",
     "clientLocation": "Italy",
     "outcomes": [
-      "Shipped features, improvements, and REST API endpoints to production for the medical web application of a COVID testing laboratory, on a short engagement.",
-      "Covered the new endpoints with feature tests and fixed production bugs."
+      "Shipped features, improvements, and REST API endpoints to production for the medical web application of a COVID testing laboratory, covered the new endpoints with feature tests, and fixed production bugs."
     ],
     "skills": ["PHP", "Laravel", "MySQL", "Docker"]
   },
@@ -76,7 +73,6 @@
       "Designed and built the REST API behind the redesigned creator upload and publishing tools for a video platform with millions of daily users. The redesign launched after I left.",
       "Worked directly with the client on scope, requirements, and delivery, and fed back on the designs.",
       "Fixed release and production bugs so the live platform kept running while the redesign was built, and refactored code for performance and readability.",
-      "Built features for the existing platform, both server-rendered pages and REST API endpoints.",
       "Interviewed PHP candidates, reviewed their technical assignments, and mentored interns in the internship program."
     ],
     "skills": ["PHP", "Percona", "Memcached", "Elasticsearch"]
@@ -92,8 +88,7 @@
     "outcomes": [
       "Designed and shipped REST and GraphQL API features for a community social network rewritten from scratch. The new platform launched.",
       "Wrote unit and feature tests using TDD, so the new APIs had tests from day one.",
-      "Designed and built the reusable UI component library, giving the front end one set of building blocks.",
-      "Integrated third-party APIs and fixed bugs across the application."
+      "Designed and built the reusable UI component library, giving the front end one set of building blocks."
     ],
     "skills": ["PHP", "Laravel", "Vue 2", "GraphQL", "REST", "Elasticsearch", "MySQL", "Redis"],
     "employmentType": "Part-time contract"
@@ -110,7 +105,11 @@
       "Built new admin panel and REST API features for an employee engagement web application."
     ],
     "skills": ["PHP", "Laravel", "Bootstrap", "jQuery", "MySQL", "Docker"],
-    "employmentType": "Part-time contract"
+    "employmentType": "Part-time contract",
+    "brief": {
+      "context": "Macedonia, part-time",
+      "text": "Built new admin panel and REST API features. Laravel."
+    }
   },
   {
     "company": "Adeva",
@@ -123,7 +122,11 @@
     "outcomes": [
       "Built new features, improved existing ones, and fixed critical bugs for a human resources web application."
     ],
-    "skills": ["PHP", "CakePHP", "JavaScript", "MySQL", "Docker"]
+    "skills": ["PHP", "CakePHP", "JavaScript", "MySQL", "Docker"],
+    "brief": {
+      "context": "United Arab Emirates",
+      "text": "Built new features and fixed critical bugs. CakePHP."
+    }
   },
   {
     "company": "Adeva",
@@ -150,7 +153,11 @@
     "outcomes": [
       "Built new features for a small real estate web application as a part-time consultant."
     ],
-    "skills": ["PHP", "Laravel", "Bootstrap", "jQuery", "MySQL", "Docker"]
+    "skills": ["PHP", "Laravel", "Bootstrap", "jQuery", "MySQL", "Docker"],
+    "brief": {
+      "context": "Real estate",
+      "text": "Built new features for a small real estate web application. Laravel."
+    }
   },
   {
     "company": "Routyx",
@@ -161,10 +168,9 @@
     "industry": "Logistics (dispatch ERP)",
     "outcomes": [
       "Chose the stack and set up the project structure for a delivery and logistics dispatcher ERP and the API for its driver app. Both kept growing on that structure without a rewrite.",
-      "Built ERP features, front-end features, and the mobile app API.",
-      "Mentored interns in the team's practices."
+      "Built ERP features, front-end features, and the mobile app API, and mentored interns in the team's practices."
     ],
-    "skills": ["PHP", "Laravel", "Lumen", "JavaScript", "jQuery", "Bootstrap", "MySQL", "MongoDB", "Redis", "Docker"]
+    "skills": ["PHP", "Laravel", "Lumen", "JavaScript", "MySQL", "MongoDB", "Redis", "Docker"]
   },
   {
     "company": "New Media Corp.",
@@ -174,41 +180,23 @@
     "endDate": "2017-02",
     "industry": "Media & broadcasting",
     "outcomes": [
-      "Built a live camera monitoring web app that was used to view cameras during an election: admin panel features and an external API integration for monitoring data.",
-      "Built a web app for TV broadcasters and operators to manage day-to-day operations: admin panel features and an external API integration for managing remote servers.",
-      "Designed and built an online video platform: admin panel, public website, REST API endpoints, and external API integrations.",
-      "Built the front end of the customer panel for a TV-as-a-service platform used by broadcasters, media companies, and TV operators across cable, satellite, terrestrial, IPTV, and OTT.",
-      "Built these web applications from scratch as part of a small team, and mentored two colleagues through code reviews and pairing on their tasks."
+      "Built web applications from scratch as part of a small team, including a live camera monitoring app used during an election, an online video platform, and the front end of the customer panel for a TV-as-a-service platform.",
+      "Mentored two colleagues through code reviews and pairing on their tasks."
     ],
-    "skills": ["PHP", "Laravel", "Vue 2", "JavaScript", "jQuery", "Node.js", "MySQL", "Redis", "Docker"]
+    "skills": ["PHP", "Laravel", "Vue 2", "JavaScript", "Node.js", "MySQL", "Redis", "Docker"]
   },
   {
     "company": "Tabellarius",
     "title": "Full Stack PHP Developer",
     "location": "Skopje, Macedonia",
-    "startDate": "2015-12",
+    "startDate": "2015-06",
     "endDate": "2016-03",
     "industry": "Email marketing",
     "outcomes": [
-      "Gave internal talks on BEM (CSS naming), real-time notifications with Laravel, Node.js, Redis, and Socket.io, automated testing, and Git workflow. The team adopted the testing practice, the Git workflow, and the real-time stack.",
-      "Researched, planned, and built a customer support feature from scratch with the team, including a real-time support chat, and designed part of the application structure and database schema.",
-      "Built an email marketing web application from scratch as part of a team: features, functional/integration/acceptance tests, and legacy code refactoring."
+      "Built an email marketing web application from scratch as part of a team, including a real-time customer support chat: features, functional/integration/acceptance tests, and legacy code refactoring.",
+      "Gave internal talks on BEM (CSS naming), real-time notifications with Laravel, Node.js, Redis, and Socket.io, automated testing, and Git workflow. The team adopted the testing practice, the Git workflow, and the real-time stack."
     ],
-    "skills": ["PHP", "Laravel", "JavaScript", "jQuery", "Node.js", "Socket.IO", "MySQL", "Redis", "Docker"]
-  },
-  {
-    "company": "Tabellarius",
-    "title": "Full Stack PHP Developer Intern",
-    "location": "Macedonia",
-    "startDate": "2015-06",
-    "endDate": "2015-11",
-    "industry": "Email marketing",
-    "outcomes": [
-      "Hired full-time at the end of the internship.",
-      "Built new features for an email marketing web application built from scratch with Laravel, as part of a team.",
-      "Wrote functional, integration, and acceptance tests and refactored legacy code.",
-      "Designed parts of the application structure and database schema, and contributed feature ideas."
-    ],
-    "skills": ["PHP", "Laravel", "JavaScript", "jQuery", "MySQL", "Apache", "PHPUnit", "Codeception"]
+    "skills": ["PHP", "Laravel", "JavaScript", "Node.js", "Socket.IO", "MySQL", "Redis", "PHPUnit", "Codeception"],
+    "note": "Joined as an intern, hired full-time at the end of the internship"
   }
 ]

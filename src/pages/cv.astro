@@ -3,7 +3,20 @@
 // scripts/generate-cv-pdf.mjs renders this page to /davor-minchorov-cv.pdf
 // after every build, so the PDF can never drift from the site.
 import '../styles/global.css';
+// Static (non-variable) fonts for the CV. Chromium embeds variable fonts in
+// the PDF as Type 3 fonts, which have no reliable word spacing, so some text
+// extractors and applicant tracking systems read "Senior Back End Engineer"
+// as "SeniorBack End Engineer". Static fonts embed as regular TrueType fonts.
+// Every weight the CV uses is loaded: a missing weight is faked by the
+// browser, and a faked bold is embedded as Type 3 too (the section headings
+// use IBM Plex Mono 600).
+import '@fontsource/instrument-sans/400.css';
+import '@fontsource/instrument-sans/500.css';
+import '@fontsource/instrument-sans/600.css';
+import '@fontsource/source-serif-4/600.css';
+import '@fontsource/ibm-plex-mono/600.css';
 import { getCollection } from 'astro:content';
+import CvBrief from '../components/CvBrief.astro';
 import CvRole from '../components/CvRole.astro';
 import { formatMonth, sortSkillGroups, yearsOfExperience } from '../lib/career';
 import { BOOKING_URL, EMAIL, services } from '../lib/site-content';
@@ -20,6 +33,9 @@ const testimonials = (await getCollection('testimonials')).sort((a, b) => a.data
 // group sits where its most recent engagement would.
 const GROUP_COMPANY = 'Adeva';
 const inGroup = (role: (typeof roles)[number]) => role.data.company.startsWith(GROUP_COMPANY);
+// Roles with a `brief` are shown as one line: at the end of the group, or
+// under "Earlier experience" at the end of the list.
+const isBrief = (role: (typeof roles)[number]) => Boolean(role.data.brief);
 const groupRoles = roles.filter(inGroup);
 const group = {
   company: GROUP_COMPANY,
@@ -27,20 +43,23 @@ const group = {
   endDate: groupRoles.some((role) => !role.data.endDate)
     ? null
     : groupRoles.map((role) => role.data.endDate as string).sort().at(-1)!,
-  roles: groupRoles,
+  roles: groupRoles.filter((role) => !isBrief(role)),
+  briefs: groupRoles.filter(isBrief),
 };
+const earlierRoles = roles.filter((role) => !inGroup(role) && isBrief(role));
 type Entry = { kind: 'role'; role: (typeof roles)[number] } | { kind: 'group' };
 const entries: Entry[] = [];
 for (const role of roles) {
-  if (!inGroup(role)) entries.push({ kind: 'role', role });
-  else if (!entries.some((entry) => entry.kind === 'group')) entries.push({ kind: 'group' });
+  if (!inGroup(role)) {
+    if (!isBrief(role)) entries.push({ kind: 'role', role });
+  } else if (!entries.some((entry) => entry.kind === 'group')) entries.push({ kind: 'group' });
 }
 
 const languages = 'English (professional), Macedonian (native)';
 
 const title = 'Davor Minchorov | CV | PHP Consultant & Product Engineer';
 const description =
-  'CV of Davor Minchorov, PHP consultant and product engineer: what I do, work experience, testimonials, skills, and talks. Available as a PDF download.';
+  'CV of Davor Minchorov, PHP consultant and product engineer: what I do, testimonials, work experience, skills, and talks. Available as a PDF download.';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 
 const contact = [
@@ -57,7 +76,7 @@ const updatedOn = new Date().toLocaleDateString('en-GB', { month: 'long', year: 
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="cv-page">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -105,10 +124,7 @@ const updatedOn = new Date().toLocaleDateString('en-GB', { month: 'long', year: 
     <section class="mt-6">
       <h2 class="cv-heading">Summary</h2>
       <p class="cv-text">
-        PHP consultant and product engineer, building software professionally since 2015 ({yearsOfExperience()}+ years), from small startups to Fortune 500 companies, across healthcare, fintech, iGaming, entertainment, logistics, and non-profit. I work with founders, CTOs, and product teams who have a PHP application in production and need it to keep growing without falling over. Some of the work is hands-on: new products, partner APIs, and making an existing codebase safe to change again. Some of it is leading the team: planning the work, reviewing code, and agreeing on the practices that keep the product maintainable.
-      </p>
-      <p class="cv-text mt-2">
-        I ask what the business is trying to achieve before I write code, plan in writing, and ship with tests. I use AI coding assistants where they speed up the work. I review and test everything that ships, and I follow each client's rules on what code and data can go into outside tools. I have worked in English with clients in the US, Canada, Switzerland, Italy, Montenegro, and the UAE. I also run <a href="https://codyssey.dev" class="cv-link">Codyssey.dev</a>, where I teach engineers to build maintainable software.
+        PHP consultant and product engineer, building software professionally since 2015 ({yearsOfExperience()}+ years), from small startups to Fortune 500 companies, across healthcare, fintech, iGaming, entertainment, logistics, and non-profit. I work with founders, CTOs, and product teams who have a PHP application in production and need it to keep growing without falling over. I ask what the business is trying to achieve before I write code, plan in writing, and ship with tests. I have worked in English with clients in the US, Canada, Switzerland, Italy, Montenegro, and the UAE.
       </p>
     </section>
 
@@ -125,6 +141,26 @@ const updatedOn = new Date().toLocaleDateString('en-GB', { month: 'long', year: 
       </dl>
     </section>
 
+    <!-- Testimonials -->
+    <section class="mt-7 break-inside-avoid">
+      <h2 class="cv-heading">What People Say</h2>
+      <div class="space-y-3">
+        {testimonials.filter((item) => item.data.excerpt).map((item) => (
+          <figure class="break-inside-avoid border-l-2 border-accent pl-4">
+            <blockquote class="m-0">
+              <p class="cv-text">“{item.data.excerpt!.text}”</p>
+            </blockquote>
+            <figcaption class="text-[12.5px] text-text-muted mt-1">
+              <span class="font-semibold text-text">{item.data.author}</span>, {item.data.role}{item.data.excerpt!.note && ` · ${item.data.excerpt!.note}`}
+            </figcaption>
+          </figure>
+        ))}
+        <p class="cv-text">
+          Full testimonials at <a href="https://davorminchorov.com/#testimonials" class="cv-link">davorminchorov.com</a>
+        </p>
+      </div>
+    </section>
+
     <!-- Experience -->
     <section class="mt-7">
       <h2 class="cv-heading">Experience</h2>
@@ -134,40 +170,50 @@ const updatedOn = new Date().toLocaleDateString('en-GB', { month: 'long', year: 
             <CvRole role={entry.role} />
           ) : (
             <div>
-              <div class="cv-group-head flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-4">
-                <h3 class="text-[15px] font-semibold tracking-tight text-accent m-0">{group.company}</h3>
-                <span class="font-mono text-[11.5px] text-text-muted whitespace-nowrap">
-                  {formatMonth(group.startDate)} – {formatMonth(group.endDate)}
-                </span>
+              <!-- The group heading and its first role form one block, so
+                   the heading never ends a page on its own. The two bordered
+                   columns touch, so the left rule reads as one line. -->
+              <div class="cv-keep">
+                <div class="cv-group-head flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-4">
+                  <h3 class="text-[15px] font-semibold text-accent m-0">{group.company}</h3>
+                  <span class="font-mono text-[11.5px] text-text-muted whitespace-nowrap">
+                    {formatMonth(group.startDate)} – {formatMonth(group.endDate)}
+                  </span>
+                </div>
+                <p class="text-[12.5px] text-text-muted mt-0.5">Client engagements through {group.company}</p>
+                <p class="text-[12.5px] text-text-muted">The 2019 to 2021 part-time contracts ran alongside my role at Quantox.</p>
+                <div class="mt-3 pl-4 border-l-2 border-border">
+                  <CvRole role={group.roles[0]} nested groupCompany={group.company} />
+                </div>
               </div>
-              <p class="text-[12.5px] text-text-muted mt-0.5">Client engagements through {group.company}</p>
-              <div class="mt-3 pl-4 border-l-2 border-border space-y-4">
-                {group.roles.map((role) => (
+              <div class="pt-4 pl-4 border-l-2 border-border space-y-4">
+                {group.roles.slice(1).map((role) => (
                   <CvRole role={role} nested groupCompany={group.company} />
                 ))}
+                {group.briefs.length > 0 && (
+                  <div class="cv-keep">
+                    <h4 class="cv-subheading">Shorter {group.company} engagements</h4>
+                    <ul class="m-0 p-0 list-none space-y-1">
+                      {group.briefs.map((role) => (
+                        <CvBrief role={role} nested />
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             </div>
           ),
         )}
-      </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="mt-7">
-      <h2 class="cv-heading">What People Say</h2>
-      <div class="space-y-5">
-        {testimonials.map((item) => (
-          <figure class="break-inside-avoid border-l-2 border-accent pl-4">
-            <blockquote class="m-0 space-y-2">
-              {item.data.paragraphs.map((paragraph) => (
-                <p class="cv-text">{paragraph}</p>
+        {earlierRoles.length > 0 && (
+          <div class="cv-keep">
+            <h3 class="cv-subheading">Earlier experience</h3>
+            <ul class="m-0 p-0 list-none space-y-1">
+              {earlierRoles.map((role) => (
+                <CvBrief role={role} />
               ))}
-            </blockquote>
-            <figcaption class="text-[12.5px] text-text-muted mt-2">
-              <span class="font-semibold text-text">{item.data.author}</span>, {item.data.role} · {item.data.note}
-            </figcaption>
-          </figure>
-        ))}
+            </ul>
+          </div>
+        )}
       </div>
     </section>
 
@@ -188,9 +234,9 @@ const updatedOn = new Date().toLocaleDateString('en-GB', { month: 'long', year: 
       </dl>
     </section>
 
-    <!-- Talks & writing -->
+    <!-- Talks -->
     <section class="mt-7 break-inside-avoid">
-      <h2 class="cv-heading">Talks &amp; Writing</h2>
+      <h2 class="cv-heading">Talks</h2>
       <ul class="m-0 p-0 list-none space-y-2">
         {talks.map((talk) => (
           <li class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-4">
@@ -201,10 +247,6 @@ const updatedOn = new Date().toLocaleDateString('en-GB', { month: 'long', year: 
             <span class="font-mono text-[11.5px] text-text-muted whitespace-nowrap">{formatMonth(talk.data.date)}</span>
           </li>
         ))}
-        <li class="cv-text">
-          Courses, learning paths, and articles on building maintainable PHP applications, published on{" "}
-          <a href="https://codyssey.dev/author-profile/davor-minchorov" class="cv-link">Codyssey.dev</a>.
-        </li>
       </ul>
     </section>
 
@@ -228,8 +270,18 @@ const updatedOn = new Date().toLocaleDateString('en-GB', { month: 'long', year: 
     margin: 14mm 15mm 16mm;
   }
 
+  /* Swap the variable fonts for the static ones imported above. */
+  .cv-page {
+    --font-body: "Instrument Sans", -apple-system, sans-serif;
+    --font-display: "Source Serif 4", Georgia, serif;
+  }
+
   .cv {
     line-height: 1.5;
+  }
+
+  .cv-subheading {
+    @apply text-[13px] font-semibold text-text m-0 mb-1.5;
   }
 
   .cv-heading {
@@ -249,16 +301,20 @@ const updatedOn = new Date().toLocaleDateString('en-GB', { month: 'long', year: 
       scroll-behavior: auto;
     }
 
-    /* A role may span two pages, but its heading stays with its first
-       bullets and a single bullet never splits. */
+    /* A role, a group of one-line roles, and the testimonials never split
+       across pages: they move to the next page whole. Headings stay with
+       what follows them. */
     .cv article > div,
     .cv article > p:first-of-type,
     .cv .cv-group-head,
     .cv .cv-group-head + p,
+    .cv .cv-subheading,
     .cv h2 {
       break-after: avoid;
     }
 
+    .cv article,
+    .cv .cv-keep,
     .cv li {
       break-inside: avoid;
     }

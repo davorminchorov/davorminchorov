@@ -12,19 +12,20 @@ interface Props {
 }
 
 const { role, nested = false, groupCompany } = Astro.props;
-const { title, company, industry, clientLocation, employmentType, startDate, endDate, outcomes, skills } = role.data;
+const { title, company, industry, clientLocation, employmentType, note, startDate, endDate, outcomes, skills } = role.data;
 
 const meta = [
   nested ? null : industry,
   clientLocation && `Client: ${clientLocation}`,
   employmentType,
   nested && company !== groupCompany ? company : null,
+  note,
 ].filter(Boolean);
 ---
 
 <article>
   <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-4">
-    <h3 class={`${nested ? 'text-[14px]' : 'text-[15px]'} font-semibold tracking-tight text-text m-0`}>
+    <h3 class={`${nested ? 'text-[14px]' : 'text-[15px]'} font-semibold text-text m-0`}>
       {title}
       <span class="font-normal text-text-muted"> · </span>
       <span class={nested ? 'font-medium text-text' : 'font-semibold text-accent'}>{nested ? industry : company}</span>
