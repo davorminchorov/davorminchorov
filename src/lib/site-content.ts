@@ -23,7 +23,7 @@ export const hero = {
   eyebrow: 'PHP Consultant & Product Engineer',
   headline: 'I help product teams build and modernise PHP products that have to keep working for years.',
   intro:
-    'I join teams as a senior engineer or tech lead, review and modernise existing codebases, and build new products and partner APIs in Laravel and Symfony. I care about what the software is for, not just whether it compiles.',
+    'I join teams as a senior engineer or tech lead, review and modernise existing codebases, and build new products and partner APIs in Laravel and Symfony. I care about what the software is for, who the customers are, not just whether it works.',
   // Rendered as: before + link(Codyssey.dev) + after
   codyssey: {
     before: 'I also run ',
